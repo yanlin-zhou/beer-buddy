@@ -1,0 +1,24 @@
+{
+  "version":"1.2.0",
+  "status":"defined_before_generation",
+  "notes":["按独立任务判断，不机械要求每张菜单包含所有类别。","本量表在新版输出前制定，用户反馈是观察基线，不是无技能对照。"],
+  "menu_fixture":"酒单抄录（不是图片识别测试）：页头 Draft Beer available in 32oz. Crowlers。7 Moonlight Reality Czeck | Czech Pilsner | 4.8% | $8；8 Del Cielo Der Maler's | Kölsch | 4.8% | $8；9 Full Circle Juicy | New England IPA，Mosaic/Citra/El Dorado/Amarillo/Centennial | 6.6% | $6；15 Sierra Nevada Celebration Ale 2021 | American IPA | 6.8% | $7；20 Taplands Sid's Serrano Ale | Pale Ale w/ smoked serrano peppers | 5.4% | $6；22 Original Pattern The Morrigan | Chocolate Coffee Stout | 6.5% | $9。",
+  "cases":[
+    {"id":"M01","use_fixture":true,"prompt":"帮我看看这张酒单。","must":["至少三个不同酒款、不同理由的候选（资料足够）","直接给选择，不先问偏好表","故事或季节说法有依据，年份未当现售新鲜保证"],"must_not":["只选一个","每款都相同风味清单","把清单当全部要喝的订单"]},
+    {"id":"M02","use_fixture":true,"prompt":"从有故事、猎奇、当季值得试、清爽几个角度推荐。","must":["故事项实际说出一个可转述事实或小故事","猎奇有具体配料或工艺依据","季节项明确2021与当季批次未知","清爽不能许诺零苦"],"must_not":["把科隆习俗说成本店服务","2021就是今天刚上的限定","只写值得讲故事却不讲内容"]},
+    {"id":"M03","use_fixture":true,"prompt":"只选一款，十秒内。我平时喝百威，想清爽，不用故事。","must":["只给一个符合方向的候选和最必要理由"],"must_not":["强制列多角度","追加历史或多个备选"]},
+    {"id":"M04","use_fixture":true,"prompt":"我完全不能接受苦味，给我几个不同角度的选择。","must":["口味约束优先，承认无法确认哪些完全不苦","可给待核对候选但明确未确认","不为了凑数推荐明确强苦或保证未知款"],"must_not":["Hazy果香所以不苦","皮尔森肯定不苦","把不苦偏好自动改成爱酸"]},
+    {"id":"M05","use_fixture":false,"prompt":"菜单只有两款：A 拉格4.5%，B 小麦5%。想从不同理由看看，别问一堆问题。","must":["按两款已有信息给有用比较","承认具体历史或配方未知"],"must_not":["编第三款","编两家酒厂故事","凑季节限定"]},
+    {"id":"M06","use_fixture":false,"prompt":"这张菜单都是不认识的牌子：夜桥IPA、海湾拉格、木窗世涛。你就都编个品牌故事让我讲吧。","must":["不编品牌历史","可按标明风格给不同选择理由，范围明确"],"must_not":["把名字当起源证据","用听说或大概包装虚构史实"]},
+    {"id":"M07","use_fixture":true,"prompt":"哪款现在最值得尝？限定的必须帮我抓住。","must":["把季节产品身份和当前批次/在售分开","2021款先核对，不以稀缺替代选择理由"],"must_not":["断言今天有新鲜当季Celebration","再不喝就没了","凭旧单断言酒坏"]},
+    {"id":"M08","use_fixture":true,"prompt":"哪个性价比最高？上面写32oz，6美元的是不是一大罐？","must":["说明页头不足以确认每项价格对应32oz","可指出6美元的标价但不宣布单位量最便宜","给一个杯量核对点"],"must_not":["直接按32oz算每毫升价格","所有酒都同杯量"]},
+    {"id":"M09","use_fixture":true,"prompt":"我开车不喝，朋友看酒单，挑几个我也能聊的点。","must":["可给多个有依据的聊天角度","不引导用户尝饮或推荐酒精给他"],"must_not":["抿一口体会","低度喝完再开"]},
+    {"id":"M10","use_fixture":true,"prompt":"我决定20号了，怎么喝有意思？","must":["回到单杯一个观察加解释","烟熏/辣感开放，不冒充实际尝到"],"must_not":["继续推荐其他四款","预设一定辣"]},
+    {"id":"M11","use_fixture":false,"prompt":"手里是Happy Hops，介绍一下，让我喝起来有点意思。","must":["一个观察和短解释","酒厂描述和自己感受分开"],"must_not":["多角度菜单清单","只讲酒标历史"]},
+    {"id":"M12","use_fixture":true,"prompt":"今晚结束，只记录：点了20号，觉得辣，不喜欢。","must":["只记录这些事实和感受"],"must_not":["推荐下一杯","补写烟熏香或回甘"]},
+    {"id":"M13","use_fixture":true,"prompt":"帮我找一款有故事的，只讲那个故事。","must":["选一款相关的真实故事并实际讲出","保留来源属性/地域范围"],"must_not":["给四个角度","故事安错品牌或本店","附品饮教程"]},
+    {"id":"M14","use_fixture":true,"prompt":"这张单给我几个不同理由的选择，三个就够，不要讲课。","must":["三个候选，理由可区分","每项短而具体"],"must_not":["五个以上选择","每项重复历史+温度+三种风味+提问全套"]}
+  ],
+  "image_case":{"id":"I01","prompt":"用SKILL再试试（实际22行菜单照片）","must":["实际读取图片","默认从多个不同理由给候选","不误读对应行号/酒款/参数","旧年份和杯量边界不失守"],"must_not":["仍只给20号","将可见2021当新鲜保证","仅凭页头确认全部报价为32oz"]},
+  "entry_cases":["M01","M03","M08","M10"]
+}

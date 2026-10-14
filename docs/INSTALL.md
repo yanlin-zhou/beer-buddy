@@ -1,6 +1,6 @@
 # 使用与安装
 
-版本 1.1.0 · 文档核对日期：2026-10-14。
+版本 1.2.0 · 文档核对日期：2026-10-14。
 
 ## 只想先试一下
 
@@ -8,7 +8,9 @@
 
 > 这瓶是 Happy Hops IPA，给我一个现在能留意的小特点，别像上课。
 
-这版带轻量品饮指导和 3 条故事。需要完整 13 条故事、更多品饮入口与选酒、采购参考时，下载 [PROMPT.md](https://github.com/yanlin-zhou/beer-buddy/releases/latest/download/PROMPT.md)，上传到支持文本附件的对话，发：“请按文件中的啤酒搭子帮我。”
+能看图的对话里，也可以发酒单并说：“帮我从几个不同角度挑挑看。”清楚的酒单默认给 3–5 款、通常 3 或 4 款备选，每款一个有依据的理由；明确只要一杯或一个故事，就保持简短。
+
+这版带菜单规则与示例事实、轻量品饮指导和 3 条故事。需要完整 13 条故事、更多品饮入口与选酒、采购参考时，下载 [PROMPT.md](https://github.com/yanlin-zhou/beer-buddy/releases/latest/download/PROMPT.md)，上传到支持文本附件的对话，发：“请按文件中的啤酒搭子帮我。”
 
 也可复制完整文件到容量足够的对话。不要默认任何平台的“自定义指令”都容得下整份资料。平台是否能读附件、看图或联网，以你的当前账户和模型为准；本项目不需要 API key，也没有额外服务。
 
@@ -48,21 +50,23 @@ Codex 通常会自动检测 Skill 变化；没出现时重启会话或应用。�
 
 ## Claude 自定义 Skill 上传
 
-下载 Release 中的 [beer-buddy-1.1.0.zip](https://github.com/yanlin-zhou/beer-buddy/releases/download/v1.1.0/beer-buddy-1.1.0.zip)。它包含顶层 `beer-buddy/` 文件夹，里面直接有 `SKILL.md`。
+下载 Release 中的 [beer-buddy-1.2.0.zip](https://github.com/yanlin-zhou/beer-buddy/releases/download/v1.2.0/beer-buddy-1.2.0.zip)。它包含顶层 `beer-buddy/` 文件夹，里面直接有 `SKILL.md`。
 
 在支持自定义 Skills 的 Claude 界面中，进入 **Customize → Skills → + → Create skill → Upload a skill** 上传。不同产品、账户权限或更新可能改变入口；以 [Claude 官方上传说明](https://support.claude.com/en/articles/12512180-use-skills-in-claude)及当前界面为准。
 
-使用专门的 Release 安装包，别将 GitHub 自动生成的源码包误当成已经检查的安装包。本次未进行 Claude 网页端、Cowork 或 Claude Code 的端到端安装验证。
+使用专门的 Release 安装包，别将 GitHub 自动生成的源码包误当成专用安装包。各宿主实际验证范围见[验证记录](VALIDATION.md)。
 
-## 装完试这三句
+## 装完试这几句
 
-1. `这瓶是 Happy Hops IPA，介绍一下，让我知道喝哪里有意思。` —— 应给一个可留意的点和简短解释。
-2. `我只觉得苦，只给一句，别编其他味道。` —— 应保留你的感受。
-3. `今天结束了，只记录：我更喜欢小麦。` —— 应只记录，不追加下一杯。
+1. 发一张清楚的酒单：`帮我看看，给几个不同理由的选择。` —— 资料足够时，应给几款不同候选，理由具体，不先问一串偏好题。
+2. 同一张酒单：`只选一杯，十秒内，想清爽。` —— 应缩到一款和必要理由。
+3. `这瓶是 Happy Hops IPA，介绍一下，让我知道喝哪里有意思。` —— 应给一个可留意的点和简短解释。
+4. `我只觉得苦，只给一句，别编其他味道。` —— 应保留你的感受。
+5. `今天结束了，只记录：我更喜欢小麦。` —— 应只记录，不追加下一杯。
 
 想听故事时，直接说“只给一个故事，不要品酒教程”，新版本也会尊重这次的要求。
 
-如果回答像百科、要求你喝出某个味道、先问一串问题，或仍替你安排下一杯，先确认启用的是 v1.1.0。把**提示词与实际回答**提交到 [Issue](https://github.com/yanlin-zhou/beer-buddy/issues)，即可帮助我们排查；不要贴私人对话和凭据。
+如果菜单资料充足、也未要求单选，回答仍只给一款；或每款理由都相同、要求你喝出某个味道、先问一串问题，先确认启用的是 v1.2.0。把**提示词与实际回答**提交到 [Issue](https://github.com/yanlin-zhou/beer-buddy/issues)，即可帮助我们排查；不要贴私人对话和凭据。
 
 ## 这次实际验证到哪里
 

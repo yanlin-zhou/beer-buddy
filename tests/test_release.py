@@ -56,27 +56,31 @@ class ReleaseTests(unittest.TestCase):
         self.assertNotEqual(result.returncode, 0)
         self.assertIn('source_url', result.stdout + result.stderr)
 
-    def test_tasting_source_reaches_both_portable_editions(self):
+    def test_shared_source_sections_reach_both_portable_editions(self):
         self.assertEqual(self.run_release('--generate-only').returncode, 0)
-        p = self.root / 'references/tasting.md'
-        marker = 'UNIQUE_TASTING_FIXTURE'
-        p.write_text(p.read_text(encoding='utf-8').replace('<!-- STARTER:END -->', marker + '\n<!-- STARTER:END -->'), encoding='utf-8')
-        result = self.run_release('--check')
-        self.assertNotEqual(result.returncode, 0)
-        self.assertIn('stale', result.stderr)
-        self.assertEqual(self.run_release('--generate-only').returncode, 0)
-        for name in ['START.md', 'PROMPT.md']:
-            self.assertIn(marker, (self.root / name).read_text(encoding='utf-8'))
-
-    def test_missing_or_duplicate_tasting_boundary_is_rejected(self):
-        p = self.root / 'references/tasting.md'
-        original = p.read_text(encoding='utf-8')
-        for replacement in ['', '<!-- STARTER:END --><!-- STARTER:END -->']:
-            with self.subTest(replacement=replacement):
-                p.write_text(original.replace('<!-- STARTER:END -->', replacement), encoding='utf-8')
-                result = self.run_release('--generate-only')
+        for source in ['tasting', 'menu']:
+            with self.subTest(source=source):
+                p = self.root / ('references/' + source + '.md')
+                marker = 'UNIQUE_' + source.upper() + '_FIXTURE'
+                p.write_text(p.read_text(encoding='utf-8').replace('<!-- STARTER:END -->', marker + '\n<!-- STARTER:END -->'), encoding='utf-8')
+                result = self.run_release('--check')
                 self.assertNotEqual(result.returncode, 0)
-                self.assertIn('STARTER', result.stderr)
+                self.assertIn('stale', result.stderr)
+                self.assertEqual(self.run_release('--generate-only').returncode, 0)
+                for name in ['START.md', 'PROMPT.md']:
+                    self.assertIn(marker, (self.root / name).read_text(encoding='utf-8'))
+
+    def test_missing_or_duplicate_source_boundary_is_rejected(self):
+        for source in ['tasting', 'menu']:
+            p = self.root / ('references/' + source + '.md')
+            original = p.read_text(encoding='utf-8')
+            for replacement in ['', '<!-- STARTER:END --><!-- STARTER:END -->']:
+                with self.subTest(source=source, replacement=replacement):
+                    p.write_text(original.replace('<!-- STARTER:END -->', replacement), encoding='utf-8')
+                    result = self.run_release('--generate-only')
+                    self.assertNotEqual(result.returncode, 0)
+                    self.assertIn('STARTER', result.stderr)
+            p.write_text(original, encoding='utf-8')
 
     def test_story_version_mismatch_is_rejected(self):
         p = self.root / 'references/stories.json'

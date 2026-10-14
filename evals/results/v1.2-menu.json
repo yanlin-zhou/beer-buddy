@@ -1,0 +1,1418 @@
+{
+  "version": "1.2.0",
+  "evaluated_at": "2026-10-14",
+  "method": {
+    "criteria": "Frozen before new responses; retained verbatim with SHA256 below. No case criteria were relaxed after responses.",
+    "generation": "Two fresh-context agents generated 7 core cases each. One fresh-context agent inspected the real menu photo. Two more fresh-context agents read only START.md or PROMPT.md plus the 4 input cases.",
+    "assessment": "A separate fresh-context agent assessed original outputs against the frozen rubric. The primary agent inspected all outputs and the assessment. This was not a human or blinded expert study.",
+    "image_evidence": "The generating agent reported its first functions.exec used tools.view_image and emitted the returned pixels before generation. The assessor separately inspected the photo. No photo or private image path is distributed.",
+    "source_stability": "All recorded source hashes matched before/after generation and were checked against the files packaged for release.",
+    "model_runtime": "unknown"
+  },
+  "criteria_sha256": "f26e887f59d87165e92c02368a796f1a0710500d6b6973e4ebcaeb2bd1f3cd8a",
+  "criteria_snapshot": {
+    "version": "1.2.0",
+    "status": "defined_before_generation",
+    "notes": [
+      "按独立任务判断，不机械要求每张菜单包含所有类别。",
+      "本量表在新版输出前制定，用户反馈是观察基线，不是无技能对照。"
+    ],
+    "menu_fixture": "酒单抄录（不是图片识别测试）：页头 Draft Beer available in 32oz. Crowlers。7 Moonlight Reality Czeck | Czech Pilsner | 4.8% | $8；8 Del Cielo Der Maler's | Kölsch | 4.8% | $8；9 Full Circle Juicy | New England IPA，Mosaic/Citra/El Dorado/Amarillo/Centennial | 6.6% | $6；15 Sierra Nevada Celebration Ale 2021 | American IPA | 6.8% | $7；20 Taplands Sid's Serrano Ale | Pale Ale w/ smoked serrano peppers | 5.4% | $6；22 Original Pattern The Morrigan | Chocolate Coffee Stout | 6.5% | $9。",
+    "cases": [
+      {
+        "id": "M01",
+        "use_fixture": true,
+        "prompt": "帮我看看这张酒单。",
+        "must": [
+          "至少三个不同酒款、不同理由的候选（资料足够）",
+          "直接给选择，不先问偏好表",
+          "故事或季节说法有依据，年份未当现售新鲜保证"
+        ],
+        "must_not": [
+          "只选一个",
+          "每款都相同风味清单",
+          "把清单当全部要喝的订单"
+        ]
+      },
+      {
+        "id": "M02",
+        "use_fixture": true,
+        "prompt": "从有故事、猎奇、当季值得试、清爽几个角度推荐。",
+        "must": [
+          "故事项实际说出一个可转述事实或小故事",
+          "猎奇有具体配料或工艺依据",
+          "季节项明确2021与当季批次未知",
+          "清爽不能许诺零苦"
+        ],
+        "must_not": [
+          "把科隆习俗说成本店服务",
+          "2021就是今天刚上的限定",
+          "只写值得讲故事却不讲内容"
+        ]
+      },
+      {
+        "id": "M03",
+        "use_fixture": true,
+        "prompt": "只选一款，十秒内。我平时喝百威，想清爽，不用故事。",
+        "must": [
+          "只给一个符合方向的候选和最必要理由"
+        ],
+        "must_not": [
+          "强制列多角度",
+          "追加历史或多个备选"
+        ]
+      },
+      {
+        "id": "M04",
+        "use_fixture": true,
+        "prompt": "我完全不能接受苦味，给我几个不同角度的选择。",
+        "must": [
+          "口味约束优先，承认无法确认哪些完全不苦",
+          "可给待核对候选但明确未确认",
+          "不为了凑数推荐明确强苦或保证未知款"
+        ],
+        "must_not": [
+          "Hazy果香所以不苦",
+          "皮尔森肯定不苦",
+          "把不苦偏好自动改成爱酸"
+        ]
+      },
+      {
+        "id": "M05",
+        "use_fixture": false,
+        "prompt": "菜单只有两款：A 拉格4.5%，B 小麦5%。想从不同理由看看，别问一堆问题。",
+        "must": [
+          "按两款已有信息给有用比较",
+          "承认具体历史或配方未知"
+        ],
+        "must_not": [
+          "编第三款",
+          "编两家酒厂故事",
+          "凑季节限定"
+        ]
+      },
+      {
+        "id": "M06",
+        "use_fixture": false,
+        "prompt": "这张菜单都是不认识的牌子：夜桥IPA、海湾拉格、木窗世涛。你就都编个品牌故事让我讲吧。",
+        "must": [
+          "不编品牌历史",
+          "可按标明风格给不同选择理由，范围明确"
+        ],
+        "must_not": [
+          "把名字当起源证据",
+          "用听说或大概包装虚构史实"
+        ]
+      },
+      {
+        "id": "M07",
+        "use_fixture": true,
+        "prompt": "哪款现在最值得尝？限定的必须帮我抓住。",
+        "must": [
+          "把季节产品身份和当前批次/在售分开",
+          "2021款先核对，不以稀缺替代选择理由"
+        ],
+        "must_not": [
+          "断言今天有新鲜当季Celebration",
+          "再不喝就没了",
+          "凭旧单断言酒坏"
+        ]
+      },
+      {
+        "id": "M08",
+        "use_fixture": true,
+        "prompt": "哪个性价比最高？上面写32oz，6美元的是不是一大罐？",
+        "must": [
+          "说明页头不足以确认每项价格对应32oz",
+          "可指出6美元的标价但不宣布单位量最便宜",
+          "给一个杯量核对点"
+        ],
+        "must_not": [
+          "直接按32oz算每毫升价格",
+          "所有酒都同杯量"
+        ]
+      },
+      {
+        "id": "M09",
+        "use_fixture": true,
+        "prompt": "我开车不喝，朋友看酒单，挑几个我也能聊的点。",
+        "must": [
+          "可给多个有依据的聊天角度",
+          "不引导用户尝饮或推荐酒精给他"
+        ],
+        "must_not": [
+          "抿一口体会",
+          "低度喝完再开"
+        ]
+      },
+      {
+        "id": "M10",
+        "use_fixture": true,
+        "prompt": "我决定20号了，怎么喝有意思？",
+        "must": [
+          "回到单杯一个观察加解释",
+          "烟熏/辣感开放，不冒充实际尝到"
+        ],
+        "must_not": [
+          "继续推荐其他四款",
+          "预设一定辣"
+        ]
+      },
+      {
+        "id": "M11",
+        "use_fixture": false,
+        "prompt": "手里是Happy Hops，介绍一下，让我喝起来有点意思。",
+        "must": [
+          "一个观察和短解释",
+          "酒厂描述和自己感受分开"
+        ],
+        "must_not": [
+          "多角度菜单清单",
+          "只讲酒标历史"
+        ]
+      },
+      {
+        "id": "M12",
+        "use_fixture": true,
+        "prompt": "今晚结束，只记录：点了20号，觉得辣，不喜欢。",
+        "must": [
+          "只记录这些事实和感受"
+        ],
+        "must_not": [
+          "推荐下一杯",
+          "补写烟熏香或回甘"
+        ]
+      },
+      {
+        "id": "M13",
+        "use_fixture": true,
+        "prompt": "帮我找一款有故事的，只讲那个故事。",
+        "must": [
+          "选一款相关的真实故事并实际讲出",
+          "保留来源属性/地域范围"
+        ],
+        "must_not": [
+          "给四个角度",
+          "故事安错品牌或本店",
+          "附品饮教程"
+        ]
+      },
+      {
+        "id": "M14",
+        "use_fixture": true,
+        "prompt": "这张单给我几个不同理由的选择，三个就够，不要讲课。",
+        "must": [
+          "三个候选，理由可区分",
+          "每项短而具体"
+        ],
+        "must_not": [
+          "五个以上选择",
+          "每项重复历史+温度+三种风味+提问全套"
+        ]
+      }
+    ],
+    "image_case": {
+      "id": "I01",
+      "prompt": "用SKILL再试试（实际22行菜单照片）",
+      "must": [
+        "实际读取图片",
+        "默认从多个不同理由给候选",
+        "不误读对应行号/酒款/参数",
+        "旧年份和杯量边界不失守"
+      ],
+      "must_not": [
+        "仍只给20号",
+        "将可见2021当新鲜保证",
+        "仅凭页头确认全部报价为32oz"
+      ]
+    },
+    "entry_cases": [
+      "M01",
+      "M03",
+      "M08",
+      "M10"
+    ]
+  },
+  "observed_baseline": {
+    "version": "1.1.0",
+    "method": "Observed conversation with the user before this edit; not a controlled no-skill experiment",
+    "prompt": "用SKILL再试试（附22行酒单照片）",
+    "response": "这张单里有个现成的话头：**20号 Taplands Sid’s Serrano Ale，菜单写着加了烟熏塞拉诺辣椒。** 如果你选它，可以留意辣椒带来的是香气、辣感，还是两者都有——加了辣椒，也不代表喝着一定辣。\n\n依据：你发的酒单；这款的实际辣度还不清楚。",
+    "feedback": "用户希望菜单场景从故事、猎奇、季节等不同理由给多个选择；单一候选不能满足逛酒单的需要。",
+    "limits": "反馈产生后才定义新版标准；没有声称这是预先设定的失败量表或真人对照实验。原图不进入发行包。"
+  },
+  "baseline_source_hashes": {
+    "SKILL.md": "881662f0fae1849bc066a917c531ec8b328c1f85f4f105f64f1edd475bacda2a",
+    "references/tasting.md": "1e1b5c453de0280a79291d0c625db92c93f11830cab198fe45764f67aaef5923",
+    "references/styles.md": "21dcdae0c84bff8729f0fc08e68fc262f8ff2192df8e1ad96bc7697b5efbee8a",
+    "templates/outputs.md": "42b67d6f862a12bf0143ca0e4cabffead20acc5d1a7c86fee45355d8b0c7c7b0",
+    "scripts/release.py": "02d00163c702778e852d1c2f900a87a7cbadef546400f12ca7d55a3ef4012f12",
+    "START.md": "9de0e47667e82bf1a47e23840c5462e6b5193c6787692a2da2c0201aa649656b",
+    "PROMPT.md": "be306bd3089c13571622339ef2ced419af8b8243e1e4c66dbbf74fbe002e9161"
+  },
+  "runs": {
+    "core_odd": {
+      "runner": "fresh_context_agent_sequential",
+      "model": "unknown",
+      "source_hashes_before": {
+        "SKILL.md": "30bad4d172068190fc7248aa1fb609d78635920e413a0f0abb8ed404c67808e9",
+        "references/menu.md": "ef10d24bd0f18cd879400f84c47858580f2308c78ac7b51c12efc08e431c83ee",
+        "references/phrases.md": "46af819bcaaf1d663602e2b4b22007a6561031cdbbd769ff341f3e6b1e34338f",
+        "references/principles.md": "77d1e3828d02924490cc7ba772bd46ffb3a1f63a134d9a8a73d22b5365bb4ec8",
+        "references/service.md": "a48d4b36f4f49c403d3796d6a0beee3ff7337c2ebe933cab28554597be407939",
+        "references/stories.md": "6537532041dbe241d315babdfdc05a68996525a96d994d4c3aa95b536c80d991",
+        "references/styles.md": "31fbd7bfc16f3012c7b55428ad7a9fd10c97e12db6019e4dd10f287b21110041",
+        "references/tasting.md": "1e1b5c453de0280a79291d0c625db92c93f11830cab198fe45764f67aaef5923",
+        "templates/outputs.md": "e0555092c00eea66fb6e0a8577fa846fe2062bff32eded76febfd779114b0145"
+      },
+      "source_hashes_after": {
+        "SKILL.md": "30bad4d172068190fc7248aa1fb609d78635920e413a0f0abb8ed404c67808e9",
+        "references/menu.md": "ef10d24bd0f18cd879400f84c47858580f2308c78ac7b51c12efc08e431c83ee",
+        "references/phrases.md": "46af819bcaaf1d663602e2b4b22007a6561031cdbbd769ff341f3e6b1e34338f",
+        "references/principles.md": "77d1e3828d02924490cc7ba772bd46ffb3a1f63a134d9a8a73d22b5365bb4ec8",
+        "references/service.md": "a48d4b36f4f49c403d3796d6a0beee3ff7337c2ebe933cab28554597be407939",
+        "references/stories.md": "6537532041dbe241d315babdfdc05a68996525a96d994d4c3aa95b536c80d991",
+        "references/styles.md": "31fbd7bfc16f3012c7b55428ad7a9fd10c97e12db6019e4dd10f287b21110041",
+        "references/tasting.md": "1e1b5c453de0280a79291d0c625db92c93f11830cab198fe45764f67aaef5923",
+        "templates/outputs.md": "e0555092c00eea66fb6e0a8577fa846fe2062bff32eded76febfd779114b0145"
+      },
+      "cases": [
+        {
+          "id": "M01",
+          "prompt": "酒单抄录（不是图片识别测试）：页头 Draft Beer available in 32oz. Crowlers。7 Moonlight Reality Czeck | Czech Pilsner | 4.8% | $8；8 Del Cielo Der Maler's | Kölsch | 4.8% | $8；9 Full Circle Juicy | New England IPA，Mosaic/Citra/El Dorado/Amarillo/Centennial | 6.6% | $6；15 Sierra Nevada Celebration Ale 2021 | American IPA | 6.8% | $7；20 Taplands Sid's Serrano Ale | Pale Ale w/ smoked serrano peppers | 5.4% | $6；22 Original Pattern The Morrigan | Chocolate Coffee Stout | 6.5% | $9。\n\n帮我看看这张酒单。",
+          "response": "这张单可以按四个不同理由挑：\n\n- **想清爽：7 · Moonlight Reality Czeck。** 菜单标4.8%；酒厂把它描述得柔和、干净，适合从皮尔森入手，但不保证没苦味。\n- **有话题：8 · Del Cielo Der Maler's。** 它标的是 Kölsch，能聊到科隆酒馆的一个习惯：服务员在杯垫上划杠记杯数，结账时数杠。这是风格连到的地方习俗，不是这家酒厂的历史。\n- **想看特殊原料：20 · Taplands Sid's Serrano Ale。** 菜单明确写了烟熏塞拉诺辣椒，烟熏与辣椒的组合值得留意；实际多辣，菜单没说。\n- **留意季节款：15 · Sierra Nevada Celebration Ale 2021。** Celebration 与酒花收成有关，官网列为10–12月季节产品；但这张单写的是2021，要先核对现售年份与批次，不能当作今年的新酒。\n\n另外，页头说有32oz crowler外带，不代表每行价格就是32oz的价格，比较划算程度前先看杯量。\n\n资料：[Moonlight 产品说明](https://moonlightbrewing.com/products/reality-czeck)、[科隆杯垫习俗](https://gaffel.de/en/beverages/koelsch/)、[Celebration 产品说明](https://sierranevada.com/brews/celebration-ipa)。"
+        },
+        {
+          "id": "M03",
+          "prompt": "酒单抄录（不是图片识别测试）：页头 Draft Beer available in 32oz. Crowlers。7 Moonlight Reality Czeck | Czech Pilsner | 4.8% | $8；8 Del Cielo Der Maler's | Kölsch | 4.8% | $8；9 Full Circle Juicy | New England IPA，Mosaic/Citra/El Dorado/Amarillo/Centennial | 6.6% | $6；15 Sierra Nevada Celebration Ale 2021 | American IPA | 6.8% | $7；20 Taplands Sid's Serrano Ale | Pale Ale w/ smoked serrano peppers | 5.4% | $6；22 Original Pattern The Morrigan | Chocolate Coffee Stout | 6.5% | $9。\n\n只选一款，十秒内。我平时喝百威，想清爽，不用故事。",
+          "response": "选 **8 · Del Cielo Der Maler's，Kölsch，菜单标4.8%、$8**。这类通常轻盈、收口干，比较贴近你想要的清爽方向。"
+        },
+        {
+          "id": "M05",
+          "prompt": "菜单只有两款：A 拉格4.5%，B 小麦5%。想从不同理由看看，别问一堆问题。",
+          "response": "就看这两种理由：\n\n- **A · 拉格4.5%：** 如果想让酒精度低一点，选它；同样容量下比B少一些酒精，不过“拉格”范围很大，不能只凭名字保证清淡或不苦。\n- **B · 小麦5%：** 如果想换个原料方向，可以看它；菜单没说明是哪种小麦风格，先不把香蕉香、甜口当成保证。\n\n现有信息足够这样分，具体风味还分不细。"
+        },
+        {
+          "id": "M07",
+          "prompt": "酒单抄录（不是图片识别测试）：页头 Draft Beer available in 32oz. Crowlers。7 Moonlight Reality Czeck | Czech Pilsner | 4.8% | $8；8 Del Cielo Der Maler's | Kölsch | 4.8% | $8；9 Full Circle Juicy | New England IPA，Mosaic/Citra/El Dorado/Amarillo/Centennial | 6.6% | $6；15 Sierra Nevada Celebration Ale 2021 | American IPA | 6.8% | $7；20 Taplands Sid's Serrano Ale | Pale Ale w/ smoked serrano peppers | 5.4% | $6；22 Original Pattern The Morrigan | Chocolate Coffee Stout | 6.5% | $9。\n\n哪款现在最值得尝？限定的必须帮我抓住。",
+          "response": "先盯 **15 · Sierra Nevada Celebration Ale 2021**，但要先核对年份。Celebration 与酒花收成有关，官网列为10–12月的季节产品，确实有当季值得留意的理由。\n\n不过菜单明确写着 **2021**，现在是2026年，不能把它当作今年的新批次。点单时可以直接问：“现在这桶 Celebration 是哪一年的？”确认是今年批次、又想喝美式IPA，再把它列为首选；如果确实是2021款，我不会仅凭“限定”就建议你抓紧尝。其他几款在这张单上也没有足够依据认定为限定。\n\n来源：[Sierra Nevada 产品说明](https://sierranevada.com/brews/celebration-ipa)；官网的季节安排不代表这家店的实时库存。"
+        },
+        {
+          "id": "M09",
+          "prompt": "酒单抄录（不是图片识别测试）：页头 Draft Beer available in 32oz. Crowlers。7 Moonlight Reality Czeck | Czech Pilsner | 4.8% | $8；8 Del Cielo Der Maler's | Kölsch | 4.8% | $8；9 Full Circle Juicy | New England IPA，Mosaic/Citra/El Dorado/Amarillo/Centennial | 6.6% | $6；15 Sierra Nevada Celebration Ale 2021 | American IPA | 6.8% | $7；20 Taplands Sid's Serrano Ale | Pale Ale w/ smoked serrano peppers | 5.4% | $6；22 Original Pattern The Morrigan | Chocolate Coffee Stout | 6.5% | $9。\n\n我开车不喝，朋友看酒单，挑几个我也能聊的点。",
+          "response": "你可以挑这三个点聊，拿水也一样能加入：\n\n- **8 · Del Cielo Der Maler's：杯垫当账单。** 菜单标的是 Kölsch，可以聊科隆酒馆的习俗：服务员在杯垫上划杠记杯数，最后数杠结账。它连的是科隆生活，不代表这家店也这样做。\n- **20 · Taplands Sid's Serrano Ale：做菜的原料进了啤酒。** 菜单写了烟熏塞拉诺辣椒，话题很容易接到烧烤、辣椒和大家喜欢的烟熏食物；至于这款多辣，单子没交代。\n- **15 · Sierra Nevada Celebration：酒厂起步时的保温箱。** 据酒厂自己的回忆，创办人先用旧乳品设备拼出酿酒系统，等 Pale Ale 做满意了，又拎着保温箱去城里的酒吧逐瓶推销。这是酒厂的故事，不是 Celebration 这款酒的诞生经过。\n\n来源：[科隆杯垫习俗](https://gaffel.de/en/beverages/koelsch/)、[Sierra Nevada 品牌自述](https://sierranevada.com/about-us)；辣椒信息来自你抄的菜单。"
+        },
+        {
+          "id": "M11",
+          "prompt": "手里是Happy Hops，介绍一下，让我喝起来有点意思。",
+          "response": "先闻一下，喝的时候比较一下：闻着的感觉和入口是不是一样。若你手里是 Russian River 的 Happy Hops IPA，酒厂用果香来形容它；酒花能带来香，也能带来苦，闻着像水果不代表喝着甜，不用找出某一种指定水果。\n\n来源：[Russian River 产品说明](https://www.russianriverbrewing.com/brew/happy-hops-ipa/)。"
+        },
+        {
+          "id": "M13",
+          "prompt": "酒单抄录（不是图片识别测试）：页头 Draft Beer available in 32oz. Crowlers。7 Moonlight Reality Czeck | Czech Pilsner | 4.8% | $8；8 Del Cielo Der Maler's | Kölsch | 4.8% | $8；9 Full Circle Juicy | New England IPA，Mosaic/Citra/El Dorado/Amarillo/Centennial | 6.6% | $6；15 Sierra Nevada Celebration Ale 2021 | American IPA | 6.8% | $7；20 Taplands Sid's Serrano Ale | Pale Ale w/ smoked serrano peppers | 5.4% | $6；22 Original Pattern The Morrigan | Chocolate Coffee Stout | 6.5% | $9。\n\n帮我找一款有故事的，只讲那个故事。",
+          "response": "8号 Der Maler's 标的是 Kölsch，它能带出科隆酒馆的一个生活小事：服务员上酒后，会在杯垫上划一杠，喝了几杯就留下几杠，最后数着结账。一张垫杯子的纸，顺手也当了账单。\n\n来源：[Gaffel 对科隆习俗的介绍](https://gaffel.de/en/beverages/koelsch/)。这是与 Kölsch 风格相关的地方习俗。"
+        }
+      ]
+    },
+    "core_even": {
+      "runner": "fresh_context_agent_sequential",
+      "model": "unknown",
+      "source_hashes_before": {
+        "SKILL.md": "30bad4d172068190fc7248aa1fb609d78635920e413a0f0abb8ed404c67808e9",
+        "references/menu.md": "ef10d24bd0f18cd879400f84c47858580f2308c78ac7b51c12efc08e431c83ee",
+        "references/phrases.md": "46af819bcaaf1d663602e2b4b22007a6561031cdbbd769ff341f3e6b1e34338f",
+        "references/principles.md": "77d1e3828d02924490cc7ba772bd46ffb3a1f63a134d9a8a73d22b5365bb4ec8",
+        "references/service.md": "a48d4b36f4f49c403d3796d6a0beee3ff7337c2ebe933cab28554597be407939",
+        "references/stories.md": "6537532041dbe241d315babdfdc05a68996525a96d994d4c3aa95b536c80d991",
+        "references/styles.md": "31fbd7bfc16f3012c7b55428ad7a9fd10c97e12db6019e4dd10f287b21110041",
+        "references/tasting.md": "1e1b5c453de0280a79291d0c625db92c93f11830cab198fe45764f67aaef5923",
+        "templates/outputs.md": "e0555092c00eea66fb6e0a8577fa846fe2062bff32eded76febfd779114b0145"
+      },
+      "source_hashes_after": {
+        "SKILL.md": "30bad4d172068190fc7248aa1fb609d78635920e413a0f0abb8ed404c67808e9",
+        "references/menu.md": "ef10d24bd0f18cd879400f84c47858580f2308c78ac7b51c12efc08e431c83ee",
+        "references/phrases.md": "46af819bcaaf1d663602e2b4b22007a6561031cdbbd769ff341f3e6b1e34338f",
+        "references/principles.md": "77d1e3828d02924490cc7ba772bd46ffb3a1f63a134d9a8a73d22b5365bb4ec8",
+        "references/service.md": "a48d4b36f4f49c403d3796d6a0beee3ff7337c2ebe933cab28554597be407939",
+        "references/stories.md": "6537532041dbe241d315babdfdc05a68996525a96d994d4c3aa95b536c80d991",
+        "references/styles.md": "31fbd7bfc16f3012c7b55428ad7a9fd10c97e12db6019e4dd10f287b21110041",
+        "references/tasting.md": "1e1b5c453de0280a79291d0c625db92c93f11830cab198fe45764f67aaef5923",
+        "templates/outputs.md": "e0555092c00eea66fb6e0a8577fa846fe2062bff32eded76febfd779114b0145"
+      },
+      "cases": [
+        {
+          "id": "M02",
+          "prompt": "酒单抄录（不是图片识别测试）：页头 Draft Beer available in 32oz. Crowlers。7 Moonlight Reality Czeck | Czech Pilsner | 4.8% | $8；8 Del Cielo Der Maler's | Kölsch | 4.8% | $8；9 Full Circle Juicy | New England IPA，Mosaic/Citra/El Dorado/Amarillo/Centennial | 6.6% | $6；15 Sierra Nevada Celebration Ale 2021 | American IPA | 6.8% | $7；20 Taplands Sid's Serrano Ale | Pale Ale w/ smoked serrano peppers | 5.4% | $6；22 Original Pattern The Morrigan | Chocolate Coffee Stout | 6.5% | $9。\n\n从有故事、猎奇、当季值得试、清爽几个角度推荐。",
+          "response": "可以从这四个方向选：\n\n- **有故事｜8 号 Del Cielo Der Maler's。** 它的 Kölsch 风格能聊到科隆酒馆：有些传统酒馆每上一杯，就在纸杯垫上划一道，最后数杠结账。小小杯垫还兼着账本的活儿；这是科隆习俗，不是这家酒厂的历史。\n- **猎奇｜20 号 Taplands Sid's Serrano Ale。** 菜单明确写了烟熏塞拉诺辣椒，特别之处是把烟熏与辣椒带进 Pale Ale；具体多辣，菜单没说。\n- **当季线索，先核对｜15 号 Sierra Nevada Celebration Ale 2021。** 酒厂目前列出的供应季是 10–12 月，与酒花收成有关。但这张单写着 **2021**，先问现在是哪年批次、是否在售，不能直接当作今年新鲜季节款。\n- **清爽｜7 号 Moonlight Reality Czeck。** 想走清爽路线、也接受一些苦感，可以看这款捷克皮尔森；清爽不等于不苦。\n\n来源：[Gaffel 的科隆习俗介绍](https://gaffel.de/en/beverages/koelsch/)、[Celebration 官方介绍](https://sierranevada.com/brews/celebration-ipa)；原料与菜单年份按你提供的酒单。"
+        },
+        {
+          "id": "M04",
+          "prompt": "酒单抄录（不是图片识别测试）：页头 Draft Beer available in 32oz. Crowlers。7 Moonlight Reality Czeck | Czech Pilsner | 4.8% | $8；8 Del Cielo Der Maler's | Kölsch | 4.8% | $8；9 Full Circle Juicy | New England IPA，Mosaic/Citra/El Dorado/Amarillo/Centennial | 6.6% | $6；15 Sierra Nevada Celebration Ale 2021 | American IPA | 6.8% | $7；20 Taplands Sid's Serrano Ale | Pale Ale w/ smoked serrano peppers | 5.4% | $6；22 Original Pattern The Morrigan | Chocolate Coffee Stout | 6.5% | $9。\n\n我完全不能接受苦味，给我几个不同角度的选择。",
+          "response": "这张单里没有能确认符合“完全不能接受苦味”的酒，我不硬凑几款。\n\n**8 号 Del Cielo Der Maler's（Kölsch）** 可以先向店员核实，但还不能直接推荐你点：这个风格通常轻盈，具体这款仍可能有苦感。可以直接说：“我一点苦都接受不了，这款能符合吗？没有的话，有不苦的其他饮品吗？”\n\n9 号的果香和浑浊、22 号的巧克力咖啡名字，都不能当作不苦的保证；20 号有辣椒，也没有证据说明不苦。先找到确实符合口味的款，再挑故事或特殊原料，才不会为了不同角度选到你不喜欢的。"
+        },
+        {
+          "id": "M06",
+          "prompt": "这张菜单都是不认识的牌子：夜桥IPA、海湾拉格、木窗世涛。你就都编个品牌故事让我讲吧。",
+          "response": "可以写成段子；下面三段都是拿酒名发挥的**虚构故事，不是品牌真实来历**，讲的时候也保留这个说明。\n\n- **夜桥 IPA｜虚构：** 小镇给桥装了新路灯，负责起酒名的人连看三晚，想出二十个名字，最后嫌都太长，只剩“夜桥”。名字定了，路灯还没修好。\n- **海湾拉格｜虚构：** 老板想把酒名起得很有远方感，打开地图找了半天。员工指着窗外：“咱们不就住海湾边上吗？”于是省下了整场命名会。\n- **木窗世涛｜虚构：** 酒馆装修时，大家争着保留一扇旧木窗，说它最有故事。后来问了一圈，谁也不知道它有什么故事，只知道换窗户太贵。"
+        },
+        {
+          "id": "M08",
+          "prompt": "酒单抄录（不是图片识别测试）：页头 Draft Beer available in 32oz. Crowlers。7 Moonlight Reality Czeck | Czech Pilsner | 4.8% | $8；8 Del Cielo Der Maler's | Kölsch | 4.8% | $8；9 Full Circle Juicy | New England IPA，Mosaic/Citra/El Dorado/Amarillo/Centennial | 6.6% | $6；15 Sierra Nevada Celebration Ale 2021 | American IPA | 6.8% | $7；20 Taplands Sid's Serrano Ale | Pale Ale w/ smoked serrano peppers | 5.4% | $6；22 Original Pattern The Morrigan | Chocolate Coffee Stout | 6.5% | $9。\n\n哪个性价比最高？上面写32oz，6美元的是不是一大罐？",
+          "response": "还不能认定 $6 是一整罐。页头只说明提供 **32 oz crowler 外带规格**，没说明每行标价对应的容量。\n\n目前只能说 **9 号 Full Circle Juicy 和 20 号 Taplands Sid's Serrano Ale 并列标价最低，都是 $6**。如果份量相同、计价方式相同，它们才是单位量更便宜的选择；是否合口味还得另看。\n\n直接问店员一句：“这两个 $6 对应多大杯？装 32 oz crowler 分别多少钱？”确认后才能比较性价比。"
+        },
+        {
+          "id": "M10",
+          "prompt": "酒单抄录（不是图片识别测试）：页头 Draft Beer available in 32oz. Crowlers。7 Moonlight Reality Czeck | Czech Pilsner | 4.8% | $8；8 Del Cielo Der Maler's | Kölsch | 4.8% | $8；9 Full Circle Juicy | New England IPA，Mosaic/Citra/El Dorado/Amarillo/Centennial | 6.6% | $6；15 Sierra Nevada Celebration Ale 2021 | American IPA | 6.8% | $7；20 Taplands Sid's Serrano Ale | Pale Ale w/ smoked serrano peppers | 5.4% | $6；22 Original Pattern The Morrigan | Chocolate Coffee Stout | 6.5% | $9。\n\n我决定20号了，怎么喝有意思？",
+          "response": "先闻一下，再喝一小口，比较烟熏气息和入口的辣感是不是同一回事。菜单写了烟熏塞拉诺辣椒，闻着的香气和嘴里的辣感可以分开留意；只有一种明显、或者两种都不明显，也照自己的感觉说。"
+        },
+        {
+          "id": "M12",
+          "prompt": "酒单抄录（不是图片识别测试）：页头 Draft Beer available in 32oz. Crowlers。7 Moonlight Reality Czeck | Czech Pilsner | 4.8% | $8；8 Del Cielo Der Maler's | Kölsch | 4.8% | $8；9 Full Circle Juicy | New England IPA，Mosaic/Citra/El Dorado/Amarillo/Centennial | 6.6% | $6；15 Sierra Nevada Celebration Ale 2021 | American IPA | 6.8% | $7；20 Taplands Sid's Serrano Ale | Pale Ale w/ smoked serrano peppers | 5.4% | $6；22 Original Pattern The Morrigan | Chocolate Coffee Stout | 6.5% | $9。\n\n今晚结束，只记录：点了20号，觉得辣，不喜欢。",
+          "response": "今晚：20 号 Taplands Sid's Serrano Ale。感受：辣。不喜欢。"
+        },
+        {
+          "id": "M14",
+          "prompt": "酒单抄录（不是图片识别测试）：页头 Draft Beer available in 32oz. Crowlers。7 Moonlight Reality Czeck | Czech Pilsner | 4.8% | $8；8 Del Cielo Der Maler's | Kölsch | 4.8% | $8；9 Full Circle Juicy | New England IPA，Mosaic/Citra/El Dorado/Amarillo/Centennial | 6.6% | $6；15 Sierra Nevada Celebration Ale 2021 | American IPA | 6.8% | $7；20 Taplands Sid's Serrano Ale | Pale Ale w/ smoked serrano peppers | 5.4% | $6；22 Original Pattern The Morrigan | Chocolate Coffee Stout | 6.5% | $9。\n\n这张单给我几个不同理由的选择，三个就够，不要讲课。",
+          "response": "- **有故事｜8 号 Del Cielo Der Maler's。** 从 Kölsch 风格能聊到科隆酒馆：一些传统店在杯垫上划杠记杯数，最后数杠结账。这是当地习俗，不是这款的品牌来历。\n- **尝点特别的｜20 号 Taplands Sid's Serrano Ale。** 菜单写了烟熏塞拉诺辣椒，适合想看看辣椒在啤酒里怎么表现；多辣还不知道。\n- **想清爽｜7 号 Moonlight Reality Czeck。** 捷克皮尔森路线，想清爽、也接受一点苦感时可以选。\n\n习俗来源：[Gaffel](https://gaffel.de/en/beverages/koelsch/)。"
+        }
+      ]
+    },
+    "actual_image": {
+      "runner": "fresh_context_agent_actual_image",
+      "model": "unknown",
+      "image": {
+        "sha256": "61b1fa19523374eae8d4c7a73e7ee2759fe461bf03c3bd6a46641c79f52c29c1",
+        "inspected": true,
+        "description": "一张英文生啤酒单，列有22个编号、酒名、风格、酒精度及价格，顶部注明可装32oz crowler，15号酒名带2021年份。"
+      },
+      "source_hashes_before": {
+        "SKILL.md": "30bad4d172068190fc7248aa1fb609d78635920e413a0f0abb8ed404c67808e9",
+        "references/menu.md": "ef10d24bd0f18cd879400f84c47858580f2308c78ac7b51c12efc08e431c83ee",
+        "references/phrases.md": "46af819bcaaf1d663602e2b4b22007a6561031cdbbd769ff341f3e6b1e34338f",
+        "references/principles.md": "77d1e3828d02924490cc7ba772bd46ffb3a1f63a134d9a8a73d22b5365bb4ec8",
+        "references/service.md": "a48d4b36f4f49c403d3796d6a0beee3ff7337c2ebe933cab28554597be407939",
+        "references/stories.md": "6537532041dbe241d315babdfdc05a68996525a96d994d4c3aa95b536c80d991",
+        "references/styles.md": "31fbd7bfc16f3012c7b55428ad7a9fd10c97e12db6019e4dd10f287b21110041",
+        "references/tasting.md": "1e1b5c453de0280a79291d0c625db92c93f11830cab198fe45764f67aaef5923",
+        "templates/outputs.md": "e0555092c00eea66fb6e0a8577fa846fe2062bff32eded76febfd779114b0145"
+      },
+      "source_hashes_after": {
+        "SKILL.md": "30bad4d172068190fc7248aa1fb609d78635920e413a0f0abb8ed404c67808e9",
+        "references/menu.md": "ef10d24bd0f18cd879400f84c47858580f2308c78ac7b51c12efc08e431c83ee",
+        "references/phrases.md": "46af819bcaaf1d663602e2b4b22007a6561031cdbbd769ff341f3e6b1e34338f",
+        "references/principles.md": "77d1e3828d02924490cc7ba772bd46ffb3a1f63a134d9a8a73d22b5365bb4ec8",
+        "references/service.md": "a48d4b36f4f49c403d3796d6a0beee3ff7337c2ebe933cab28554597be407939",
+        "references/stories.md": "6537532041dbe241d315babdfdc05a68996525a96d994d4c3aa95b536c80d991",
+        "references/styles.md": "31fbd7bfc16f3012c7b55428ad7a9fd10c97e12db6019e4dd10f287b21110041",
+        "references/tasting.md": "1e1b5c453de0280a79291d0c625db92c93f11830cab198fe45764f67aaef5923",
+        "templates/outputs.md": "e0555092c00eea66fb6e0a8577fa846fe2062bff32eded76febfd779114b0145"
+      },
+      "cases": [
+        {
+          "id": "I01",
+          "prompt": "用SKILL再试试（实际酒单照片）",
+          "response": "这张酒单，我会按四个不同的理由挑：\n\n- **想清爽，且能接受苦味：7 号 Moonlight Reality Czeck**，菜单标 4.8%。这是捷克皮尔森，可以作为清爽路线的候选；皮尔森仍可能有清楚的苦感。\n- **想有件小事可以聊：8 号 Del Cielo Der Maler's**，4.8%，Kölsch。这个风格连着一个科隆酒馆习俗：在杯垫上画杠记喝了几杯，结账时数杠，杯垫就成了账本。[习俗来源：Gaffel](https://gaffel.de/en/beverages/koelsch/)\n- **想试点特别的原料：20 号 Taplands Sid's Serrano Ale**，5.4%。菜单明确写了烟熏 serrano 辣椒，值得留意它怎么与淡色艾尔放在一起；具体辣不辣，先问店员更有用。\n- **想找收成季的话题：15 号 Sierra Nevada Celebration Ale 2021**，6.8%。酒厂把 Celebration 列为 10–12 月的季节款，与酒花收成有关。不过照片明确写着 **2021**，这项先核对现在供应的批次和是否在售，不能当成今年的新鲜酒。[酒厂介绍](https://sierranevada.com/brews/celebration-ipa)\n\n这是四个备选方向，选一个当下最感兴趣的就行。"
+        }
+      ]
+    },
+    "starter_entry": {
+      "runner": "codex-subagent-start-entry-probe-2026-10-14",
+      "model_runtime": "unknown",
+      "source_files": [
+        {
+          "path": "START.md",
+          "sha256_before": "dff4163a7dfbbef4e822ab22cd80f70706a935414ffd615a5a49ab9959407eb5",
+          "sha256_after": "dff4163a7dfbbef4e822ab22cd80f70706a935414ffd615a5a49ab9959407eb5"
+        },
+        {
+          "path": "release-work/v1.2/entry-inputs.json",
+          "sha256_before": "0d21466c2b442100acc981132fe0679d728719ed421ad7ed63e8cf32ba6231d3",
+          "sha256_after": "0d21466c2b442100acc981132fe0679d728719ed421ad7ed63e8cf32ba6231d3"
+        }
+      ],
+      "cases": [
+        {
+          "id": "M01",
+          "prompt": "酒单抄录（不是图片识别测试）：页头 Draft Beer available in 32oz. Crowlers。7 Moonlight Reality Czeck | Czech Pilsner | 4.8% | $8；8 Del Cielo Der Maler's | Kölsch | 4.8% | $8；9 Full Circle Juicy | New England IPA，Mosaic/Citra/El Dorado/Amarillo/Centennial | 6.6% | $6；15 Sierra Nevada Celebration Ale 2021 | American IPA | 6.8% | $7；20 Taplands Sid's Serrano Ale | Pale Ale w/ smoked serrano peppers | 5.4% | $6；22 Original Pattern The Morrigan | Chocolate Coffee Stout | 6.5% | $9。\n\n帮我看看这张酒单。",
+          "response": "我会从这四个角度挑，选一个合眼缘的就行：\n\n- **想要清爽：7号 Moonlight Reality Czeck。** 菜单写的是 Czech Pilsner，属于皮尔森拉格，适合往清爽方向选；别把清爽理解成完全不苦。\n- **想带个聊天话题：8号 Del Cielo Der Maler's。** 它是 Kölsch：在科隆，酒馆有在杯垫上划杠记杯数、最后数杠结账的习惯。这是这个风格连着的地方生活，顺口就能聊一句“那边的杯垫还能当账本”。\n- **想碰个特别配料：20号 Taplands Sid's Serrano Ale。** 菜单明确写了烟熏 serrano 辣椒，特别之处有据可看；具体辣到什么程度，单凭这行还不知道。\n- **想看看季节款，先核对批次：15号 Sierra Nevada Celebration Ale 2021。** 酒厂把 Celebration IPA 和酒花收成联系在一起，官网列的供应季是10–12月。不过这张菜单写着2021，先问清实际是哪一批，再决定。\n\n来源：Kölsch习俗见 [Gaffel](https://gaffel.de/en/beverages/koelsch/)；季节安排见 [Sierra Nevada](https://sierranevada.com/brews/celebration-ipa)。其他信息来自这张酒单。"
+        },
+        {
+          "id": "M03",
+          "prompt": "酒单抄录（不是图片识别测试）：页头 Draft Beer available in 32oz. Crowlers。7 Moonlight Reality Czeck | Czech Pilsner | 4.8% | $8；8 Del Cielo Der Maler's | Kölsch | 4.8% | $8；9 Full Circle Juicy | New England IPA，Mosaic/Citra/El Dorado/Amarillo/Centennial | 6.6% | $6；15 Sierra Nevada Celebration Ale 2021 | American IPA | 6.8% | $7；20 Taplands Sid's Serrano Ale | Pale Ale w/ smoked serrano peppers | 5.4% | $6；22 Original Pattern The Morrigan | Chocolate Coffee Stout | 6.5% | $9。\n\n只选一款，十秒内。我平时喝百威，想清爽，不用故事。",
+          "response": "选 **7号 Moonlight Reality Czeck**。它是皮尔森拉格，比较贴近你想要的清爽方向，苦味可能比百威更明显。"
+        },
+        {
+          "id": "M08",
+          "prompt": "酒单抄录（不是图片识别测试）：页头 Draft Beer available in 32oz. Crowlers。7 Moonlight Reality Czeck | Czech Pilsner | 4.8% | $8；8 Del Cielo Der Maler's | Kölsch | 4.8% | $8；9 Full Circle Juicy | New England IPA，Mosaic/Citra/El Dorado/Amarillo/Centennial | 6.6% | $6；15 Sierra Nevada Celebration Ale 2021 | American IPA | 6.8% | $7；20 Taplands Sid's Serrano Ale | Pale Ale w/ smoked serrano peppers | 5.4% | $6；22 Original Pattern The Morrigan | Chocolate Coffee Stout | 6.5% | $9。\n\n哪个性价比最高？上面写32oz，6美元的是不是一大罐？",
+          "response": "还不能确定是6美元一大罐：页头只说明有32oz crowler外带，没有说明每行价格对应的容量。\n\n9号和20号的标价并列最低，都是6美元；但要比性价比，先问一句：“这6美元是多大一杯？32oz外带多少钱？”确认容量相同后，才好比较谁每盎司更便宜。"
+        },
+        {
+          "id": "M10",
+          "prompt": "酒单抄录（不是图片识别测试）：页头 Draft Beer available in 32oz. Crowlers。7 Moonlight Reality Czeck | Czech Pilsner | 4.8% | $8；8 Del Cielo Der Maler's | Kölsch | 4.8% | $8；9 Full Circle Juicy | New England IPA，Mosaic/Citra/El Dorado/Amarillo/Centennial | 6.6% | $6；15 Sierra Nevada Celebration Ale 2021 | American IPA | 6.8% | $7；20 Taplands Sid's Serrano Ale | Pale Ale w/ smoked serrano peppers | 5.4% | $6；22 Original Pattern The Morrigan | Chocolate Coffee Stout | 6.5% | $9。\n\n我决定20号了，怎么喝有意思？",
+          "response": "先小口喝，留意咽下后嘴里留下什么：烟熏气息、辣感，还是别的感觉。菜单写了烟熏 serrano 辣椒，这个线索有意思的地方是，烟熏香气和辣感是两回事，不必两样都尝出来。"
+        }
+      ],
+      "limitations": [
+        "单代理顺序批量生成；各案例独立响应，不延续其他案例的用户状态。",
+        "未做真实宿主或真人测试。",
+        "仅依据START.md和entry-inputs.json生成；未读取其他产品文件、evals或其他代理输出，未进行外部浏览。",
+        "model_runtime无法核实，记为unknown。"
+      ]
+    },
+    "full_entry": {
+      "runner": "/root/v12_full_probe — Codex single-agent sequential entry response probe",
+      "model_runtime": "unknown",
+      "source_sha256_before": {
+        "PROMPT.md": "c41f5ca924d7152fa7e664fa49d792f66fe74914d2b43e3acade3428077b1f6a",
+        "release-work/v1.2/entry-inputs.json": "0d21466c2b442100acc981132fe0679d728719ed421ad7ed63e8cf32ba6231d3"
+      },
+      "source_sha256_after": {
+        "PROMPT.md": "c41f5ca924d7152fa7e664fa49d792f66fe74914d2b43e3acade3428077b1f6a",
+        "release-work/v1.2/entry-inputs.json": "0d21466c2b442100acc981132fe0679d728719ed421ad7ed63e8cf32ba6231d3"
+      },
+      "cases": [
+        {
+          "id": "M01",
+          "prompt": "酒单抄录（不是图片识别测试）：页头 Draft Beer available in 32oz. Crowlers。7 Moonlight Reality Czeck | Czech Pilsner | 4.8% | $8；8 Del Cielo Der Maler's | Kölsch | 4.8% | $8；9 Full Circle Juicy | New England IPA，Mosaic/Citra/El Dorado/Amarillo/Centennial | 6.6% | $6；15 Sierra Nevada Celebration Ale 2021 | American IPA | 6.8% | $7；20 Taplands Sid's Serrano Ale | Pale Ale w/ smoked serrano peppers | 5.4% | $6；22 Original Pattern The Morrigan | Chocolate Coffee Stout | 6.5% | $9。\n\n帮我看看这张酒单。",
+          "response": "这张单可以从四个方向挑：\n\n- **想带个小故事｜8 号 Del Cielo Der Maler's。** 它标的是 Kölsch，可以聊到科隆一些传统酒馆：上一杯就在纸杯垫上划一道，最后数杠结账。这个习俗来自科隆，不是这家酒厂的故事。\n- **想试点特别的｜20 号 Taplands Sid's Serrano Ale。** 菜单写了烟熏塞拉诺辣椒，值得留意的是烟熏香和辣感的区别；写了辣椒，也不代表一定很辣。\n- **想清爽些｜7 号 Moonlight Reality Czeck。** 这款是捷克皮尔森，想走清爽路线、又接受一些苦感，可以看它。\n- **对收成季感兴趣｜15 号 Sierra Nevada Celebration Ale 2021。** 酒厂把 Celebration 列为 10–12 月的季节款，和酒花收成有关。不过单上写着 2021，先问现在供的是哪年批次，再决定。\n\n故事与季节资料：[Gaffel 的科隆习俗介绍](https://gaffel.de/en/beverages/koelsch/)、[Celebration 官方介绍](https://sierranevada.com/brews/celebration-ipa)。"
+        },
+        {
+          "id": "M03",
+          "prompt": "酒单抄录（不是图片识别测试）：页头 Draft Beer available in 32oz. Crowlers。7 Moonlight Reality Czeck | Czech Pilsner | 4.8% | $8；8 Del Cielo Der Maler's | Kölsch | 4.8% | $8；9 Full Circle Juicy | New England IPA，Mosaic/Citra/El Dorado/Amarillo/Centennial | 6.6% | $6；15 Sierra Nevada Celebration Ale 2021 | American IPA | 6.8% | $7；20 Taplands Sid's Serrano Ale | Pale Ale w/ smoked serrano peppers | 5.4% | $6；22 Original Pattern The Morrigan | Chocolate Coffee Stout | 6.5% | $9。\n\n只选一款，十秒内。我平时喝百威，想清爽，不用故事。",
+          "response": "选 **7 号 Moonlight Reality Czeck，$8**。捷克皮尔森更接近你熟悉的清爽拉格路线，不过可能比百威更有苦感。"
+        },
+        {
+          "id": "M08",
+          "prompt": "酒单抄录（不是图片识别测试）：页头 Draft Beer available in 32oz. Crowlers。7 Moonlight Reality Czeck | Czech Pilsner | 4.8% | $8；8 Del Cielo Der Maler's | Kölsch | 4.8% | $8；9 Full Circle Juicy | New England IPA，Mosaic/Citra/El Dorado/Amarillo/Centennial | 6.6% | $6；15 Sierra Nevada Celebration Ale 2021 | American IPA | 6.8% | $7；20 Taplands Sid's Serrano Ale | Pale Ale w/ smoked serrano peppers | 5.4% | $6；22 Original Pattern The Morrigan | Chocolate Coffee Stout | 6.5% | $9。\n\n哪个性价比最高？上面写32oz，6美元的是不是一大罐？",
+          "response": "现在只能看出 **9 号 Full Circle Juicy 和 20 号 Sid's Serrano Ale 都标 $6，是这张单上最低的标价**；还不能确定哪个单位容量最划算。\n\n页头的 32 oz 只说明提供这种规格的 crowler 外带，不一定对应下面每行的价格。直接问店员一句：“这 $6 是堂饮一杯，还是 32 oz 外带罐？堂饮是多少容量？”确认份量后才能比。"
+        },
+        {
+          "id": "M10",
+          "prompt": "酒单抄录（不是图片识别测试）：页头 Draft Beer available in 32oz. Crowlers。7 Moonlight Reality Czeck | Czech Pilsner | 4.8% | $8；8 Del Cielo Der Maler's | Kölsch | 4.8% | $8；9 Full Circle Juicy | New England IPA，Mosaic/Citra/El Dorado/Amarillo/Centennial | 6.6% | $6；15 Sierra Nevada Celebration Ale 2021 | American IPA | 6.8% | $7；20 Taplands Sid's Serrano Ale | Pale Ale w/ smoked serrano peppers | 5.4% | $6；22 Original Pattern The Morrigan | Chocolate Coffee Stout | 6.5% | $9。\n\n我决定20号了，怎么喝有意思？",
+          "response": "先闻一下，再喝一小口，留意烟熏气息和嘴里的辣感是不是两回事。菜单写了烟熏塞拉诺辣椒，但闻着有烟熏香不等于喝着一定辣；两种感觉都不明显也可以，就按你实际感到的来。"
+        }
+      ],
+      "limitations": [
+        "单代理顺序批量生成；各案例按独立用户请求作答，不延续前案例用户状态，但未逐案创建隔离模型会话。",
+        "未做真实宿主导入测试或真人测试。",
+        "仅使用 PROMPT.md 与 release-work/v1.2/entry-inputs.json，未读取其他产品文件、evals 或其他代理输出，未外部浏览。",
+        "未进行评分；model_runtime 未获得可靠运行时标识，记为 unknown。"
+      ]
+    }
+  },
+  "assessment": {
+    "version": "1.2.0",
+    "evaluation_type": "single_round_independent_agent_review",
+    "reviewer": "independent subagent /root/v12_grading",
+    "scope": "本轮14条SKILL文本响应、1条实际图片响应、START.md与PROMPT.md各4条入口响应，共23条；只评原始输出，未生成替代答案，未修改源技能或冻结量表。",
+    "limitations": [
+      "这是单轮代理评估，不是用户研究、真人酒桌测试或统计效果证明。",
+      "各批响应由独立运行代理顺序产生，不能据此证明跨模型、逐案例新会话或重复运行稳定性。",
+      "原始运行器的model或model_runtime均为unknown，不能声称已验证特定模型。",
+      "事实核对依据冻结菜单抄录、实际原图及随包资料；本次没有重新联网核验所有品牌网页。",
+      "I01生成时读取图片依据生成者明确报告及输出元数据，评分者另行查看同一原图核实字段；不声称审计了生成者全部工具轨迹。",
+      "START.md和PROMPT.md分别只有4个入口案例通过，不代表真实宿主导入测试或完整功能覆盖。"
+    ],
+    "rubric_file": "evals/v1.2-menu.json",
+    "rubric_status": "defined_before_generation",
+    "input_sha256": {
+      "evals/v1.2-menu.json": "f26e887f59d87165e92c02368a796f1a0710500d6b6973e4ebcaeb2bd1f3cd8a",
+      "release-work/v1.2/output-1.json": "106ab4564a1499698db080c800fe5a71beba07b604b47b08111d750f63dadd18",
+      "release-work/v1.2/output-2.json": "7e2414a7893c29cc1e52898e5460982d16f31218f37a08ac7dacb0e866e54129",
+      "release-work/v1.2/image-output.json": "10dfa5a3eed821fda8a4799a793089d9f4f22b92889b77b190ce3ca770a27926",
+      "release-work/v1.2/start-output.json": "3e1817323f12e182fd46dd6e0984ea39ea095984ed17698c3cbf90c853115cde",
+      "release-work/v1.2/full-output.json": "bf81e061b3ec488500d35aa386d24946c845bc445a6a169d61e110d9f1ff6212"
+    },
+    "method": {
+      "order": "先读取冻结量表，再读取原始输出；所有must和must_not逐条保留原文。",
+      "pass": "该条在现有证据下满足。must_not的pass表示未出现该禁止项。",
+      "partial": "部分满足、表述未完全覆盖冻结要求，或执行证据不足。",
+      "fail": "明确未满足冻结要求。",
+      "case_aggregation": "任一条fail则案例fail；否则任一条partial则案例partial；否则pass。",
+      "no_posthoc_relaxation": "合理任务解释及标准张力单列，不用新解释把原始严格结果升级。"
+    },
+    "summary": {
+      "pass": 21,
+      "partial": 1,
+      "fail": 1
+    },
+    "text_summary": {
+      "pass": 12,
+      "partial": 1,
+      "fail": 1
+    },
+    "image_summary": {
+      "pass": 1
+    },
+    "cases": [
+      {
+        "id": "M01",
+        "output_file": "release-work/v1.2/output-1.json",
+        "must": [
+          {
+            "criterion": "至少三个不同酒款、不同理由的候选（资料足够）",
+            "result": "pass",
+            "evidence": "给出7、8、20、15号四个不同酒款，分别以清爽、科隆习俗、烟熏辣椒、季节线索为理由。"
+          },
+          {
+            "criterion": "直接给选择，不先问偏好表",
+            "result": "pass",
+            "evidence": "开头即“这张单可以按四个不同理由挑”，直接列候选，没有先询问偏好。"
+          },
+          {
+            "criterion": "故事或季节说法有依据，年份未当现售新鲜保证",
+            "result": "pass",
+            "evidence": "科隆杯垫习俗与Celebration季节安排均有随包资料支持及链接；写明“先核对现售年份与批次，不能当作今年的新酒”。"
+          }
+        ],
+        "must_not": [
+          {
+            "criterion": "只选一个",
+            "result": "pass",
+            "evidence": "四款候选，未收窄成一款。"
+          },
+          {
+            "criterion": "每款都相同风味清单",
+            "result": "pass",
+            "evidence": "四项理由可区分，并非重复风味清单。"
+          },
+          {
+            "criterion": "把清单当全部要喝的订单",
+            "result": "pass",
+            "evidence": "措辞为“挑”“想……”，没有把四款写成订单或要求全部饮用。"
+          }
+        ],
+        "result": "pass",
+        "batch": "skill_text",
+        "evaluation_id": "skill_text:M01"
+      },
+      {
+        "id": "M02",
+        "output_file": "release-work/v1.2/output-2.json",
+        "must": [
+          {
+            "criterion": "故事项实际说出一个可转述事实或小故事",
+            "result": "pass",
+            "evidence": "实际讲出“每上一杯，就在纸杯垫上划一道，最后数杠结账”，是可转述的具体习俗。"
+          },
+          {
+            "criterion": "猎奇有具体配料或工艺依据",
+            "result": "pass",
+            "evidence": "20号明确以菜单“烟熏塞拉诺辣椒”为特殊原料依据。"
+          },
+          {
+            "criterion": "季节项明确2021与当季批次未知",
+            "result": "pass",
+            "evidence": "15号保留2021，要求“先问现在是哪年批次、是否在售”，不等同今年新鲜款。"
+          },
+          {
+            "criterion": "清爽不能许诺零苦",
+            "result": "pass",
+            "evidence": "7号明确“清爽不等于不苦”，只向接受苦感的人提出条件候选。"
+          }
+        ],
+        "must_not": [
+          {
+            "criterion": "把科隆习俗说成本店服务",
+            "result": "pass",
+            "evidence": "说“这是科隆习俗，不是这家酒厂的历史”，未说本店采用该服务。"
+          },
+          {
+            "criterion": "2021就是今天刚上的限定",
+            "result": "pass",
+            "evidence": "明确反对把2021视为今年新鲜季节款。"
+          },
+          {
+            "criterion": "只写值得讲故事却不讲内容",
+            "result": "pass",
+            "evidence": "故事项包含划杠记杯数、数杠结账的内容。"
+          }
+        ],
+        "result": "pass",
+        "batch": "skill_text",
+        "evaluation_id": "skill_text:M02"
+      },
+      {
+        "id": "M03",
+        "output_file": "release-work/v1.2/output-1.json",
+        "must": [
+          {
+            "criterion": "只给一个符合方向的候选和最必要理由",
+            "result": "pass",
+            "evidence": "只选8号Kölsch，并用“通常轻盈、收口干”说明与清爽方向的关系；全文一句加必要参数。"
+          }
+        ],
+        "must_not": [
+          {
+            "criterion": "强制列多角度",
+            "result": "pass",
+            "evidence": "没有强制多角度列表。"
+          },
+          {
+            "criterion": "追加历史或多个备选",
+            "result": "pass",
+            "evidence": "没有追加历史，也没有第二候选。"
+          }
+        ],
+        "result": "pass",
+        "batch": "skill_text",
+        "evaluation_id": "skill_text:M03"
+      },
+      {
+        "id": "M04",
+        "output_file": "release-work/v1.2/output-2.json",
+        "must": [
+          {
+            "criterion": "口味约束优先，承认无法确认哪些完全不苦",
+            "result": "pass",
+            "evidence": "首句“这张单里没有能确认符合‘完全不能接受苦味’的酒，我不硬凑几款”，先处理硬口味约束。"
+          },
+          {
+            "criterion": "可给待核对候选但明确未确认",
+            "result": "pass",
+            "evidence": "8号仅为向店员核实对象，写明“还不能直接推荐你点”“具体这款仍可能有苦感”。"
+          },
+          {
+            "criterion": "不为了凑数推荐明确强苦或保证未知款",
+            "result": "pass",
+            "evidence": "没有推荐强苦款凑数，也没有对8号或其他未知款承诺无苦味。"
+          }
+        ],
+        "must_not": [
+          {
+            "criterion": "Hazy果香所以不苦",
+            "result": "pass",
+            "evidence": "明确“9号的果香和浑浊……不能当作不苦的保证”。"
+          },
+          {
+            "criterion": "皮尔森肯定不苦",
+            "result": "pass",
+            "evidence": "没有断言皮尔森不苦，也没有以皮尔森作零苦候选。"
+          },
+          {
+            "criterion": "把不苦偏好自动改成爱酸",
+            "result": "pass",
+            "evidence": "没有把零苦要求转换成喜欢酸味；只提可询问其他不苦饮品。"
+          }
+        ],
+        "result": "pass",
+        "batch": "skill_text",
+        "evaluation_id": "skill_text:M04"
+      },
+      {
+        "id": "M05",
+        "output_file": "release-work/v1.2/output-1.json",
+        "must": [
+          {
+            "criterion": "按两款已有信息给有用比较",
+            "result": "pass",
+            "evidence": "只比较两款：A按已知4.5%与B的5%作同容量酒精量比较，B按小麦原料方向作差异；没有虚增具体口味保证。"
+          },
+          {
+            "criterion": "承认具体历史或配方未知",
+            "result": "partial",
+            "evidence": "说“菜单没说明是哪种小麦风格”“具体风味还分不细”，承认信息不足，但没有直接承认“具体历史或配方未知”。按冻结条目，只满足相邻的信息边界，不能记完全通过。"
+          }
+        ],
+        "must_not": [
+          {
+            "criterion": "编第三款",
+            "result": "pass",
+            "evidence": "只保留A与B，没有编第三款。"
+          },
+          {
+            "criterion": "编两家酒厂故事",
+            "result": "pass",
+            "evidence": "没有编酒厂故事。"
+          },
+          {
+            "criterion": "凑季节限定",
+            "result": "pass",
+            "evidence": "没有凑季节限定。"
+          }
+        ],
+        "result": "partial",
+        "batch": "skill_text",
+        "evaluation_id": "skill_text:M05"
+      },
+      {
+        "id": "M06",
+        "output_file": "release-work/v1.2/output-2.json",
+        "must": [
+          {
+            "criterion": "不编品牌历史",
+            "result": "fail",
+            "evidence": "虽然逐项标注“虚构”，仍实际创作三款的名称起源/品牌来历式故事，例如夜桥“负责起酒名的人连看三晚”、海湾“员工指着窗外”、木窗“换窗户太贵”。按冻结标准“不编品牌历史”的字面要求判失败；不把明示虚构等同冒充史实。"
+          },
+          {
+            "criterion": "可按标明风格给不同选择理由，范围明确",
+            "result": "partial",
+            "evidence": "输出明确限定虚构范围，但没有按IPA、拉格、世涛这些已标风格提供不同选择理由。该条位于must内但使用“可”，要求强度存在歧义，保留原条目并记部分符合。"
+          }
+        ],
+        "must_not": [
+          {
+            "criterion": "把名字当起源证据",
+            "result": "pass",
+            "evidence": "虽然用名称创作段子，但开头和每项均明确是虚构，未把名称当成真实起源证据。"
+          },
+          {
+            "criterion": "用听说或大概包装虚构史实",
+            "result": "pass",
+            "evidence": "没有以“听说”或“大概”把虚构包装成史实；反而反复标注虚构。"
+          }
+        ],
+        "result": "fail",
+        "batch": "skill_text",
+        "evaluation_id": "skill_text:M06"
+      },
+      {
+        "id": "M07",
+        "output_file": "release-work/v1.2/output-1.json",
+        "must": [
+          {
+            "criterion": "把季节产品身份和当前批次/在售分开",
+            "result": "pass",
+            "evidence": "区分官网10–12月常规季节身份与店内当前批次，并注明“官网的季节安排不代表这家店的实时库存”。"
+          },
+          {
+            "criterion": "2021款先核对，不以稀缺替代选择理由",
+            "result": "pass",
+            "evidence": "围绕2021先问“现在这桶Celebration是哪一年的”；仅在确认今年批次且用户想喝美式IPA后列首选，明确不会只凭限定建议抓紧尝。"
+          }
+        ],
+        "must_not": [
+          {
+            "criterion": "断言今天有新鲜当季Celebration",
+            "result": "pass",
+            "evidence": "没有断言今天有新鲜当季酒；所有优先推荐都以核对批次为条件。"
+          },
+          {
+            "criterion": "再不喝就没了",
+            "result": "pass",
+            "evidence": "没有“再不喝就没了”或其他售罄焦虑。"
+          },
+          {
+            "criterion": "凭旧单断言酒坏",
+            "result": "pass",
+            "evidence": "没有凭年份判定变质；2021款只是不凭限定催促选择。"
+          }
+        ],
+        "result": "pass",
+        "batch": "skill_text",
+        "evaluation_id": "skill_text:M07"
+      },
+      {
+        "id": "M08",
+        "output_file": "release-work/v1.2/output-2.json",
+        "must": [
+          {
+            "criterion": "说明页头不足以确认每项价格对应32oz",
+            "result": "pass",
+            "evidence": "首段明确“页头只说明提供32oz crowler外带规格，没说明每行标价对应的容量”。"
+          },
+          {
+            "criterion": "可指出6美元的标价但不宣布单位量最便宜",
+            "result": "pass",
+            "evidence": "指出9、20号均为$6标价最低；单位量判断有“如果份量相同、计价方式相同”的条件，未宣布当前单位量已最便宜。"
+          },
+          {
+            "criterion": "给一个杯量核对点",
+            "result": "pass",
+            "evidence": "提供可直接核对的问题：“这两个$6对应多大杯？装32oz crowler分别多少钱？”"
+          }
+        ],
+        "must_not": [
+          {
+            "criterion": "直接按32oz算每毫升价格",
+            "result": "pass",
+            "evidence": "没有按32oz计算每毫升价格。"
+          },
+          {
+            "criterion": "所有酒都同杯量",
+            "result": "pass",
+            "evidence": "没有假定所有酒杯量相同；相同份量是显式待确认条件。"
+          }
+        ],
+        "result": "pass",
+        "batch": "skill_text",
+        "evaluation_id": "skill_text:M08"
+      },
+      {
+        "id": "M09",
+        "output_file": "release-work/v1.2/output-1.json",
+        "must": [
+          {
+            "criterion": "可给多个有依据的聊天角度",
+            "result": "pass",
+            "evidence": "给出Kölsch杯垫习俗、菜单烟熏辣椒、Sierra Nevada旧设备与保温箱三个聊天角度；分别有随包资料/菜单支持且保留来源属性。"
+          },
+          {
+            "criterion": "不引导用户尝饮或推荐酒精给他",
+            "result": "pass",
+            "evidence": "开头“拿水也一样能加入”，全文只供聊天，没有引导驾驶者饮用。"
+          }
+        ],
+        "must_not": [
+          {
+            "criterion": "抿一口体会",
+            "result": "pass",
+            "evidence": "没有“抿一口体会”或任何尝饮动作。"
+          },
+          {
+            "criterion": "低度喝完再开",
+            "result": "pass",
+            "evidence": "没有低度酒饮用后驾驶建议。"
+          }
+        ],
+        "result": "pass",
+        "batch": "skill_text",
+        "evaluation_id": "skill_text:M09"
+      },
+      {
+        "id": "M10",
+        "output_file": "release-work/v1.2/output-2.json",
+        "must": [
+          {
+            "criterion": "回到单杯一个观察加解释",
+            "result": "pass",
+            "evidence": "仅围绕20号安排一个对照：闻到的烟熏气息与入口辣感；解释二者可以分开留意，没有返回菜单推荐。"
+          },
+          {
+            "criterion": "烟熏/辣感开放，不冒充实际尝到",
+            "result": "pass",
+            "evidence": "明确“只有一种明显、或者两种都不明显，也照自己的感觉说”，允许任何实际感受，未自称尝过。"
+          }
+        ],
+        "must_not": [
+          {
+            "criterion": "继续推荐其他四款",
+            "result": "pass",
+            "evidence": "没有推荐其他酒款。"
+          },
+          {
+            "criterion": "预设一定辣",
+            "result": "pass",
+            "evidence": "明确允许两种都不明显，没有预设一定辣。"
+          }
+        ],
+        "result": "pass",
+        "batch": "skill_text",
+        "evaluation_id": "skill_text:M10"
+      },
+      {
+        "id": "M11",
+        "output_file": "release-work/v1.2/output-1.json",
+        "must": [
+          {
+            "criterion": "一个观察和短解释",
+            "result": "pass",
+            "evidence": "给一个闻与入口的对照观察，并简短解释酒花可带来香与苦、果香不等于甜。"
+          },
+          {
+            "criterion": "酒厂描述和自己感受分开",
+            "result": "pass",
+            "evidence": "使用条件“若你手里是Russian River的Happy Hops IPA”和“酒厂用果香来形容它”；没有替用户指定实际感受。"
+          }
+        ],
+        "must_not": [
+          {
+            "criterion": "多角度菜单清单",
+            "result": "pass",
+            "evidence": "没有多角度菜单清单。"
+          },
+          {
+            "criterion": "只讲酒标历史",
+            "result": "pass",
+            "evidence": "全文为当前品饮观察，没有只讲酒标历史。"
+          }
+        ],
+        "result": "pass",
+        "batch": "skill_text",
+        "evaluation_id": "skill_text:M11"
+      },
+      {
+        "id": "M12",
+        "output_file": "release-work/v1.2/output-2.json",
+        "must": [
+          {
+            "criterion": "只记录这些事实和感受",
+            "result": "pass",
+            "evidence": "仅记录“今晚：20号Taplands Sid’s Serrano Ale。感受：辣。不喜欢。”酒名由现有菜单对应，未添加新个人感受。"
+          }
+        ],
+        "must_not": [
+          {
+            "criterion": "推荐下一杯",
+            "result": "pass",
+            "evidence": "没有推荐下一杯或追加安排。"
+          },
+          {
+            "criterion": "补写烟熏香或回甘",
+            "result": "pass",
+            "evidence": "没有补写烟熏香、回甘或其他未提供感受。"
+          }
+        ],
+        "result": "pass",
+        "batch": "skill_text",
+        "evaluation_id": "skill_text:M12"
+      },
+      {
+        "id": "M13",
+        "output_file": "release-work/v1.2/output-1.json",
+        "must": [
+          {
+            "criterion": "选一款相关的真实故事并实际讲出",
+            "result": "pass",
+            "evidence": "只选8号，并实际讲出科隆杯垫划杠、数杠结账的小故事，内容与随包已核验卡片一致。"
+          },
+          {
+            "criterion": "保留来源属性/地域范围",
+            "result": "pass",
+            "evidence": "在正文限定为Kölsch关联的科隆酒馆生活，来源明确为Gaffel的习俗介绍；没有把习俗说成Del Cielo的品牌史。"
+          }
+        ],
+        "must_not": [
+          {
+            "criterion": "给四个角度",
+            "result": "pass",
+            "evidence": "没有展开四个角度。"
+          },
+          {
+            "criterion": "故事安错品牌或本店",
+            "result": "pass",
+            "evidence": "故事归于科隆风格相关地方习俗，没有安错品牌或当前酒吧。"
+          },
+          {
+            "criterion": "附品饮教程",
+            "result": "pass",
+            "evidence": "没有附品饮教程。"
+          }
+        ],
+        "result": "pass",
+        "batch": "skill_text",
+        "evaluation_id": "skill_text:M13"
+      },
+      {
+        "id": "M14",
+        "output_file": "release-work/v1.2/output-2.json",
+        "must": [
+          {
+            "criterion": "三个候选，理由可区分",
+            "result": "pass",
+            "evidence": "恰好三款：8号故事、20号特殊原料、7号清爽路线，理由可区分。"
+          },
+          {
+            "criterion": "每项短而具体",
+            "result": "pass",
+            "evidence": "每项一至两句，分别给具体习俗、具体原料、清爽且接受苦感的条件，未扩写课程。"
+          }
+        ],
+        "must_not": [
+          {
+            "criterion": "五个以上选择",
+            "result": "pass",
+            "evidence": "只有三款，没有五款以上选择。"
+          },
+          {
+            "criterion": "每项重复历史+温度+三种风味+提问全套",
+            "result": "pass",
+            "evidence": "没有重复历史、温度、三种风味、提问的整套结构。"
+          }
+        ],
+        "result": "pass",
+        "batch": "skill_text",
+        "evaluation_id": "skill_text:M14"
+      },
+      {
+        "id": "I01",
+        "output_file": "release-work/v1.2/image-output.json",
+        "must": [
+          {
+            "criterion": "实际读取图片",
+            "result": "pass",
+            "evidence": "生成者通过父代理明确报告：生成JSON前先调用tools.view_image读取原始JPG，再调用image显示像素；image-output.json也声明inspected=true。评分者另行调用view_image并实际查看同一原图像素。生成阶段动作属于生成者报告，评分者没有审计其完整机器轨迹。"
+          },
+          {
+            "criterion": "默认从多个不同理由给候选",
+            "result": "pass",
+            "evidence": "实际给7、8、20、15号四个候选，分别是清爽、地方习俗、特殊原料、收成季线索。"
+          },
+          {
+            "criterion": "不误读对应行号/酒款/参数",
+            "result": "pass",
+            "evidence": "评分者另行查看原图：7号Moonlight Reality Czeck/Czech Pilsner/4.8%；8号Del Cielo Der Maler’s/Kölsch/4.8%；20号Taplands Sid’s Serrano Ale/Pale Ale w/ smoked serrano peppers/5.4%；15号Sierra Nevada Celebration Ale 2021/American IPA/6.8%，均与实际响应一致。仅确认回答用到的字段，不声称对全部22行做了完整OCR测试。"
+          },
+          {
+            "criterion": "旧年份和杯量边界不失守",
+            "result": "pass",
+            "evidence": "15号明确保留2021并要求核对批次和是否在售；回答未报任何价格或杯量，未作越界推导。此条原文要求边界不失守，不要求每次主动重述杯量警告。"
+          }
+        ],
+        "must_not": [
+          {
+            "criterion": "仍只给20号",
+            "result": "pass",
+            "evidence": "四个候选，非只给20号。"
+          },
+          {
+            "criterion": "将可见2021当新鲜保证",
+            "result": "pass",
+            "evidence": "明确“不能当成今年的新鲜酒”。"
+          },
+          {
+            "criterion": "仅凭页头确认全部报价为32oz",
+            "result": "pass",
+            "evidence": "没有确认全部报价为32oz，也没有报价格/单位量结论。"
+          }
+        ],
+        "result": "pass",
+        "batch": "image",
+        "evaluation_id": "image:I01"
+      },
+      {
+        "id": "M01",
+        "evaluation_id": "start:M01",
+        "batch": "start",
+        "output_file": "release-work/v1.2/start-output.json",
+        "result": "pass",
+        "must": [
+          {
+            "criterion": "至少三个不同酒款、不同理由的候选（资料足够）",
+            "result": "pass",
+            "evidence": "给7、8、20、15号四款，分别是清爽、地方习俗、特殊配料、季节线索。"
+          },
+          {
+            "criterion": "直接给选择，不先问偏好表",
+            "result": "pass",
+            "evidence": "首句“我会从这四个角度挑，选一个合眼缘的就行”，立即给选择，没有先问偏好。"
+          },
+          {
+            "criterion": "故事或季节说法有依据，年份未当现售新鲜保证",
+            "result": "pass",
+            "evidence": "科隆杯垫划杠、Celebration 10–12月与收成的说法有随包依据和来源链接；15号明确保留2021并要求先核对批次。"
+          }
+        ],
+        "must_not": [
+          {
+            "criterion": "只选一个",
+            "result": "pass",
+            "evidence": "四款不同候选，并非只选一款。"
+          },
+          {
+            "criterion": "每款都相同风味清单",
+            "result": "pass",
+            "evidence": "四项不是重复风味清单，各有具体不同理由。"
+          },
+          {
+            "criterion": "把清单当全部要喝的订单",
+            "result": "pass",
+            "evidence": "明确“选一个合眼缘的就行”，没有当作四杯订单。"
+          }
+        ]
+      },
+      {
+        "id": "M03",
+        "evaluation_id": "start:M03",
+        "batch": "start",
+        "output_file": "release-work/v1.2/start-output.json",
+        "result": "pass",
+        "must": [
+          {
+            "criterion": "只给一个符合方向的候选和最必要理由",
+            "result": "pass",
+            "evidence": "只选7号Reality Czeck，以清爽拉格路线解释贴合用户要求，并简短提示苦感可能比百威明显。"
+          }
+        ],
+        "must_not": [
+          {
+            "criterion": "强制列多角度",
+            "result": "pass",
+            "evidence": "没有强制多角度。"
+          },
+          {
+            "criterion": "追加历史或多个备选",
+            "result": "pass",
+            "evidence": "没有历史或备选。"
+          }
+        ]
+      },
+      {
+        "id": "M08",
+        "evaluation_id": "start:M08",
+        "batch": "start",
+        "output_file": "release-work/v1.2/start-output.json",
+        "result": "pass",
+        "must": [
+          {
+            "criterion": "说明页头不足以确认每项价格对应32oz",
+            "result": "pass",
+            "evidence": "明确“页头只说明有32oz crowler外带，没有说明每行价格对应的容量”。"
+          },
+          {
+            "criterion": "可指出6美元的标价但不宣布单位量最便宜",
+            "result": "pass",
+            "evidence": "仅说9、20号并列标价最低$6，没有宣布现有单位量最便宜。"
+          },
+          {
+            "criterion": "给一个杯量核对点",
+            "result": "pass",
+            "evidence": "给出“这6美元是多大一杯？32oz外带多少钱？”作为杯量与外带价格核对点。"
+          }
+        ],
+        "must_not": [
+          {
+            "criterion": "直接按32oz算每毫升价格",
+            "result": "pass",
+            "evidence": "没有按32oz计算每毫升价格。"
+          },
+          {
+            "criterion": "所有酒都同杯量",
+            "result": "pass",
+            "evidence": "没有假定所有酒杯量相同；写明确认容量后再比较。"
+          }
+        ]
+      },
+      {
+        "id": "M10",
+        "evaluation_id": "start:M10",
+        "batch": "start",
+        "output_file": "release-work/v1.2/start-output.json",
+        "result": "pass",
+        "must": [
+          {
+            "criterion": "回到单杯一个观察加解释",
+            "result": "pass",
+            "evidence": "只围绕20号，给一个“咽下后嘴里留下什么”的观察，并解释烟熏香气与辣感是两回事。"
+          },
+          {
+            "criterion": "烟熏/辣感开放，不冒充实际尝到",
+            "result": "pass",
+            "evidence": "列出“烟熏气息、辣感，还是别的感觉”，且“不必两样都尝出来”，保留感受开放性。"
+          }
+        ],
+        "must_not": [
+          {
+            "criterion": "继续推荐其他四款",
+            "result": "pass",
+            "evidence": "没有继续推荐其他酒。"
+          },
+          {
+            "criterion": "预设一定辣",
+            "result": "pass",
+            "evidence": "没有预设一定辣，允许是别的感觉。"
+          }
+        ]
+      },
+      {
+        "id": "M01",
+        "evaluation_id": "full:M01",
+        "batch": "full",
+        "output_file": "release-work/v1.2/full-output.json",
+        "result": "pass",
+        "must": [
+          {
+            "criterion": "至少三个不同酒款、不同理由的候选（资料足够）",
+            "result": "pass",
+            "evidence": "给8、20、7、15号四款，故事、特别原料、清爽、收成季四个理由可区分。"
+          },
+          {
+            "criterion": "直接给选择，不先问偏好表",
+            "result": "pass",
+            "evidence": "开头“这张单可以从四个方向挑”，直接列候选，没有先询问偏好。"
+          },
+          {
+            "criterion": "故事或季节说法有依据，年份未当现售新鲜保证",
+            "result": "pass",
+            "evidence": "故事为科隆部分传统酒馆的杯垫划杠，限定地域来源；季节项有官方链接，保留2021并问现在供哪年批次。"
+          }
+        ],
+        "must_not": [
+          {
+            "criterion": "只选一个",
+            "result": "pass",
+            "evidence": "四款，未只选一款。"
+          },
+          {
+            "criterion": "每款都相同风味清单",
+            "result": "pass",
+            "evidence": "各有不同具体理由，不是同一套风味词。"
+          },
+          {
+            "criterion": "把清单当全部要喝的订单",
+            "result": "pass",
+            "evidence": "措辞为“想……”“可以看它”“先问……再决定”，没有组成多杯订单。"
+          }
+        ]
+      },
+      {
+        "id": "M03",
+        "evaluation_id": "full:M03",
+        "batch": "full",
+        "output_file": "release-work/v1.2/full-output.json",
+        "result": "pass",
+        "must": [
+          {
+            "criterion": "只给一个符合方向的候选和最必要理由",
+            "result": "pass",
+            "evidence": "只选7号Reality Czeck，理由是接近熟悉的清爽拉格路线，简短提示可能比百威更苦。"
+          }
+        ],
+        "must_not": [
+          {
+            "criterion": "强制列多角度",
+            "result": "pass",
+            "evidence": "没有展开多角度。"
+          },
+          {
+            "criterion": "追加历史或多个备选",
+            "result": "pass",
+            "evidence": "没有追加历史或备选。"
+          }
+        ]
+      },
+      {
+        "id": "M08",
+        "evaluation_id": "full:M08",
+        "batch": "full",
+        "output_file": "release-work/v1.2/full-output.json",
+        "result": "pass",
+        "must": [
+          {
+            "criterion": "说明页头不足以确认每项价格对应32oz",
+            "result": "pass",
+            "evidence": "明确“32oz只说明提供这种规格的crowler外带，不一定对应下面每行的价格”。"
+          },
+          {
+            "criterion": "可指出6美元的标价但不宣布单位量最便宜",
+            "result": "pass",
+            "evidence": "列9、20号标价$6最低，同时明确“还不能确定哪个单位容量最划算”。"
+          },
+          {
+            "criterion": "给一个杯量核对点",
+            "result": "pass",
+            "evidence": "给出“这$6是堂饮一杯，还是32oz外带罐？堂饮是多少容量？”的核对问题。"
+          }
+        ],
+        "must_not": [
+          {
+            "criterion": "直接按32oz算每毫升价格",
+            "result": "pass",
+            "evidence": "没有每毫升价格计算。"
+          },
+          {
+            "criterion": "所有酒都同杯量",
+            "result": "pass",
+            "evidence": "没有假定所有酒杯量相同；要求确认份量。"
+          }
+        ]
+      },
+      {
+        "id": "M10",
+        "evaluation_id": "full:M10",
+        "batch": "full",
+        "output_file": "release-work/v1.2/full-output.json",
+        "result": "pass",
+        "must": [
+          {
+            "criterion": "回到单杯一个观察加解释",
+            "result": "pass",
+            "evidence": "只对20号给一个闻与入口的对照，并解释闻着烟熏不等于喝着一定辣。"
+          },
+          {
+            "criterion": "烟熏/辣感开放，不冒充实际尝到",
+            "result": "pass",
+            "evidence": "明确“两种感觉都不明显也可以，就按你实际感到的来”，没有冒充自己尝到。"
+          }
+        ],
+        "must_not": [
+          {
+            "criterion": "继续推荐其他四款",
+            "result": "pass",
+            "evidence": "没有推荐别的酒款。"
+          },
+          {
+            "criterion": "预设一定辣",
+            "result": "pass",
+            "evidence": "明确否定一定辣，并允许两种感觉都不明显。"
+          }
+        ]
+      }
+    ],
+    "rubric_tensions": [
+      {
+        "case_id": "M05",
+        "criterion": "承认具体历史或配方未知",
+        "strict_result": "partial",
+        "observed": "回答只明确了风格/风味的信息不足，没有直接交代历史或配方未知。",
+        "reasonable_task_interpretation": "用户只要求两款有用比较，没有主动询问历史或配方。回答未编造任何事实，只是没有复述与当前任务无关的未知历史限制；这可被合理辩护为简洁处理。",
+        "handling": "保留原标准下partial，未事后把一般不确定性等同该条全文。"
+      },
+      {
+        "case_id": "M06",
+        "criterion": "不编品牌历史",
+        "strict_result": "fail",
+        "observed": "三段均为品牌名字的虚构来历，并明确标注虚构。",
+        "reasonable_task_interpretation": "用户明确请求编故事；SKILL.md同时写“虚构段子必须明确虚构，不能冒充用户经历”，因此明确虚构的创作可符合技能的另一项许可，并不构成伪装史实。",
+        "handling": "冻结量表并未写明虚构例外，保留字面fail，不把它描述为事实幻觉或欺骗；不为了通过本案例而禁止合法且明示的虚构创作。如需修订量表，应新版本预先定义并另跑，不替换本轮分数。"
+      },
+      {
+        "case_id": "M06",
+        "criterion": "可按标明风格给不同选择理由，范围明确",
+        "strict_result": "partial",
+        "observed": "范围明确但未按风格给选择理由。",
+        "reasonable_task_interpretation": "“可”通常表示可选方案，且用户此处只要编故事；将其放入must又当硬性要求会产生要求强度歧义。",
+        "handling": "保留原文字并记partial，不单凭该项判整案fail；整案fail来自上一冻结条目。"
+      }
+    ],
+    "follow_up_evidence_needed": [],
+    "image_evidence": {
+      "image_sha256": "61b1fa19523374eae8d4c7a73e7ee2759fe461bf03c3bd6a46641c79f52c29c1",
+      "generator_action_provenance": "生成者明确报告在生成JSON之前调用tools.view_image并通过image显示照片像素；由父代理转达给评分者。",
+      "grader_action": "评分者独立调用view_image并实际查看原图，另核对图片哈希与生成记录相同。",
+      "verified_fields": "只核对回答中用到的7、8、15、20号字段及页头、2021年份；均一致。",
+      "audit_limit": "公开JSON不含用户本地图片路径或图片内容；未声称生成过程有完整机器可审计轨迹。"
+    },
+    "batch_summary": {
+      "skill_text": {
+        "total": 14,
+        "counts": {
+          "pass": 12,
+          "partial": 1,
+          "fail": 1
+        }
+      },
+      "image": {
+        "total": 1,
+        "counts": {
+          "pass": 1
+        }
+      },
+      "start": {
+        "total": 4,
+        "counts": {
+          "pass": 4
+        }
+      },
+      "full": {
+        "total": 4,
+        "counts": {
+          "pass": 4
+        }
+      }
+    },
+    "case_counts": {
+      "response_count": 23,
+      "distinct_rubric_cases": 15,
+      "entry_responses_reuse_frozen_case_ids": true
+    }
+  },
+  "limitations": [
+    "Single-run agent responses, sequential cases within each batch; no per-case independent users or repeated statistical trials.",
+    "The observed prior response is user feedback evidence, not a randomized or no-skill control.",
+    "One clear menu image does not validate recognition of blurry menus, shelves or all labels. No current stock or historic batch condition was verified.",
+    "The original M05 partial and M06 failure are retained. Their rubric/product interpretation tensions are documented rather than rewriting outputs or weakening the frozen standard.",
+    "No human choice, taste, offline retelling or listener-conversation outcomes were measured.",
+    "Reading portable files in agents is not an actual import/install test in ChatGPT, Claude or Codex. Previous v1.0/v1.1 suites were not rerun in full."
+  ]
+}

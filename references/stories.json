@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "skill_name": "beer-buddy",
-  "skill_version": "1.1.0",
+  "skill_version": "1.2.0",
   "verified_at": "2026-10-14",
   "usage": {
     "selection": "先匹配已确认的酒名、包装或用户正在聊的主题，一次只选一条。没有品牌匹配时，只能明确说成另一个品牌的例子，不称眼前这杯就是它。",

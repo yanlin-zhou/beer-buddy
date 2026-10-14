@@ -16,15 +16,16 @@ URL = 'https://github.com/yanlin-zhou/beer-buddy'
 SOURCE_FILES = [
     'SKILL.md', 'references/stories.json', 'references/stories.md',
     'references/phrases.md', 'references/principles.md', 'references/styles.md',
-    'references/service.md', 'references/tasting.md', 'templates/outputs.md', 'agents/openai.yaml',
+    'references/service.md', 'references/tasting.md', 'references/menu.md', 'templates/outputs.md', 'agents/openai.yaml',
 ]
 PACKAGE_FILES = SOURCE_FILES + [
     'VERSION', 'LICENSE', 'README.md', 'START.md', 'PROMPT.md',
-    'docs/INSTALL.md', 'docs/VALIDATION.md', 'docs/RELEASE_REVIEW.md', 'docs/V1.1_RESEARCH.md',
+    'docs/INSTALL.md', 'docs/VALIDATION.md', 'docs/RELEASE_REVIEW.md', 'docs/V1.1_RESEARCH.md', 'docs/MENU_MODE.md',
     'CONTRIBUTING.md', 'CHANGELOG.md', 'scripts/release.py',
     'tests/test_release.py', 'evals/evals.json', 'evals/smoke-cases.json',
     'evals/results/text-smoke.json', 'evals/results/portable.json', 'evals/results/retests.json',
     'evals/v1.1-tasting.json', 'evals/results/v1.1-tasting.json', 'evals/results/v1.1-entries.json',
+    'evals/v1.2-menu.json', 'evals/results/v1.2-menu.json',
 ]
 
 
@@ -89,7 +90,7 @@ def full_prompt(version, skill, data):
         portable(body),
     ]
     for name in ['references/stories.md', 'references/phrases.md', 'references/principles.md',
-                 'references/styles.md', 'references/service.md', 'references/tasting.md', 'templates/outputs.md']:
+                 'references/styles.md', 'references/service.md', 'references/tasting.md', 'references/menu.md', 'templates/outputs.md']:
         material = read(name)
         if name == 'references/stories.md':
             material = re.sub(r'机器可读版本：\[stories.json\]\(stories.json\)。', '', material)
@@ -98,14 +99,14 @@ def full_prompt(version, skill, data):
     return '\n\n'.join(parts).rstrip() + '\n'
 
 
-def tasting_starter():
-    material = read('references/tasting.md')
+def starter_section(name):
+    material = read(name)
     begin, end = '<!-- STARTER:BEGIN -->', '<!-- STARTER:END -->'
     if material.count(begin) != 1 or material.count(end) != 1 or material.index(begin) >= material.index(end):
-        raise ValueError('tasting.md must contain one ordered STARTER:BEGIN/END pair')
+        raise ValueError(name + ' must contain one ordered STARTER:BEGIN/END pair')
     content = material.split(begin, 1)[1].split(end, 1)[0].strip()
     if not content:
-        raise ValueError('tasting.md starter content is empty')
+        raise ValueError(name + ' starter content is empty')
     return content
 
 
@@ -121,7 +122,7 @@ def starter(version, data):
         '请做我的“啤酒搭子”：帮我认识眼前这杯，找到一个值得留意、也能顺口分享的小特点；'
         '我想听故事时，就讲一件有来历的小事。目标是让我放下手机，用自己的话讲；对方也能轻松接话或不接。',
         '先完成我这次的明确要求。要一句就一句，要故事就一个故事，别先让我填问卷。'
-        '默认两三句，来源短放在后面；不同时给多个版本和问题。需要练习时才给三个记忆词。',
+        '单杯与单故事默认两三句；整张酒单给少量不同理由的候选。来源短放在后面，不给同一回复的多个改写版本。需要练习时才给三个记忆词。',
         '保留我的真实感受，可以说“我觉得苦”。不要编我的味觉、经历、酒保引语、酒厂历史或参数。'
         '看不清图片就说看不清；没有图片能力请让我打出酒名。',
         '有人聊音乐就接音乐，不必拉回酒；没接话时允许停下，不猜对方心理。确实错了就简短承认，双方说法未核实就先确认。'
@@ -130,7 +131,8 @@ def starter(version, data):
         '我表示不喝、已喝够或要开车时不推荐含酒精饮品，仍可聊故事。',
         '优先用下面有来源的材料。没确认品牌就明确当作别的品牌例子。品牌自述说“酒厂讲过”，'
         '传说必须说是传说；查不到的别编。没有合适材料可聊已知生活话题。',
-        tasting_starter(),
+        starter_section('references/tasting.md'),
+        starter_section('references/menu.md'),
     ]
     for sid in chosen:
         s = stories[sid]
@@ -140,9 +142,9 @@ def starter(version, data):
         if s.get('followup'):
             lines.append('可选后续：' + s['followup'])
     lines.extend(['```', '',
-                  f'这版带 3 条故事与一个品饮入口，适合先体验。完整版本带 {len(data["stories"])} 条素材和品饮、选酒、采购等参考资料：'
+                  f'这版带 3 条故事、单杯品饮与多角度酒单入口，适合先体验。完整版本带 {len(data["stories"])} 条素材和品饮、选酒、采购等参考资料：'
                   '[完整单文件版](PROMPT.md) · [安装 Skill](docs/INSTALL.md)。', '',
-                  '可以接着说：“我没闻到，只觉得苦”“只讲一个故事”“再短一点”“这句不像我平时说话”。', '',
+                  '可以接着说：“菜单从几个角度挑”“只选一款”“我没闻到，只觉得苦”“只讲一个故事”。', '',
                   f'[回到项目]({URL}) · 由 scripts/release.py 生成。'])
     return re.sub(r'\n{3,}', '\n\n', '\n\n'.join(lines)) + '\n'
 

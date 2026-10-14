@@ -1,5 +1,5 @@
 name: 使用体验或事实纠正
-description: 告诉我们有没有多留意到一点、哪里讲不出来，或哪条事实需要改。
+description: 告诉我们酒单是否更好选、有没有多留意到一点，或哪条事实需要改。
 title: "[反馈] "
 body:
   - type: markdown
@@ -9,7 +9,7 @@ body:
     id: environment
     attributes:
       label: 版本与使用入口
-      placeholder: "例如 v1.1.0，START 复制到 ChatGPT；模型不清楚也没关系"
+      placeholder: "例如 v1.2.0，START 复制到 ChatGPT；模型不清楚也没关系"
   - type: textarea
     id: example
     attributes:
@@ -17,6 +17,11 @@ body:
       description: "事实纠正请附具体原句及来源链接。"
     validations:
       required: true
+  - type: textarea
+    id: menu_choice
+    attributes:
+      label: 如果用来看酒单，几个理由帮你选定了吗？
+      description: "选项是否有明显区别？有没有编故事、把季节或旧年份当新鲜保证、误读价格与杯量？没选出来或没有用过菜单模式，可以直说或留空；不必上传原图。"
   - type: textarea
     id: observation
     attributes:
