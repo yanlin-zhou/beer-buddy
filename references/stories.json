@@ -1,0 +1,401 @@
+{
+  "schema_version": "1.0",
+  "skill_name": "beer-buddy",
+  "skill_version": "1.0.0",
+  "verified_at": "2026-10-14",
+  "usage": {
+    "selection": "先匹配已确认的酒名、包装或用户正在聊的主题，一次只选一条。没有品牌匹配时，只能明确说成另一个品牌的例子，不称眼前这杯就是它。",
+    "delivery": "hook 是一句可停的开头；spoken 是可按需展开的完整说法，不必把两者重复念一遍。默认展示可直接说的内容，来源另放用户可看的底部。",
+    "bridge": "optional_bridge 可以省略。对方接话时先听对方，不急着把故事讲完。",
+    "integrity": "不编用户亲历、现场气味、酒保引语或人物心理。品牌回忆保留酒厂说法；legend 的 hook 和 spoken 都必须说明是传说。",
+    "stop": "对方暂未接话、只作简短回应或转了话题时，允许停下来。不凭一次回应判断对方心理，也不为了重新吸引注意连补第二个故事。",
+    "evidence": "verified_at 表示查阅来源的日期，不表示独立证实了全部品牌历史；故事可复述性是编辑判断，尚未经过真人酒桌测试。",
+    "memory": "memory_beats 供内部压缩和复述练习；只有用户说怕记不住、要练习或要提纲时才展示三个记忆词，默认回复不增加这一栏。"
+  },
+  "stories": [
+    {
+      "id": "guinness-records-origin",
+      "title": "一次争论，后来成了纪录书",
+      "kind": "story",
+      "triggers": [
+        "已确认 Guinness／健力士品牌，用户想听品牌故事",
+        "聊到吉尼斯世界纪录、查答案或朋友之间的小争论"
+      ],
+      "hook": "吉尼斯官方说，纪录书的点子来自一场查不到答案的争论。",
+      "spoken": "吉尼斯官方讲过这个来历：健力士的一位负责人去打猎，跟朋友争欧洲哪种猎鸟飞得最快，翻书也找不到答案。后来他想到，酒馆里肯定也有这种争论，就请人编了本查纪录的书。",
+      "memory_beats": [
+        "打猎",
+        "争鸟",
+        "编书"
+      ],
+      "optional_bridge": "你们有没有为一个特别小的问题，认真查过半天？",
+      "stop_rule": "讲到编书就可以停；对方开始讲自己的争论，直接听，不再补人名和年份。",
+      "fact_core": [
+        "Guinness World Records 官方称，酒厂负责人 Hugh Beaver 在一次打猎聚会中争论欧洲最快的猎鸟，参考书未能解答。",
+        "他后来以解决酒馆争论为构想，邀请 McWhirter 兄弟编写事实与纪录书。",
+        "同一官方页面称，该书后来成为畅销书；由于聚焦世界纪录，书中没有解答最初有关欧洲猎鸟的问题。"
+      ],
+      "source_url": "https://www.guinnessworldrecords.com/about-us/our-story",
+      "source_kind": "institution_self_report",
+      "verified_at": "2026-10-14",
+      "caveats": [
+        "官方机构对自身起源的回顾，不是独立历史考证。",
+        "争论发生在打猎聚会，不要改成发生在酒馆。",
+        "不补写喝醉、赌输、为了证明自己正确等动机；不推断当前企业所有权。"
+      ],
+      "followup": "对方追问那本书后来怎样：按吉尼斯官方的说法，书后来成了畅销书，但竟没有解答最初那个欧洲猎鸟的问题，因为它聚焦的是世界纪录。只在被问到后再讲这段，不默认延长初始故事。"
+    },
+    {
+      "id": "qingdao-beer-in-a-bag",
+      "title": "回家路上，拎一袋啤酒",
+      "kind": "observation",
+      "triggers": [
+        "桌上已确认是青岛啤酒，大家想聊城市生活",
+        "聊到青岛、散啤、烧烤、海鲜或家乡的买吃喝方式",
+        "照片里确实能辨认出袋装散啤"
+      ],
+      "hook": "在青岛，啤酒也有人装进塑料袋，拎着回家。",
+      "spoken": "在青岛，街边小店能把散啤打进塑料袋，让人直接拎回家。透明袋子里装着金黄的酒，这件事一下就很像顺路买个菜：啤酒也是晚饭路上的一站。",
+      "memory_beats": [
+        "小店",
+        "打散啤",
+        "拎回家"
+      ],
+      "optional_bridge": "你们家那边，有没有哪种吃喝是用特别的东西装回家的？",
+      "stop_rule": "对方聊起家乡食物，就跟着聊食物；不再把话题拉回啤酒产量或品牌排名。",
+      "fact_core": [
+        "青岛啤酒官方城市生活文章描述过街边小店售卖散啤，市民用塑料袋打酒回家的场景。",
+        "青岛新闻网 2022 年的本地报道也记录了用透明塑料袋提着散啤回家的现象。",
+        "像顺路买菜是讲述者的比喻，不是史料中的起源解释。"
+      ],
+      "source_url": "https://www.tsingtao.com.cn/news/EF09CF6C-AD89-4FC0-8C58-BE06494FC34E.html",
+      "source_kind": "brand_local_life_account",
+      "supporting_sources": [
+        {
+          "url": "https://news.qingdaonews.com/qingdao/2022-08/22/content_23337401.htm",
+          "kind": "local_reportage",
+          "supports": "用透明塑料袋提着散啤回家这一地方习惯"
+        }
+      ],
+      "verified_at": "2026-10-14",
+      "caveats": [
+        "只说有人这样买，不说所有青岛人都这样、只有青岛有或这是本地人的资格考试。",
+        "未核实票证限额、塑料袋首次出现年份及单一历史成因，不讲这些起源故事。",
+        "袋装不能证明眼前的酒当天生产、来自哪家酒厂或比瓶罐装更新鲜。",
+        "本卡描述当地生活，不提供用任意塑料袋装酒的操作建议。"
+      ]
+    },
+    {
+      "id": "great-leap-honey-pepper",
+      "title": "花椒啤酒，连到了家里的养蜂场",
+      "kind": "story",
+      "triggers": [
+        "已确认大跃 Honey Ma Gold／甫子啤酒，用户问原料或来历",
+        "用户主动聊中国精酿、花椒、蜂蜜或家乡食物，可以明确把大跃当作例子"
+      ],
+      "hook": "大跃早期讲这款花椒啤酒时，还讲到了妻子家的养蜂场。",
+      "spoken": "大跃早期介绍 Honey Ma Gold，说他们一开始就想把花椒放进啤酒，又配上妻子家在山东养蜂场的蜂蜜。花椒和蜂蜜绕了一圈，在酒杯里碰头；这个配方听着就连着一家人的生活。",
+      "memory_beats": [
+        "花椒",
+        "妻家蜂蜜",
+        "一杯酒"
+      ],
+      "optional_bridge": "要是拿你家乡的一样食材做饮料，你会先想到什么？",
+      "stop_rule": "停在花椒和蜂蜜碰头即可；对方开始聊厨房或家乡，先接那个话题。",
+      "fact_core": [
+        "大跃早期品牌页面将 Honey Ma Gold 描述为花椒与蜂蜜结合的酒。",
+        "该页面把当时使用的蜂蜜来源写为妻子家在山东的养蜂场。"
+      ],
+      "source_url": "https://greatleapbrewingbeijing.wordpress.com/our-beers/",
+      "source_kind": "archival_brand_self_report",
+      "verified_at": "2026-10-14",
+      "caveats": [
+        "这是早期品牌自述，页面没有可靠发布日期；不是当前每一批的采购承诺。",
+        "不补写为了讨岳父喜欢、妻子递来蜂蜜、全家坐在厨房讨论等未有来源的场面。",
+        "不替用户宣称喝到了花椒麻感或蜂蜜甜味；不把这套配方套到所有大跃产品。",
+        "使用中文商品名时先核对包装；只识别到大跃品牌时应明确说是它的 Honey Ma Gold 这一款。"
+      ]
+    },
+    {
+      "id": "guinness-can-widget",
+      "title": "罐里那颗球，给泡沫帮忙",
+      "kind": "observation",
+      "triggers": [
+        "确认是带 widget 的 Guinness Draught 罐装，用户问罐里的球或异物声",
+        "用户主动聊氮气罐的设计，可以明确举 Guinness Draught 为例"
+      ],
+      "hook": "Guinness Draught 罐里那颗小球，是帮泡沫成形的。",
+      "spoken": "Guinness Draught 有些罐里带一颗塑料小球，开罐时会把里面的少量酒和氮气释放出来，帮忙形成细泡。按酒厂的说法，这个设计就是为了让人在家倒一杯，也能接近酒馆里的那种泡沫。",
+      "memory_beats": [
+        "小球",
+        "开罐",
+        "细泡"
+      ],
+      "optional_bridge": "你还见过什么不起眼、但设计得挺巧的小零件？",
+      "stop_rule": "解释完小球的作用即可；对方只想确认是否异常，就先回答那件事，不展开品牌史。",
+      "fact_core": [
+        "Guinness 官方 FAQ 说明 Draught 罐中的 widget 是塑料装置，开罐时释放少量酒和氮气，形成气泡涌动与泡沫。",
+        "酒厂把这一装置与在家接近酒馆 Draught 的饮用体验联系起来。"
+      ],
+      "source_url": "https://www.guinness.com/en-ie/frequently-asked-questions",
+      "source_kind": "manufacturer_documentation",
+      "verified_at": "2026-10-14",
+      "caveats": [
+        "须核对具体罐型，不是所有 Guinness、所有氮气啤酒都有同样的小球；NITROSURGE 等另有包装设计。",
+        "若只听到未知罐内声响，不凭这张卡保证是正常 widget。",
+        "不说氮气完全不溶，也不强加唯一倒法；倒法按具体包装说明。",
+        "不建议摇罐、拆罐取球或为了观察泡沫追加一罐。"
+      ]
+    },
+    {
+      "id": "koelsch-coaster-tab",
+      "title": "一张杯垫，兼做账单",
+      "kind": "observation",
+      "triggers": [
+        "已确认 Kölsch／科隆啤酒，用户想听当地酒馆习俗",
+        "聊到科隆、德国旅行、纸杯垫或特别的记账方式"
+      ],
+      "hook": "科隆一些传统酒馆，账就记在杯垫上。",
+      "spoken": "科隆一些传统酒馆，上来一杯啤酒，就在你杯子底下的纸杯垫上划一道。最后数杠结账，一张防水渍的小纸片，还兼着账本的活儿。",
+      "memory_beats": [
+        "上酒",
+        "划杠",
+        "数杠"
+      ],
+      "optional_bridge": "你遇过最特别的点单或者结账方式是什么？",
+      "stop_rule": "说到数杠结账就可停，不接着考对方杯子容量或德语称呼。",
+      "fact_core": [
+        "科隆酒厂 Gaffel 官方介绍传统酒馆在纸杯垫上划线，记录供应给客人的 Kölsch 杯数。"
+      ],
+      "source_url": "https://gaffel.de/en/beverages/koelsch/",
+      "source_kind": "local_brewery_custom_account",
+      "verified_at": "2026-10-14",
+      "caveats": [
+        "这是科隆传统酒馆的习俗介绍，不是全德国或当前所在酒吧的统一规则。",
+        "这条所用来源不足以单独支持自动续杯、盖杯垫才能停等扩展说法，不自行补入。",
+        "划杠记录不用于鼓励比较谁喝得多，也不建议在当前店的杯垫上自行记账抵付款。"
+      ]
+    },
+    {
+      "id": "duvel-shoemaker-name",
+      "title": "鞋匠的一句话，变成酒名",
+      "kind": "story",
+      "triggers": [
+        "已确认 Duvel／督威，用户问名字或瓶标",
+        "聊到给东西起名、外号或品牌名称，可以明确举 Duvel 为例"
+      ],
+      "hook": "Duvel 酒厂说，这个魔鬼般的酒名，跟一个鞋匠有关。",
+      "spoken": "Duvel 酒厂讲过个命名故事：这款酒原来叫胜利艾尔，一位鞋匠喝过，形容它是个真魔鬼。后来酒厂还真用了这个名字，鞋匠的一句评价，就留在了瓶子上。",
+      "memory_beats": [
+        "胜利艾尔",
+        "鞋匠",
+        "魔鬼"
+      ],
+      "optional_bridge": "有没有什么东西，你们一直用外号叫，反而忘了原名？",
+      "stop_rule": "停在名字留在瓶子上；对方不接就不用追问该给眼前这杯起什么名。",
+      "fact_core": [
+        "Duvel Moortgat 官方历史称，酒原名为 Victory Ale。",
+        "官方叙述中，鞋匠 Van De Wouwer 品尝后用意为真魔鬼的表达形容它，酒厂自 1923 年以 Duvel 名称销售。"
+      ],
+      "source_url": "https://www.duvelmoortgat.com/en/who-we-are",
+      "source_kind": "brand_self_report",
+      "verified_at": "2026-10-14",
+      "caveats": [
+        "这是品牌对命名的自述，口播保留酒厂讲过的限定。",
+        "不编鞋匠喝醉、被辣到、与老板争吵等过程，也不借魔鬼这个名字断定用户会觉得烈。",
+        "中文译名和当前具体产品以包装为准；不要把同集团的其他品牌都叫 Duvel。"
+      ]
+    },
+    {
+      "id": "orval-trout-ring-legend",
+      "title": "衔着戒指的鱼",
+      "kind": "legend",
+      "triggers": [
+        "Orval 酒瓶或杯子上的鱼与戒指标志清晰可见",
+        "用户明确询问 Orval 的标志或修道院传说"
+      ],
+      "hook": "Orval 那条鱼衔着戒指，背后是个寻回婚戒的传说。",
+      "spoken": "Orval 修道院有个传说：一位伯爵夫人把婚戒掉进泉水，祈祷之后，一条鳟鱼竟然衔着戒指浮了上来。她把这里称作金色山谷；瓶子上那条鱼，就连着这个失而复得的故事。",
+      "memory_beats": [
+        "丢戒指",
+        "鱼衔回",
+        "金色山谷"
+      ],
+      "optional_bridge": "你有没有丢过什么小东西，后来又在意想不到的地方找回来？",
+      "stop_rule": "鱼把戒指带回就已经完整；不必把修道院年代与宗教史一并讲完。",
+      "fact_core": [
+        "Orval 修道院官方页面把 Matilde 遗失婚戒、祈祷后鳟鱼衔回戒指的叙述明确列为传说。",
+        "传说包含她称此地为 Val d'Or，即金色山谷，以及出于感谢建修道院的情节。"
+      ],
+      "source_url": "https://www.orval.be/en/page/459-legend-of-orval",
+      "source_kind": "institution_published_legend",
+      "verified_at": "2026-10-14",
+      "caveats": [
+        "hook 和 spoken 的传说标签不可省；神迹不能改写成经过核实的历史事件。",
+        "不把传说中的创院因果当作已证实史实，也不补写鱼种习性等解释。",
+        "鱼衔戒指标志需看清或由用户确认，不能看到任意鱼标就认作 Orval。"
+      ]
+    },
+    {
+      "id": "hoegaarden-milkman-revival",
+      "title": "送奶工把小镇白啤酿回来",
+      "kind": "story",
+      "triggers": [
+        "已确认 Hoegaarden／福佳白啤，用户想听品牌故事",
+        "聊到转行、手艺或家乡消失的味道，可以明确举福佳为例"
+      ],
+      "hook": "福佳的品牌故事里，把小镇白啤重新酿起来的是一位送奶工。",
+      "spoken": "按福佳自己的历史介绍，小镇最后一家酒厂关了以后，一位叫 Pierre Celis 的送奶工重新动手酿白啤。他起步的地方是奶棚，用的是一口铜锅；今天超市里熟悉的名字，背后有这么个开头。",
+      "memory_beats": [
+        "酒厂关门",
+        "送奶工",
+        "奶棚铜锅"
+      ],
+      "optional_bridge": "有没有一种家乡味道，你会希望有人把它重新做回来？",
+      "stop_rule": "到奶棚和铜锅就可以结束；对方聊起自己的家乡味道，不追加品牌收购史。",
+      "fact_core": [
+        "Hoegaarden 官方历史称，当地最后一家酒厂 Tomsin 关闭后，送奶工 Pierre Celis 参与恢复白啤酿造。",
+        "该页描述他在奶棚里使用铜锅起步。"
+      ],
+      "source_url": "https://www.hoegaarden.com/history",
+      "source_kind": "brand_self_report",
+      "verified_at": "2026-10-14",
+      "caveats": [
+        "限定为品牌自述；本卡只使用送奶工恢复酿造这一段，不采用同页其他未经独立核查的早期殖民贸易叙述。",
+        "不用有不同口径的起步、开厂年份撑故事；不说他从零发明了白啤。",
+        "不补写爷爷的秘方、全村凑钱或他想起童年某一口味道等情节。",
+        "不能由奶棚、送奶工或白啤名字推断酒里加了牛奶。"
+      ]
+    },
+    {
+      "id": "sierra-nevada-scrap-and-cooler",
+      "title": "旧设备酿酒，拎保温箱推销",
+      "kind": "story",
+      "triggers": [
+        "已确认 Sierra Nevada／内华达山脉品牌，用户问创业或酒厂来历",
+        "聊到创业起步、二手物件或亲手改造，可以明确举这家酒厂为例"
+      ],
+      "hook": "Sierra Nevada 自己回忆，起步时的酿酒设备是用旧乳品设备拼出来的。",
+      "spoken": "Sierra Nevada 讲自己的起家故事，说创办人 Ken 用旧乳品设备拼出了酿酒系统。等 Pale Ale 做满意了，他又拎着保温箱跑城里的酒吧，一瓶一瓶地卖；那时要忙的，是把酒带出去，让人愿意试。",
+      "memory_beats": [
+        "旧设备",
+        "保温箱",
+        "跑酒吧"
+      ],
+      "optional_bridge": "你做过什么东西，是拿现成的旧物拼出来的？",
+      "stop_rule": "停在拎箱跑酒吧的画面；不把品牌后来的规模变成创业说教。",
+      "fact_core": [
+        "Sierra Nevada 官方自述，Ken Grossman 在 1980 年以旧乳品设备拼建的系统开始酒厂。",
+        "同页称他在 Pale Ale 满意后，带保温箱到 Chico 酒吧逐瓶推销。"
+      ],
+      "source_url": "https://sierranevada.com/about-us",
+      "source_kind": "brand_self_report",
+      "verified_at": "2026-10-14",
+      "caveats": [
+        "品牌创办回忆；不把口述中的顾客比例或宣传性评价作为独立调查结果。",
+        "不编穷到没钱、遭所有人拒绝或第一次订单等戏剧性细节。",
+        "提旧乳品设备不等于说啤酒里有奶；也不套用于当前生产设施。"
+      ]
+    },
+    {
+      "id": "founders-kbs-borrowed-barrels",
+      "title": "朋友给的旧桶，带出一款新酒",
+      "kind": "story",
+      "triggers": [
+        "已确认 Founders KBS，用户问名字、木桶或来历",
+        "聊到用现成材料试新点子，可以明确把 KBS 当作例子"
+      ],
+      "hook": "Founders 的酿酒师回忆，KBS 的起点，是朋友给的几只波本桶。",
+      "spoken": "Founders 的酿酒师回忆，一位朋友给了他们几只装过波本的木桶，他们就把已有的早餐世涛放进去试。觉得还能更好，又调整了麦芽、咖啡和巧克力的用量，慢慢做出了 KBS。",
+      "memory_beats": [
+        "朋友的桶",
+        "试装酒",
+        "再改配方"
+      ],
+      "optional_bridge": "你有没有因为手头刚好多了样东西，就顺势试出个新做法？",
+      "stop_rule": "讲到反复调整即可；对方只想聊咖啡或做饭就顺着走，不必介绍过桶术语。",
+      "fact_core": [
+        "Founders 官方 2018 年文章由酿酒师 Jeremy 回忆，朋友 Tom Griffin 在 2001 年提供了几只波本桶，团队先把 Breakfast Stout 放入其中试验。",
+        "文章称其后增加麦芽、咖啡和巧克力等用量继续试验，最终形成后来称为 KBS 的酒。"
+      ],
+      "source_url": "https://foundersbrewing.com/latest-news/2018/brief-history-kbs/",
+      "source_kind": "brand_first_person_recollection",
+      "verified_at": "2026-10-14",
+      "caveats": [
+        "这是品牌网站上的酿酒师回忆；讲述者不能把作者的第一人称改成用户自己的经历。",
+        "不说 KBS 是世界第一款过桶啤酒，也不照搬同文未经法律核验的命名规则。",
+        "Breakfast Stout 是酒名，不是推荐早餐喝酒；本卡不是饮用时段或健康建议。",
+        "不要把 KBS 的配方和经历套到任意 Founders 酒或任意咖啡世涛。"
+      ]
+    },
+    {
+      "id": "yebisu-second-sea-bream",
+      "title": "酒标里偷偷多了一条鱼",
+      "kind": "observation",
+      "triggers": [
+        "已确认 Yebisu／惠比寿的相关瓶装，酒标上的惠比寿与鱼篓可见",
+        "用户主动聊包装彩蛋，可以明确介绍惠比寿这一例"
+      ],
+      "hook": "惠比寿有些瓶标里，会偷偷多一条鱼。",
+      "spoken": "惠比寿的瓶标通常画着神明抱一条鲷鱼，有些版本却在身后的鱼篓里又藏了一条。酒厂把它叫幸运惠比寿，找到也不用兑奖，就是在一张熟悉的标签里，留了个小彩蛋。",
+      "memory_beats": [
+        "一条鱼",
+        "鱼篓",
+        "第二条鱼"
+      ],
+      "optional_bridge": "你有没有发现过什么藏在包装里的小细节？",
+      "stop_rule": "找到或没找到都可以结束；不为了找特别标签建议再买酒、再开瓶。",
+      "fact_core": [
+        "札幌啤酒官方 FAQ 说明，普通惠比寿瓶标有一条鲷鱼，部分惠比寿及 Premium Black 瓶标的鱼篓另有一条，被称为幸运惠比寿。",
+        "官方 FAQ 明确表示这类标签没有兑奖安排。"
+      ],
+      "source_url": "https://www.sapporobeer.jp/support/customer/faq/0000000262/",
+      "source_kind": "manufacturer_documentation",
+      "verified_at": "2026-10-14",
+      "caveats": [
+        "本卡主体是官网说明的相关瓶标；不可泛称所有市场、年份和包装都有相同设计或概率。",
+        "特殊礼盒曾使用两条鱼的罐装图案，看到两条鱼不能一概宣布是罕见随机瓶标。",
+        "不声称中奖、升值、真的带来好运，也不编准确中奖概率。",
+        "照片没有看清鱼篓时，先说有这种设计，不宣布用户手上这瓶就是幸运版。"
+      ]
+    },
+    {
+      "id": "wheat-beer-banana-aroma",
+      "title": "香蕉香，也能由酵母做出来",
+      "kind": "observation",
+      "triggers": [
+        "用户主动问德式小麦酒的香蕉香从哪里来",
+        "已确认德式小麦，且用户自己提到闻着像香蕉；可明确用维森的小麦白啤作香气介绍的例子"
+      ],
+      "hook": "德式小麦里的香蕉香，可以是酵母做出来的。",
+      "spoken": "有些德式小麦会让人想到香蕉，这种气味能在酵母发酵时生成，不必真的放进香蕉。闻到熟悉的香气，脑子里先冒出一串水果，来源却可能在发酵罐里，想想还挺有意思。",
+      "memory_beats": [
+        "香蕉香",
+        "酵母",
+        "发酵罐"
+      ],
+      "optional_bridge": "这个气味让你想到什么吃的？没有特别联想也行。",
+      "stop_rule": "说完香气与原料的反差就可以停；对方没闻到香蕉，就接受这个感受，不让其反复闻到答对为止。",
+      "fact_core": [
+        "BJCP 的风味资料说明，乙酸异戊酯可带来德式小麦酒的香蕉香，酯的形成与酵母及发酵条件有关。",
+        "维森的小麦白啤官方英文产品页把香蕉列入香气描述；这只说明厂商如何描述产品，不代替用户现场的嗅觉体验。"
+      ],
+      "source_url": "https://www.bjcp.org/exam-certification/program/studying/beer-exam-study-guide/troubleshooting/",
+      "source_kind": "professional_education",
+      "supporting_sources": [
+        {
+          "url": "https://www.weihenstephaner.de/en/our-beers/wheat-beer",
+          "kind": "manufacturer_documentation",
+          "supports": "以具体产品的官方香气介绍为例，不作配料证明"
+        }
+      ],
+      "verified_at": "2026-10-14",
+      "caveats": [
+        "发酵能产生香蕉香，不代表所有有香蕉香的小麦酒都没加水果；有些产品确实会加香蕉。",
+        "若用户要确认眼前酒有没有香蕉，须另看具体配料表或酒厂说明，不能仅凭香气或风格下结论。",
+        "不代替用户说我闻到了，不把香蕉香讲成所有人必须闻出的标准答案。",
+        "这是香气趣闻，适合用户已经好奇时使用；只说苦、一般或不喜欢时，先尊重其真实评价，不自动插入科普。"
+      ]
+    }
+  ]
+}

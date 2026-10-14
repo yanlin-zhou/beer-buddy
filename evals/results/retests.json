@@ -1,0 +1,83 @@
+{
+  "method": "agent_proxy_sequential_cases",
+  "model": "inherited runtime; exact model identifier unavailable",
+  "limitations": [
+    "本次是原代理上下文中针对修改进行的 4 条复测，不是 4 个独立模型会话，也不是重新启动的独立代理运行。",
+    "每条按独立用户请求处理；未使用其他案例作为用户前文。",
+    "未使用浏览、图片访问或持久记忆工具；事实依据限本条用户输入及允许读取的随包资料。",
+    "未读取判分标准或其他代理的输出。",
+    "source_sha256 为当前最终资料指纹；本次生成前后复查一致。"
+  ],
+  "source_sha256": {
+    "SKILL.md": "55f9c10c77485f34d4e7c39ca307b1dd52565d2e73d1619a67286bf87a93dbe0",
+    "references/phrases.md": "46af819bcaaf1d663602e2b4b22007a6561031cdbbd769ff341f3e6b1e34338f",
+    "references/principles.md": "77d1e3828d02924490cc7ba772bd46ffb3a1f63a134d9a8a73d22b5365bb4ec8",
+    "references/service.md": "a48d4b36f4f49c403d3796d6a0beee3ff7337c2ebe933cab28554597be407939",
+    "references/stories.json": "1a3ae668f15019fcf53757448db19ea64a4ec4f9869935a8a2cb7f6e4186d903",
+    "references/stories.md": "0a2f6f93c5aae5ddc29560bde0b9cd8d06446b3e7b578fc804c5cd9d81c70a70",
+    "references/styles.md": "21dcdae0c84bff8729f0fc08e68fc262f8ff2192df8e1ad96bc7697b5efbee8a",
+    "templates/outputs.md": "6b2084692b001676b67bfbcf64b0bb929583b24ddabe3f4d64e4b4513628d1ee"
+  },
+  "cases": [
+    {
+      "id": "S01",
+      "prompt": "桌上是健力士，给我一个能讲半分钟的小故事，不要品酒教程。",
+      "response": "吉尼斯官方讲过这个来历：健力士的一位负责人去打猎，跟朋友争欧洲哪种猎鸟飞得最快，翻参考书也找不到答案。后来他想到，酒馆里肯定也有这种争论，就请人编了本查纪录的书。一个没争出结果的小问题，最后变成了一本书。\n\n来源：[吉尼斯官方起源介绍](https://www.guinnessworldrecords.com/about-us/our-story)。",
+      "assessment": {
+        "id": "S01",
+        "status": "pass",
+        "reason": "初始故事仍只交付起源，保留官方说法与来源；新增后续资料没有让开场自动变长或变成品鉴教程。",
+        "violations": []
+      }
+    },
+    {
+      "id": "S07",
+      "prompt": "朋友接着问：那本吉尼斯纪录书后来怎么样了？",
+      "response": "按吉尼斯官方的说法，那本书后来成了畅销书。有意思的是，它竟然没解答最初那个欧洲猎鸟的问题，因为书里聚焦的是世界纪录。\n\n来源：[吉尼斯官方起源介绍](https://www.guinnessworldrecords.com/about-us/our-story)。",
+      "assessment": {
+        "id": "S07",
+        "status": "pass",
+        "reason": "明确回答成书后的发展：成为畅销书，并交代未解答原欧洲猎鸟问题的反差；对应已补入的随包官方来源资料，回答后停止。",
+        "violations": []
+      }
+    },
+    {
+      "id": "smoke-01-story-intent-offline",
+      "prompt": "桌上是健力士。我只想讲个半分钟左右的真实小故事，别选酒，也不要品鉴教程。现在不能联网。",
+      "response": "吉尼斯官方讲过这个来历：健力士的一位负责人去打猎，跟朋友争欧洲哪种猎鸟飞得最快，翻参考书也找不到答案。后来他想到，酒馆里肯定也有这种争论，就请人编了本查纪录的书。一个没争出结果的小问题，最后变成了一本书。\n\n来源：[吉尼斯官方起源介绍](https://www.guinnessworldrecords.com/about-us/our-story)，依据随包资料，本次没有联网。",
+      "assessment": {
+        "id": "smoke-01-story-intent-offline",
+        "status": "pass",
+        "reason": "使用稳定随包故事，保留官方自述及来源，明确本次未联网；未加入选酒或其他模块。",
+        "violations": []
+      }
+    },
+    {
+      "id": "smoke-12-close-and-honest-memory",
+      "prompt": "今晚结束了，我不喝了，只帮我记：先皮尔森，后小麦，最喜欢小麦；九千年租约的故事已经讲过，下次别再讲。如果你不能跨会话保存，就给我一条能复制的记录。",
+      "response": "我不能跨会话保存，下次把这条记录带回来即可：\n\n> 今晚已结束，不再饮酒。顺序：皮尔森 → 小麦；最喜欢：小麦。已讲过九千年租约的故事，下次不再讲。",
+      "assessment": {
+        "id": "smoke-12-close-and-honest-memory",
+        "status": "pass",
+        "reason": "明确不能跨会话保存且下次需带回记录，复制内容只包含已给事实和避重备忘；未推荐下一杯或承诺永久记住。",
+        "violations": []
+      }
+    }
+  ],
+  "version": "1.0.0",
+  "date": "2026-10-14",
+  "assessment_status": "independently_reviewed",
+  "summary": {
+    "total": 4,
+    "pass": 4,
+    "partial": 0,
+    "fail": 0,
+    "conclusion": "S07和smoke-12观察到的具体缺口在本次复测中闭合；S01和smoke-01确认开场未被后续资料扩大。原31 pass、6 partial、1 fail原样保留，不能将本轮4例与首轮38例混成独立通过率。",
+    "limitations": [
+      "复测由原生成代理在既有上下文中完成，不是冷启动或独立模型会话。",
+      "事实依据是更新后的随包材料；本评分没有再次联网核验外链。",
+      "只需记录这两项局部修改及相关回归；本报告不要求重跑未受影响的全部38条。"
+    ]
+  },
+  "grading_method": "同一独立评分者按原标准评4条局部复测；新增记录，不覆盖首轮cases、summary或输入指纹。"
+}

@@ -1,0 +1,29 @@
+name: 使用体验或事实纠正
+description: 告诉我们哪里讲不出来、哪里不好接，或哪条事实需要改。
+title: "[反馈] "
+body:
+  - type: markdown
+    attributes:
+      value: "感谢试用。请省略姓名、私人聊天、位置和凭据；对方感受不清楚就写未知。"
+  - type: input
+    id: environment
+    attributes:
+      label: 版本与使用入口
+      placeholder: "例如 v1.0.0，START 复制到 ChatGPT；模型不清楚也没关系"
+  - type: textarea
+    id: example
+    attributes:
+      label: 场景、输入与实际回答
+      description: "事实纠正请附具体原句及来源链接。"
+    validations:
+      required: true
+  - type: textarea
+    id: retell
+    attributes:
+      label: 你能用自己的话讲出来吗？
+      description: "有没有实际讲？哪句不像你、记不住或读起来别扭？没试也请直说。"
+  - type: textarea
+    id: continuation
+    attributes:
+      label: 对方如何接话？
+      description: "可以描述观察到的回应，不必猜心理；未知就写未知。"

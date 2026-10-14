@@ -1,0 +1,67 @@
+# 使用与安装
+
+版本 1.0.0 · 文档核对日期：2026-10-14。
+
+## 只想先试一下
+
+打开 [START.md](../START.md)，复制代码框全文到一个新的 AI 对话，再说你的场景，例如：
+
+> 桌上喝青岛，来个能聊的地方小事。
+
+这版带 3 条素材。需要完整 12 条素材与选酒、采购参考时，下载 [PROMPT.md](https://github.com/yanlin-zhou/beer-buddy/releases/latest/download/PROMPT.md)，上传到支持文本附件的对话，发：“请按文件中的啤酒搭子帮我。”
+
+也可复制完整文件到容量足够的对话。不要默认任何平台的“自定义指令”都容得下整份资料。平台是否能读附件、看图或联网，以你的当前账户和模型为准；本项目不需要 API key，也没有额外服务。
+
+## Claude Code
+
+在终端执行：
+
+```bash
+git clone https://github.com/yanlin-zhou/beer-buddy.git ~/.claude/skills/beer-buddy
+```
+
+打开一个新会话，输入：
+
+```text
+/beer-buddy 桌上是健力士，给我一个能讲半分钟的小故事。
+```
+
+若目录已存在，`git clone` 会停止。不要覆盖或删除自己的改动；如果该目录就是这个仓库的 Git 克隆，可先检查 `git status`，确认无自己的未提交改动后，再在该目录执行 `git pull --ff-only`。
+
+这是 Claude Code 本地安装路径。Claude 网页端和 Cowork 的安装入口不同，不由这个目录自动同步。[Claude Code 官方 Skills 文档](https://code.claude.com/docs/en/skills)
+
+## Codex
+
+个人 Skill 可放在 `~/.agents/skills/`：
+
+```bash
+git clone https://github.com/yanlin-zhou/beer-buddy.git ~/.agents/skills/beer-buddy
+```
+
+新建或重新打开会话后说：
+
+```text
+用 $beer-buddy 给我一个能顺口讲给朋友听的啤酒小故事。
+```
+
+Codex 通常会自动检测 Skill 变化；没出现时重启会话或应用。已存在同名目录时停止安装，先检查原有版本，避免重复目录造成两个同名 Skill。不要把本地修改直接覆盖掉。[Codex 官方 Skills 文档](https://learn.chatgpt.com/docs/build-skills)
+
+## Claude 自定义 Skill 上传
+
+下载 Release 中的 [beer-buddy-1.0.0.zip](https://github.com/yanlin-zhou/beer-buddy/releases/download/v1.0.0/beer-buddy-1.0.0.zip)。它包含顶层 `beer-buddy/` 文件夹，里面直接有 `SKILL.md`。
+
+在支持自定义 Skills 的 Claude 界面中，进入 **Customize → Skills → + → Create skill → Upload a skill** 上传。不同产品、账户权限或更新可能改变入口；以 [Claude 官方上传说明](https://support.claude.com/en/articles/12512180-use-skills-in-claude)及当前界面为准。
+
+使用专门的 Release 安装包，别将 GitHub 自动生成的源码包误当成已经检查的安装包。本次未进行 Claude 网页端、Cowork 或 Claude Code 的端到端安装验证。
+
+## 装完试这三句
+
+1. `桌上是健力士，给一个半分钟故事，不要品酒教程。` —— 应得到一个故事。
+2. `我只觉得苦，只给一句，别编其他味道。` —— 应保留你的感受。
+3. `今天结束了，只记录：我更喜欢小麦。` —— 应只记录，不追加下一杯。
+
+如果回答像百科、先问一串问题，或仍替你安排下一杯，先确认启用的是 v1.0.0。把**提示词与实际回答**提交到 [Issue](https://github.com/yanlin-zhou/beer-buddy/issues)，即可帮助我们排查；不要贴私人对话和凭据。
+
+## 这次实际验证到哪里
+
+[验证记录](VALIDATION.md)分别列出文件与打包检查、Agent 文本测试、宿主实测和真人验证。安装路径参考官方文档，不能等同于每个平台都已实装成功。
