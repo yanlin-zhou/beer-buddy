@@ -1,4 +1,4 @@
 interface:
   display_name: "啤酒搭子"
-  short_description: "从眼前这杯酒找一个能顺口讲的故事，也帮你选酒、接话和轻松收尾"
-  default_prompt: "用 $beer-buddy 给我一个能顺口讲给朋友听的啤酒小故事。"
+  short_description: "带你留意这一杯的一个小特点，也找一件能顺口讲给朋友听的事"
+  default_prompt: "用 $beer-buddy 介绍我眼前这杯，给一个能轻松留意的小特点，别像品鉴课。"

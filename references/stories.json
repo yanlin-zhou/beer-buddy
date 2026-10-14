@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "skill_name": "beer-buddy",
-  "skill_version": "1.0.0",
+  "skill_version": "1.1.0",
   "verified_at": "2026-10-14",
   "usage": {
     "selection": "先匹配已确认的酒名、包装或用户正在聊的主题，一次只选一条。没有品牌匹配时，只能明确说成另一个品牌的例子，不称眼前这杯就是它。",
@@ -13,6 +13,22 @@
     "memory": "memory_beats 供内部压缩和复述练习；只有用户说怕记不住、要练习或要提纲时才展示三个记忆词，默认回复不增加这一栏。"
   },
   "stories": [
+    {
+      "id": "happy-hops-returning-character",
+      "title": "老酒标上的小家伙又回来了",
+      "kind": "story",
+      "triggers": ["已确认 Russian River Happy Hops，用户问名字或酒标故事", "聊到老包装与吉祥物，明确作为另一品牌的例子"],
+      "hook": "酒厂说，Happy Hops 瓶上这个小家伙，是从当地老酒厂请回来的。",
+      "spoken": "Russian River 酒厂讲过，Happy Hops 这个名字和瓶上举杯的小家伙，都连着当地一家六十年代就关门的老酒厂。后来他们把这个角色请了回来，像一个退休多年的吉祥物，又换了家公司上班。",
+      "memory_beats": ["老酒厂", "关门", "角色回来"],
+      "optional_bridge": "有没有哪种老包装，是你一看就能认出来的？",
+      "stop_rule": "到角色回来就停；已经听过故事又问怎么喝时，读 tasting.md，不再重复历史。",
+      "fact_core": ["Russian River 官网称 Happy Hops 原由 Santa Rosa 的 Grace Brothers Brewery 于 1944 年酿造。", "同页称旧酒厂于 1960 年代关闭，Russian River 向 Grace 家族致意，并复活 Happy 酒花形象。"],
+      "source_url": "https://www.russianriverbrewing.com/brew/happy-hops-ipa/",
+      "source_kind": "brand_self_report",
+      "verified_at": "2026-10-14",
+      "caveats": ["品牌对自身与当地历史的回顾，不当作独立历史考证。", "退休与换公司是拟人比喻，不补角色年龄、雇佣关系或精确停用年数。", "不声称原配方复刻、两家是同一公司，也不据此推断眼前批次的参数与味道。"]
+    },
     {
       "id": "guinness-records-origin",
       "title": "一次争论，后来成了纪录书",

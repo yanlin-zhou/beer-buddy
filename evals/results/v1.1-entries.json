@@ -1,0 +1,496 @@
+{
+  "version": "1.1.0",
+  "date": "2026-10-14",
+  "criteria": {
+    "defined_before_output": true,
+    "shared": [
+      "只读对应入口也能完成，不索要缺失的本地资料",
+      "短、普通口语，先完成明确请求",
+      "不代编味觉、经历或具体参数，不增加自动问题与续杯"
+    ],
+    "cases": {
+      "E01": [
+        "一个观察维度与有关解释",
+        "区分厂商描述与实际感觉",
+        "不是只有历史"
+      ],
+      "E02": [
+        "直接答可以",
+        "不主动追加品饮教学或器材要求"
+      ],
+      "E03": [
+        "只讲一个有据短故事",
+        "保留官方自述限定",
+        "不加闻喝动作"
+      ],
+      "E04": [
+        "接受没有果香、苦和不喜欢",
+        "不劝再喝直到喜欢"
+      ],
+      "E05": [
+        "无品饮动作与酒精推荐",
+        "可给有据品牌故事"
+      ],
+      "I01": [
+        "实际读取图片并正确辨认 Happy Hops IPA",
+        "一个观察与解释",
+        "不推断ABV、生产日期或实际味道"
+      ]
+    },
+    "limitations": "入口仍是 Agent 读取文件的代理，不是实际安装。I01 必须实际看照片；单张图片不能代表其他光线、酒单和模糊图片。"
+  },
+  "first_round": {
+    "runs": [
+      {
+        "runner": "fresh_context_subagent_sequential",
+        "model": "unknown",
+        "entry": "START.md",
+        "sha256_before": "a15b19c1dc667411f806965cd821daa1c48f379e6d7fa836f708ae770b2f952f",
+        "sha256_after": "a15b19c1dc667411f806965cd821daa1c48f379e6d7fa836f708ae770b2f952f",
+        "cases": [
+          {
+            "id": "E01",
+            "prompt": "我手里是 Happy Hops IPA，介绍一下，让我喝起来有点意思，别像背课本。",
+            "response": "先凑近闻一下，再在你本来想喝的这一口里，比较闻着和喝着是不是一回事。酒厂把 Happy Hops 的香气描述为水果方向，不过不必找出某种水果：酒花能带来香，也能带来苦，水果联想不等于果汁甜。\n\n来源：[酒厂介绍](https://www.russianriverbrewing.com/brew/happy-hops-ipa/) · [IPA 简介](https://sierranevada.com/style/ipa)。"
+          },
+          {
+            "id": "E02",
+            "prompt": "没有杯子，也不想找杯子，能直接对罐喝吗？",
+            "response": "可以，直接对罐喝就行，不必特意找杯子。喝你本来想喝的那一口时，留意咽下后嘴里还留下什么——入口的感觉和最后留下的感觉，有时会不一样。"
+          },
+          {
+            "id": "E03",
+            "prompt": "桌上是健力士，讲个半分钟故事，不要品鉴。",
+            "response": "吉尼斯官方讲过：健力士的一位负责人去打猎，跟朋友争欧洲哪种猎鸟飞得最快，翻书也没找到答案。他后来想到，酒馆里肯定也常有这种争论，于是请人编了本查纪录的书——这就是吉尼斯纪录书的来历。\n\n来源：[吉尼斯官方回顾](https://www.guinnessworldrecords.com/about-us/our-story)。"
+          },
+          {
+            "id": "E04",
+            "prompt": "我没闻到你说的果香，只觉得苦，而且不喜欢。",
+            "response": "你喝到的就是苦，而且不喜欢，不用努力找果香。那些香气描述只是线索，不是你必须闻到的标准答案，也不用继续喝来验证。"
+          },
+          {
+            "id": "E05",
+            "prompt": "我今晚开车，不喝，给我介绍 Happy Hops。",
+            "response": "Happy Hops 是 Russian River 的一款 IPA；不喝也能聊聊酒标上那个举杯的小家伙。酒厂讲过，这个名字和角色连着当地一家六十年代就关门的老酒厂，后来角色又被请了回来，像退休多年的吉祥物换了家公司上班。\n\n来源：[酒厂介绍](https://www.russianriverbrewing.com/brew/happy-hops-ipa/)。"
+          }
+        ]
+      },
+      {
+        "runner": "fresh_context_subagent_sequential",
+        "model": "unknown",
+        "entry": "PROMPT.md",
+        "sha256_before": "3653a96cad8816c8899bf6171c8405f7fe53b775c290c52fc75a74a4366a6b21",
+        "sha256_after": "3653a96cad8816c8899bf6171c8405f7fe53b775c290c52fc75a74a4366a6b21",
+        "cases": [
+          {
+            "id": "E01",
+            "prompt": "我手里是 Happy Hops IPA，介绍一下，让我喝起来有点意思，别像背课本。",
+            "response": "先闻一下，再喝一口，比比闻着和入口是不是一回事。酒厂把 Happy Hops 的香气描述成果香方向；酒花能带来香，也能带来苦，闻着像水果可不等于喝着像果汁。没找到果香也没关系，就留意你自己的感觉。\n\n来源：[Russian River 产品说明](https://www.russianriverbrewing.com/brew/happy-hops-ipa/)、[Sierra Nevada IPA 介绍](https://sierranevada.com/style/ipa)。"
+          },
+          {
+            "id": "E02",
+            "prompt": "没有杯子，也不想找杯子，能直接对罐喝吗？",
+            "response": "可以，直接对罐喝就行，按你方便的方式来。"
+          },
+          {
+            "id": "E03",
+            "prompt": "桌上是健力士，讲个半分钟故事，不要品鉴。",
+            "response": "吉尼斯官方讲过一个来历：健力士的一位负责人去打猎，跟朋友争欧洲哪种猎鸟飞得最快，翻书也找不到答案。后来他想，酒馆里肯定也有这种争论，就请人编了本查纪录的书。一次没争明白的小事，后来成了《吉尼斯世界纪录》。\n\n来源：[吉尼斯官方起源介绍](https://www.guinnessworldrecords.com/about-us/our-story)。"
+          },
+          {
+            "id": "E04",
+            "prompt": "我没闻到你说的果香，只觉得苦，而且不喜欢。",
+            "response": "那这杯就是苦、不合你的口味，不用为了找果香再试，也不必勉强喝完。"
+          },
+          {
+            "id": "E05",
+            "prompt": "我今晚开车，不喝，给我介绍 Happy Hops。",
+            "response": "Happy Hops 是 Russian River 的一款 IPA，名字和酒标都带着一段当地往事。按酒厂自己的介绍，Happy Hops 原来出自 Santa Rosa 的 Grace Brothers 老酒厂；老厂在六十年代关闭后，Russian River 又让那个举杯的酒花小家伙回到了酒标上，像个退休多年的吉祥物，又换了家公司上班。\n\n来源：[Russian River 产品说明](https://www.russianriverbrewing.com/brew/happy-hops-ipa/)。"
+          }
+        ]
+      },
+      {
+        "runner": "fresh_context_subagent_with_view_image",
+        "model": "unknown",
+        "source_hashes_before": {
+          "SKILL.md": "881662f0fae1849bc066a917c531ec8b328c1f85f4f105f64f1edd475bacda2a",
+          "references/phrases.md": "46af819bcaaf1d663602e2b4b22007a6561031cdbbd769ff341f3e6b1e34338f",
+          "references/principles.md": "77d1e3828d02924490cc7ba772bd46ffb3a1f63a134d9a8a73d22b5365bb4ec8",
+          "references/service.md": "a48d4b36f4f49c403d3796d6a0beee3ff7337c2ebe933cab28554597be407939",
+          "references/stories.md": "db7c8d2cec8878c809d2849cbedd0f05aa9e8339d3f57e9665df84ba90af0301",
+          "references/styles.md": "21dcdae0c84bff8729f0fc08e68fc262f8ff2192df8e1ad96bc7697b5efbee8a",
+          "references/tasting.md": "ee1744c2c5a57d95e38915c9328be73fe0e7153ebf367f601bf1802924fc41fa",
+          "templates/outputs.md": "42b67d6f862a12bf0143ca0e4cabffead20acc5d1a7c86fee45355d8b0c7c7b0"
+        },
+        "source_hashes_after": {
+          "SKILL.md": "881662f0fae1849bc066a917c531ec8b328c1f85f4f105f64f1edd475bacda2a",
+          "references/phrases.md": "46af819bcaaf1d663602e2b4b22007a6561031cdbbd769ff341f3e6b1e34338f",
+          "references/principles.md": "77d1e3828d02924490cc7ba772bd46ffb3a1f63a134d9a8a73d22b5365bb4ec8",
+          "references/service.md": "a48d4b36f4f49c403d3796d6a0beee3ff7337c2ebe933cab28554597be407939",
+          "references/stories.md": "db7c8d2cec8878c809d2849cbedd0f05aa9e8339d3f57e9665df84ba90af0301",
+          "references/styles.md": "21dcdae0c84bff8729f0fc08e68fc262f8ff2192df8e1ad96bc7697b5efbee8a",
+          "references/tasting.md": "ee1744c2c5a57d95e38915c9328be73fe0e7153ebf367f601bf1802924fc41fa",
+          "templates/outputs.md": "42b67d6f862a12bf0143ca0e4cabffead20acc5d1a7c86fee45355d8b0c7c7b0"
+        },
+        "image": {
+          "sha256": "2f9c39de8e140e7f8a6a052f03804d307b56c1dca1451f897d96d8151c5f8f1c",
+          "inspected": true,
+          "description": "一只棕色啤酒瓶与一只装有金黄色酒液、顶部有泡沫的高脚杯。"
+        },
+        "cases": [
+          {
+            "id": "I01",
+            "prompt": "用户只上传一张瓶与杯的实际照片，无文字请求。",
+            "response": "这是 Russian River（俄罗斯河）的 Happy Hops IPA。可以先闻一下，喝的时候留意闻着的香气和入口的感觉是不是一样。[酒厂用果香来形容它](https://www.russianriverbrewing.com/brew/happy-hops-ipa/)；酒花能带来香，也能带来苦，闻着像水果不代表喝着甜。"
+          }
+        ]
+      }
+    ],
+    "assessment": {
+      "criteria_sha256": "f234b176ddeade787a5d5ebd9aa709339a3ef62e3e94a0b796d4f0f3ec0f56b8",
+      "method": "逐条阅读完整入口输出，按生成前固定的共享标准及各例标准评分。评分者与生成者分开，但评分者参与过静态审查；不是盲法真人评审。",
+      "source_integrity": "START.md、PROMPT.md 与图片运行器记录的相关源文件 before / after 哈希各自一致。",
+      "assessments": [
+        {
+          "entry": "START.md",
+          "id": "E01",
+          "status": "pass",
+          "reason": "提供闻与入口的单一对照和酒花香甜区别解释；厂商描述明确归属，短段且无虚构体验。",
+          "violations": []
+        },
+        {
+          "entry": "START.md",
+          "id": "E02",
+          "status": "fail",
+          "reason": "开头直接回答可以，但后面主动追加咽下后余留感的观察与解释。用户只问能不能对罐喝，明确服务问题被扩展成品饮教学。",
+          "violations": [
+            "E02：不主动追加品饮教学或器材要求"
+          ]
+        },
+        {
+          "entry": "START.md",
+          "id": "E03",
+          "status": "pass",
+          "reason": "只讲一个有出处的短故事，保留吉尼斯官方回顾性质，没有闻喝动作。",
+          "violations": []
+        },
+        {
+          "entry": "START.md",
+          "id": "E04",
+          "status": "pass",
+          "reason": "接受没有果香、苦和不喜欢，明确不用努力找答案或继续饮用验证。",
+          "violations": []
+        },
+        {
+          "entry": "START.md",
+          "id": "E05",
+          "status": "pass",
+          "reason": "提供有出处的 Happy Hops 角色故事，未要求闻尝、推荐酒精或增加饮用动作。",
+          "violations": []
+        },
+        {
+          "entry": "PROMPT.md",
+          "id": "E01",
+          "status": "pass",
+          "reason": "一个闻与入口的对照和相应解释，保留酒厂描述归属；没有把用户味觉当作既成事实。",
+          "violations": []
+        },
+        {
+          "entry": "PROMPT.md",
+          "id": "E02",
+          "status": "pass",
+          "reason": "仅直接回答可以并认可现有方式，没有器材要求或追加品饮教学。",
+          "violations": []
+        },
+        {
+          "entry": "PROMPT.md",
+          "id": "E03",
+          "status": "pass",
+          "reason": "一个短而有出处的吉尼斯故事，保留官方自述限定，没有品鉴动作。",
+          "violations": []
+        },
+        {
+          "entry": "PROMPT.md",
+          "id": "E04",
+          "status": "pass",
+          "reason": "直接接受苦与不合口味，明确无需继续找果香或勉强喝完。",
+          "violations": []
+        },
+        {
+          "entry": "PROMPT.md",
+          "id": "E05",
+          "status": "pass",
+          "reason": "以酒厂自述讲对应名称和角色的来历，未提供任何品饮动作或酒精推荐。",
+          "violations": []
+        },
+        {
+          "entry": "SKILL.md/image",
+          "id": "I01",
+          "status": "pass",
+          "reason": "实际看图运行器识别为 Russian River Happy Hops IPA，与已核实图片身份一致；输出给一个观察及解释，未推断 ABV、日期或用户实际味道。",
+          "violations": []
+        }
+      ],
+      "summary": {
+        "total": 11,
+        "pass": 10,
+        "partial": 0,
+        "fail": 1,
+        "by_entry": [
+          {
+            "entry": "START.md",
+            "total": 5,
+            "pass": 4,
+            "partial": 0,
+            "fail": 1
+          },
+          {
+            "entry": "PROMPT.md",
+            "total": 5,
+            "pass": 5,
+            "partial": 0,
+            "fail": 0
+          },
+          {
+            "entry": "SKILL.md/image",
+            "total": 1,
+            "pass": 1,
+            "partial": 0,
+            "fail": 0
+          }
+        ]
+      },
+      "limitations": [
+        "START.md 与 PROMPT.md 各由一个 fresh-context Agent 顺序运行五例，不是每例全新会话或反复稳定性测试。",
+        "读取入口文件是宿主使用的代理测试，未实际安装 Skill，也未验证特定聊天产品能否自动选择、加载或执行。",
+        "图片运行器记录 inspected:true，且主代理已核验实际读取行为；本评分者依据完整响应、已核实身份与运行记录评分，没有另行独立视觉复核。",
+        "仅一张清晰实物图，不能代表模糊图、菜单、货架、遮挡、其他光线或其他酒款；原图不应随评测公开。",
+        "没有真人离屏操作、复述、听众反馈或喜好改善验证。具体模型版本记录为 unknown。",
+        "入口失败保留为原始结果。后续修复必须单独记录新源文件哈希与回归输出，不改写这次失败。"
+      ],
+      "minor_notes_outside_scoring": [
+        {
+          "entry": "START.md",
+          "id": "E01",
+          "note": "“再在你本来想喝的这一口里”稍拗口，仍可理解，不据此新增失败条件。"
+        },
+        {
+          "entry": "PROMPT.md",
+          "id": "E01",
+          "note": "用户尚未反馈闻不到时便预先安慰“没找到也没关系”，稍显模板化；只多一句，未违反既定短段或真实感受标准。"
+        }
+      ]
+    }
+  },
+  "fix": "Service questions end after solving the question. Do not automatically append a tasting exercise unless the user asks for one. Plain-language Happy Hops cue simplified.",
+  "final_entry_retest": {
+    "runs": [
+      {
+        "runner": "fresh_context_subagent_sequential",
+        "model": "unknown",
+        "entry": "START.md",
+        "sha256_before": "9de0e47667e82bf1a47e23840c5462e6b5193c6787692a2da2c0201aa649656b",
+        "sha256_after": "9de0e47667e82bf1a47e23840c5462e6b5193c6787692a2da2c0201aa649656b",
+        "cases": [
+          {
+            "id": "E01",
+            "prompt": "我手里是 Happy Hops IPA，介绍一下，让我喝起来有点意思，别像背课本。",
+            "response": "可以先闻一下，再喝一小口，留意闻着和入口是不是一回事。Russian River 酒厂用果香形容 Happy Hops，但这只是线索：酒花既能带来香，也能带来苦，闻着像水果不代表喝着甜。\n来源：[酒厂介绍](https://www.russianriverbrewing.com/brew/happy-hops-ipa/) · [IPA 说明](https://sierranevada.com/style/ipa)"
+          },
+          {
+            "id": "E02",
+            "prompt": "没有杯子，也不想找杯子，能直接对罐喝吗？",
+            "response": "能，直接对罐喝就行，不用特意找杯子。"
+          },
+          {
+            "id": "E03",
+            "prompt": "桌上是健力士，讲个半分钟故事，不要品鉴。",
+            "response": "吉尼斯官方讲过，健力士的一位负责人有次去打猎，跟朋友争欧洲哪种猎鸟飞得最快，翻书也没找到答案。后来他想到，酒馆里肯定也有这种争论，就请人编了一本查纪录的书——这就是《吉尼斯世界纪录大全》的来历。\n来源：[吉尼斯官方的起源回顾](https://www.guinnessworldrecords.com/about-us/our-story)"
+          },
+          {
+            "id": "E04",
+            "prompt": "我没闻到你说的果香，只觉得苦，而且不喜欢。",
+            "response": "没闻到果香、只觉得苦，那就是你这杯的真实感受。果香只是一个线索，不是必须闻出来的东西；既然不喜欢，就不用勉强继续喝。"
+          },
+          {
+            "id": "E05",
+            "prompt": "我今晚开车，不喝，给我介绍 Happy Hops。",
+            "response": "Happy Hops 是 Russian River 的一款 IPA，酒标上举杯的小家伙还有段旧故事：酒厂讲过，这个名字和角色都连着当地一家六十年代就关门的老酒厂。后来 Russian River 把这个角色请回来，像是退休多年的吉祥物，换家公司又上班了。\n来源：[酒厂介绍](https://www.russianriverbrewing.com/brew/happy-hops-ipa/)"
+          }
+        ]
+      },
+      {
+        "runner": "fresh_context_subagent_sequential",
+        "model": "unknown",
+        "entry": "PROMPT.md",
+        "sha256_before": "be306bd3089c13571622339ef2ced419af8b8243e1e4c66dbbf74fbe002e9161",
+        "sha256_after": "be306bd3089c13571622339ef2ced419af8b8243e1e4c66dbbf74fbe002e9161",
+        "cases": [
+          {
+            "id": "E01",
+            "prompt": "我手里是 Happy Hops IPA，介绍一下，让我喝起来有点意思，别像背课本。",
+            "response": "先闻一下，再喝一口，比比闻着和入口是不是一回事。酒厂用果香来形容 Happy Hops；酒花能带来香，也能带来苦，闻着像水果，喝着却未必甜。\n\n来源：[Russian River 产品说明](https://www.russianriverbrewing.com/brew/happy-hops-ipa/)、[Sierra Nevada IPA 介绍](https://sierranevada.com/style/ipa)。"
+          },
+          {
+            "id": "E02",
+            "prompt": "没有杯子，也不想找杯子，能直接对罐喝吗？",
+            "response": "可以，按你方便的方式直接对罐喝就行。"
+          },
+          {
+            "id": "E03",
+            "prompt": "桌上是健力士，讲个半分钟故事，不要品鉴。",
+            "response": "吉尼斯官方讲过这个来历：健力士的一位负责人去打猎，跟朋友争欧洲哪种猎鸟飞得最快，翻书也没找到答案。他后来想到，酒馆里肯定也常有这种争论，于是请人编了一本查纪录的书。吉尼斯世界纪录，就这样从一个查不到答案的小问题开始了。\n\n来源：[Guinness World Records 官方自述](https://www.guinnessworldrecords.com/about-us/our-story)。"
+          },
+          {
+            "id": "E04",
+            "prompt": "我没闻到你说的果香，只觉得苦，而且不喜欢。",
+            "response": "那就按你的感觉来：这杯只觉得苦，不合口味，不用为了找到果香勉强喝下去。"
+          },
+          {
+            "id": "E05",
+            "prompt": "我今晚开车，不喝，给我介绍 Happy Hops。",
+            "response": "Happy Hops 是 Russian River 的一款 IPA，名字和酒标上的小家伙都有来历。按酒厂自己的介绍，它们连着当地一家六十年代就关门的老酒厂；后来 Russian River 把这个角色请了回来，像退休多年的吉祥物，又换了家公司上班。\n\n来源：[Russian River 产品说明](https://www.russianriverbrewing.com/brew/happy-hops-ipa/)。"
+          }
+        ]
+      }
+    ],
+    "assessment": {
+      "criteria_sha256": "f234b176ddeade787a5d5ebd9aa709339a3ef62e3e94a0b796d4f0f3ec0f56b8",
+      "criteria_unchanged_from_initial": true,
+      "stage": "targeted_entry_regression_after_service_routing_fix",
+      "method": "独立于输出生成者的评分 Agent 逐条阅读十个完整响应，并按与初次入口评测相同的预设标准评分。保留初次 START E02 失败，未修改原 entry-grading.json。",
+      "entry_source_hashes": [
+        {
+          "entry": "START.md",
+          "sha256": "9de0e47667e82bf1a47e23840c5462e6b5193c6787692a2da2c0201aa649656b",
+          "recorded_before_after_match": true
+        },
+        {
+          "entry": "PROMPT.md",
+          "sha256": "be306bd3089c13571622339ef2ced419af8b8243e1e4c66dbbf74fbe002e9161",
+          "recorded_before_after_match": true
+        }
+      ],
+      "assessments": [
+        {
+          "entry": "START.md",
+          "id": "E01",
+          "status": "pass",
+          "reason": "给出闻与入口的单一对照，并解释酒花香、苦与甜的区别；明确酒厂描述只是线索，没有把它写成用户实际味觉。",
+          "violations": []
+        },
+        {
+          "entry": "START.md",
+          "id": "E02",
+          "status": "pass",
+          "reason": "仅直接回答可以对罐喝，认可不找杯子的条件；没有追加品饮观察、解释或器材要求。初次失败未在本次输出重现。",
+          "violations": []
+        },
+        {
+          "entry": "START.md",
+          "id": "E03",
+          "status": "pass",
+          "reason": "只给有出处的吉尼斯起源故事，保留官方回顾性质，篇幅短且没有闻喝动作。",
+          "violations": []
+        },
+        {
+          "entry": "START.md",
+          "id": "E04",
+          "status": "pass",
+          "reason": "接受用户未闻到果香、只觉得苦及不喜欢，明确不必继续饮用，没有重新找答案。",
+          "violations": []
+        },
+        {
+          "entry": "START.md",
+          "id": "E05",
+          "status": "pass",
+          "reason": "用有出处、明确归属酒厂的名字和角色故事介绍 Happy Hops；没有品饮动作或含酒精推荐。",
+          "violations": []
+        },
+        {
+          "entry": "PROMPT.md",
+          "id": "E01",
+          "status": "pass",
+          "reason": "以一个闻与入口对照回应体验请求，厂商果香描述与用户实际感觉分开；解释简短、没有只讲历史。",
+          "violations": []
+        },
+        {
+          "entry": "PROMPT.md",
+          "id": "E02",
+          "status": "pass",
+          "reason": "只回答可以直接对罐喝，未追加教学或要求器材。",
+          "violations": []
+        },
+        {
+          "entry": "PROMPT.md",
+          "id": "E03",
+          "status": "pass",
+          "reason": "短故事保留官方自述及链接，没有额外品饮动作或新的无据情节。",
+          "violations": []
+        },
+        {
+          "entry": "PROMPT.md",
+          "id": "E04",
+          "status": "pass",
+          "reason": "完整接受苦感和不合口味，明确不用为了找到果香继续勉强饮用。",
+          "violations": []
+        },
+        {
+          "entry": "PROMPT.md",
+          "id": "E05",
+          "status": "pass",
+          "reason": "给出带酒厂自述限定的文化故事，没有引导不饮酒且开车的用户闻尝或选酒。",
+          "violations": []
+        }
+      ],
+      "summary": {
+        "total": 10,
+        "pass": 10,
+        "partial": 0,
+        "fail": 0,
+        "by_entry": [
+          {
+            "entry": "START.md",
+            "total": 5,
+            "pass": 5,
+            "partial": 0,
+            "fail": 0
+          },
+          {
+            "entry": "PROMPT.md",
+            "total": 5,
+            "pass": 5,
+            "partial": 0,
+            "fail": 0
+          }
+        ]
+      },
+      "regression_conclusion": "服务问题不追加品饮教学的原失败在本次 START E02 定向复测中通过；同入口另外四项与 PROMPT 五项均满足原标准。本次结果不能保证以后每次输出稳定相同。",
+      "limitations": [
+        "仅针对修改后的 START.md 与 PROMPT.md 各五个入口案例回归，不是全部 22 个核心文本案例重跑，也没有重新运行图片案例。",
+        "两份新入口输出分别由 fresh-context Agent 顺序生成五例；每例不是独立新会话，也不是多次重复试验。",
+        "入口文件读取仍是代理测试，未在实际宿主安装后验证；没有真人离屏复述、饮用体验、听众接话或喜好改变数据。",
+        "具体模型版本记录为 unknown。评分者参与过静态审查、知道修复目标；不是盲法真人评审。",
+        "初次结果与此次回归分别保留；不把初次失败擦除，也不把合并计数解释为总体成功率。"
+      ],
+      "minor_notes_outside_scoring": []
+    }
+  },
+  "final_source_sha256": {
+    "SKILL.md": "881662f0fae1849bc066a917c531ec8b328c1f85f4f105f64f1edd475bacda2a",
+    "references/phrases.md": "46af819bcaaf1d663602e2b4b22007a6561031cdbbd769ff341f3e6b1e34338f",
+    "references/principles.md": "77d1e3828d02924490cc7ba772bd46ffb3a1f63a134d9a8a73d22b5365bb4ec8",
+    "references/service.md": "a48d4b36f4f49c403d3796d6a0beee3ff7337c2ebe933cab28554597be407939",
+    "references/stories.md": "db7c8d2cec8878c809d2849cbedd0f05aa9e8339d3f57e9665df84ba90af0301",
+    "references/styles.md": "21dcdae0c84bff8729f0fc08e68fc262f8ff2192df8e1ad96bc7697b5efbee8a",
+    "references/tasting.md": "1e1b5c453de0280a79291d0c625db92c93f11830cab198fe45764f67aaef5923",
+    "templates/outputs.md": "42b67d6f862a12bf0143ca0e4cabffead20acc5d1a7c86fee45355d8b0c7c7b0"
+  },
+  "limitations": [
+    "Each entry run uses a fresh Agent, but its five cases are sequential, not five independent sessions.",
+    "Only one private photograph was actually inspected. Its pixels and local path are not published. The image test precedes the final service-stop wording change and was not repeated.",
+    "Entry tests read files with an Agent; they are not real ChatGPT/Claude/Codex installation or phone UI tests.",
+    "No human retelling, listener willingness, sensory enjoyment or causal effect was tested. Exact runtime model is unknown.",
+    "The first-round failure remains visible. Final entry retests do not constitute a rerun of the entire text/image suite."
+  ]
+}
