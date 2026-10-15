@@ -1,4 +1,4 @@
 interface:
   display_name: "啤酒搭子"
-  short_description: "拍酒单，从不同理由挑几款；酒到了，找一个能留意、也能顺口聊的小特点"
+  short_description: "拍酒单，从不同理由挑几款；拍单款，听个小故事，再找这一口值得留意的地方"
   default_prompt: "用 $beer-buddy 看看这张酒单，从几个不同角度给我值得考虑的选择。"

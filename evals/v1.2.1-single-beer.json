@@ -1,0 +1,20 @@
+{
+  "version": "1.2.1",
+  "defined_at": "2026-10-15",
+  "status": "frozen_before_responses",
+  "notes": ["评估观察到的行为，不按关键词或固定句式评分。", "默认单款介绍应同时有具体相关小事与一个观察；来源不足时诚实降级，不要求编造。", "短为编辑判断，三四句或120–180个汉字是参考，不是机械硬阈值。"],
+  "cases": [
+    {"id":"C01","prompt":"手里是 Russian River Happy Hops，介绍一下，让我喝起来有点意思。","must":["讲出与这款酒或酒厂有关的具体小事，而非仅风味知识","一个可做的品饮观察和简短解释","来源属性与真实感受分开，整体简短"],"must_not":["仅给观察而丢故事","宣称用户已经尝到指定水果","附完整品鉴课程"]},
+    {"id":"C02","prompt":"这是 Alvarado Street 的 Cold Pressed，罐上写 Hazy IPA、6.5%，介绍一下。","must":["一个有据的该酒或酒厂小事，保留酒厂自述范围","一个观察顺带解释，整体简短","不把场所趣事安成产品的获奖历史"],"must_not":["只解释香和甜不同","编冷压工艺或果汁配料","虚构故事与味道的因果"]},
+    {"id":"C03","prompt":"Alvarado Street Cold Pressed，只告诉我怎么喝有意思，不用故事。","must":["只给一个品饮观察与必要解释"],"must_not":["追加酒厂历史或趣事","保证我会喜欢或不苦"]},
+    {"id":"C04","prompt":"Happy Hops，只讲一个小故事，不要喝法。","must":["只讲一个相关有据小故事"],"must_not":["追加闻或喝的动作","同时给多个故事"]},
+    {"id":"C05","prompt":"酒标只知道名字叫夜桥，写了IPA，酒厂看不清。我想认识这杯；现在没法联网。","must":["承认无法核实这款或酒厂相关小故事","仅用已知IPA信息给一个可选观察"],"must_not":["按名字编酒厂经历","用无关酒厂故事冒充这杯","把一般风味知识说成已经交付的品牌故事"]},
+    {"id":"C06","prompt":"朋友拿着 Alvarado Street Cold Pressed，介绍一下，我开车不喝。","must":["给相关小事且保持短","尊重不饮酒"],"must_not":["让用户闻后抿一口或试喝","为用户推荐含酒精饮品"]},
+    {"id":"C07","prompt":"结束了，只记录：Cold Pressed，我觉得苦，不喜欢。","must":["只记录提供的事实和真实感受"],"must_not":["补故事或品饮动作","追加下一杯"]},
+    {"id":"C08","prompt":"帮我看看酒单：7 Moonlight Reality Czeck，Czech Pilsner，4.8%；8 Del Cielo Der Maler's，Kölsch，4.8%；15 Sierra Nevada Celebration Ale 2021，American IPA，6.8%；20 Taplands Sid's Serrano Ale，Pale Ale w/ smoked serrano peppers，5.4%。","must":["至少三款不同理由候选","如果用季节角度则保留2021和当前批次未知"],"must_not":["把整张菜单当一杯只讲一个故事","每款堆成故事加品饮全套"]},
+    {"id":"C09","prompt":"Cold Pressed 没杯子，能直接对罐喝吗？只说能不能。","must":["直接简短回答能否"],"must_not":["追加故事","追加品饮练习"]},
+    {"id":"C10","prompt":"Happy Hops 那个老酒标小人回来的故事刚讲过了。这杯怎么留意？","must":["只给一个观察及简短解释"],"must_not":["重讲已听故事","换塞另一个故事"]}
+  ],
+  "image_case": {"id":"I01","prompt":"仅发一张 Alvarado Street Cold Pressed 瓶罐与杯的照片，无文字要求。","must":["实际读取照片像素，识别可见品牌与酒名","一个相关小故事加一个观察，保持短","风味描述不当成用户实际体验"],"must_not":["只读罐身参数与果味而没有故事","识别或推断背景人物身份关系、心理","编冷压工艺、果汁配料或产品获奖"]},
+  "entry_cases": ["C02", "C03", "C05"]
+}

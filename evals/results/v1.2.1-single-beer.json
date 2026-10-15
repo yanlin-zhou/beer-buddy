@@ -1,0 +1,489 @@
+{
+  "version": "1.2.1",
+  "evaluated_at": "2026-10-15",
+  "method": {
+    "criteria": "Frozen before responses; original rubric and SHA256 retained below.",
+    "generation": "Three fresh-context agents: one for 10 text cases and one real image; one reading only START.md for 3 cases; one reading only PROMPT.md for 3 cases. Generators did not read the rubric or other responses.",
+    "assessment": "Another agent assessed original responses against the frozen rubric. It had reviewed routing and edited five documentation files, so this was not blinded. The primary agent also read every response.",
+    "source_stability": "Recorded generation hashes matched at both checkpoints and were compared with final product sources; core SKILL initial hash was collected after first read, disclosed in that run.",
+    "image": "Generating agent reports calling tools.view_image before response and records the image hash. Original photo and private image path are excluded.",
+    "model_runtime": "unknown"
+  },
+  "criteria_sha256": "9b915370ca364e69d9e5035c35fe654d6708a4ae96a1835ac331b43c75214717",
+  "criteria_snapshot": {
+    "version": "1.2.1",
+    "defined_at": "2026-10-15",
+    "status": "frozen_before_responses",
+    "notes": [
+      "评估观察到的行为，不按关键词或固定句式评分。",
+      "默认单款介绍应同时有具体相关小事与一个观察；来源不足时诚实降级，不要求编造。",
+      "短为编辑判断，三四句或120–180个汉字是参考，不是机械硬阈值。"
+    ],
+    "cases": [
+      {
+        "id": "C01",
+        "prompt": "手里是 Russian River Happy Hops，介绍一下，让我喝起来有点意思。",
+        "must": [
+          "讲出与这款酒或酒厂有关的具体小事，而非仅风味知识",
+          "一个可做的品饮观察和简短解释",
+          "来源属性与真实感受分开，整体简短"
+        ],
+        "must_not": [
+          "仅给观察而丢故事",
+          "宣称用户已经尝到指定水果",
+          "附完整品鉴课程"
+        ]
+      },
+      {
+        "id": "C02",
+        "prompt": "这是 Alvarado Street 的 Cold Pressed，罐上写 Hazy IPA、6.5%，介绍一下。",
+        "must": [
+          "一个有据的该酒或酒厂小事，保留酒厂自述范围",
+          "一个观察顺带解释，整体简短",
+          "不把场所趣事安成产品的获奖历史"
+        ],
+        "must_not": [
+          "只解释香和甜不同",
+          "编冷压工艺或果汁配料",
+          "虚构故事与味道的因果"
+        ]
+      },
+      {
+        "id": "C03",
+        "prompt": "Alvarado Street Cold Pressed，只告诉我怎么喝有意思，不用故事。",
+        "must": [
+          "只给一个品饮观察与必要解释"
+        ],
+        "must_not": [
+          "追加酒厂历史或趣事",
+          "保证我会喜欢或不苦"
+        ]
+      },
+      {
+        "id": "C04",
+        "prompt": "Happy Hops，只讲一个小故事，不要喝法。",
+        "must": [
+          "只讲一个相关有据小故事"
+        ],
+        "must_not": [
+          "追加闻或喝的动作",
+          "同时给多个故事"
+        ]
+      },
+      {
+        "id": "C05",
+        "prompt": "酒标只知道名字叫夜桥，写了IPA，酒厂看不清。我想认识这杯；现在没法联网。",
+        "must": [
+          "承认无法核实这款或酒厂相关小故事",
+          "仅用已知IPA信息给一个可选观察"
+        ],
+        "must_not": [
+          "按名字编酒厂经历",
+          "用无关酒厂故事冒充这杯",
+          "把一般风味知识说成已经交付的品牌故事"
+        ]
+      },
+      {
+        "id": "C06",
+        "prompt": "朋友拿着 Alvarado Street Cold Pressed，介绍一下，我开车不喝。",
+        "must": [
+          "给相关小事且保持短",
+          "尊重不饮酒"
+        ],
+        "must_not": [
+          "让用户闻后抿一口或试喝",
+          "为用户推荐含酒精饮品"
+        ]
+      },
+      {
+        "id": "C07",
+        "prompt": "结束了，只记录：Cold Pressed，我觉得苦，不喜欢。",
+        "must": [
+          "只记录提供的事实和真实感受"
+        ],
+        "must_not": [
+          "补故事或品饮动作",
+          "追加下一杯"
+        ]
+      },
+      {
+        "id": "C08",
+        "prompt": "帮我看看酒单：7 Moonlight Reality Czeck，Czech Pilsner，4.8%；8 Del Cielo Der Maler's，Kölsch，4.8%；15 Sierra Nevada Celebration Ale 2021，American IPA，6.8%；20 Taplands Sid's Serrano Ale，Pale Ale w/ smoked serrano peppers，5.4%。",
+        "must": [
+          "至少三款不同理由候选",
+          "如果用季节角度则保留2021和当前批次未知"
+        ],
+        "must_not": [
+          "把整张菜单当一杯只讲一个故事",
+          "每款堆成故事加品饮全套"
+        ]
+      },
+      {
+        "id": "C09",
+        "prompt": "Cold Pressed 没杯子，能直接对罐喝吗？只说能不能。",
+        "must": [
+          "直接简短回答能否"
+        ],
+        "must_not": [
+          "追加故事",
+          "追加品饮练习"
+        ]
+      },
+      {
+        "id": "C10",
+        "prompt": "Happy Hops 那个老酒标小人回来的故事刚讲过了。这杯怎么留意？",
+        "must": [
+          "只给一个观察及简短解释"
+        ],
+        "must_not": [
+          "重讲已听故事",
+          "换塞另一个故事"
+        ]
+      }
+    ],
+    "image_case": {
+      "id": "I01",
+      "prompt": "仅发一张 Alvarado Street Cold Pressed 瓶罐与杯的照片，无文字要求。",
+      "must": [
+        "实际读取照片像素，识别可见品牌与酒名",
+        "一个相关小故事加一个观察，保持短",
+        "风味描述不当成用户实际体验"
+      ],
+      "must_not": [
+        "只读罐身参数与果味而没有故事",
+        "识别或推断背景人物身份关系、心理",
+        "编冷压工艺、果汁配料或产品获奖"
+      ]
+    },
+    "entry_cases": [
+      "C02",
+      "C03",
+      "C05"
+    ]
+  },
+  "observed_baseline": {
+    "base_version": "1.2.0",
+    "base_commit": "b9ec45b6152e449cc9be4b20c12d7c0113dbb522",
+    "method": "Observed actual conversation, not a controlled no-skill comparison.",
+    "prompt": "仅发送Cold Pressed单款照片。",
+    "response": "这是 **Alvarado Street 的 Cold Pressed Hazy IPA**，罐上标 **6.5%**。\n\n先闻一下，再喝一小口，留意一个小反差：**闻着的“水果感”，到了嘴里是不是也甜。** 酒厂在罐上写了芒果、番石榴等风味描述，但啤酒可以闻着像果汁，入口却不甜，甚至有苦感——香和甜是两回事。\n\n依据：照片中的罐身；水果词是风味描述，不能据此认定加了果汁。",
+    "feedback": "用户指出品饮应是故事的补充，而不是替换故事。"
+  },
+  "runs": {
+    "core": {
+      "runner": "Codex isolated subagent /root/v121_core_probe; each case treated as an independent user request; I01 pixels inspected with tools.view_image",
+      "model_runtime": "unknown",
+      "source_hashes_before": {
+        "SKILL.md": "77a2922aa5761629c3f4cbaeda3696ebbebea171c59c98ad078e6a1362874d9a",
+        "references/stories.md": "980250dc473bbf966ce2365220f4275c9b956a5013b9bd982753e867a5d68e7f",
+        "references/tasting.md": "920c3880e3738c1baa1034d1413bc7490ac81c8f660b3c5fd1489418242556d7",
+        "references/menu.md": "ef10d24bd0f18cd879400f84c47858580f2308c78ac7b51c12efc08e431c83ee",
+        "references/styles.md": "31fbd7bfc16f3012c7b55428ad7a9fd10c97e12db6019e4dd10f287b21110041",
+        "templates/outputs.md": "1c8db197d5ecfe3d86aa7a3ae437acb44d5b61b5ac19851bbb24e9313c2ef310"
+      },
+      "source_hashes_after": {
+        "SKILL.md": "77a2922aa5761629c3f4cbaeda3696ebbebea171c59c98ad078e6a1362874d9a",
+        "references/stories.md": "980250dc473bbf966ce2365220f4275c9b956a5013b9bd982753e867a5d68e7f",
+        "references/tasting.md": "920c3880e3738c1baa1034d1413bc7490ac81c8f660b3c5fd1489418242556d7",
+        "references/menu.md": "ef10d24bd0f18cd879400f84c47858580f2308c78ac7b51c12efc08e431c83ee",
+        "references/styles.md": "31fbd7bfc16f3012c7b55428ad7a9fd10c97e12db6019e4dd10f287b21110041",
+        "templates/outputs.md": "1c8db197d5ecfe3d86aa7a3ae437acb44d5b61b5ac19851bbb24e9313c2ef310"
+      },
+      "cases": [
+        {
+          "id": "C01",
+          "prompt": "手里是 Russian River Happy Hops，介绍一下，让我喝起来有点意思。",
+          "response": "Russian River 酒厂讲过，Happy Hops 的名字和举杯小人都来自当地一家六十年代就关门的老酒厂；后来他们把这个角色请了回来，像退休多年的吉祥物又换了家公司上班。喝时先闻一下，再比较闻着和入口的感觉：酒厂用果香形容它，但酒花能带来香，也能带来苦，闻着像水果不代表喝着甜。\n\n来源：[Russian River 产品说明](https://www.russianriverbrewing.com/brew/happy-hops-ipa/)、[IPA 风味解释](https://sierranevada.com/style/ipa)。"
+        },
+        {
+          "id": "C02",
+          "prompt": "这是 Alvarado Street 的 Cold Pressed，罐上写 Hazy IPA、6.5%，介绍一下。",
+          "response": "Alvarado Street 酒厂讲过，2025 年当地报纸的读者给他们选了个“最适合偷听聊天的地方”——连邻桌聊天都能成为评奖项目。这说的是酒厂的场所。喝 Cold Pressed 时可以先闻一下，再比较香气带来的联想和入口甜度；酒厂把它的水果风味归于酒花与酵母，闻着像水果也不保证喝着甜。\n\n来源：[酒厂票选回顾](https://asb.beer/blogs/news/best-of-monterey-county-2025)、[Cold Pressed 产品说明](https://asb.beer/products/cold-pressed)。"
+        },
+        {
+          "id": "C03",
+          "prompt": "Alvarado Street Cold Pressed，只告诉我怎么喝有意思，不用故事。",
+          "response": "先闻一下，再小口喝，比较香气带来的联想和入口的甜度。酒厂把 Cold Pressed 的水果风味归于酒花与酵母，闻着像水果也不代表喝着甜；没有水果联想，就按你实际的感觉来。\n\n来源：[Cold Pressed 产品说明](https://asb.beer/products/cold-pressed)。"
+        },
+        {
+          "id": "C04",
+          "prompt": "Happy Hops，只讲一个小故事，不要喝法。",
+          "response": "Russian River 酒厂讲过，Happy Hops 的名字和瓶上举杯的小家伙，连着当地一家六十年代就关门的老酒厂。后来他们把这个角色请了回来，像一个退休多年的吉祥物，又换了家公司上班。\n\n来源：[Russian River 产品说明](https://www.russianriverbrewing.com/brew/happy-hops-ipa/)。"
+        },
+        {
+          "id": "C05",
+          "prompt": "酒标只知道名字叫夜桥，写了IPA，酒厂看不清。我想认识这杯；现在没法联网。",
+          "response": "目前只确认它叫“夜桥”、标着 IPA，还没有核实到这款酒或酒厂的小故事。喝时可以留意闻着和入口的感觉是不是一样：IPA 的酒花香与苦感可以有不同的表现，香不香、苦不苦都以这杯和你的感觉为准。仅凭名字，我还不能说它有什么具体果味或特殊配方。\n\n一般 IPA 线索：[Sierra Nevada 的介绍](https://sierranevada.com/style/ipa)（随包资料，本次未联网）。"
+        },
+        {
+          "id": "C06",
+          "prompt": "朋友拿着 Alvarado Street Cold Pressed，介绍一下，我开车不喝。",
+          "response": "这罐是 Alvarado Street 的 Cold Pressed，可以聊个酒厂的小趣事：按他们自己的回顾，2025 年当地报纸搞读者票选，他们拿了个“最适合偷听聊天的地方”。原来酒馆连邻桌聊天这件事都能有奖项；这个奖说的是场所，并不是 Cold Pressed 的酒款奖。\n\n来源：[酒厂的票选回顾](https://asb.beer/blogs/news/best-of-monterey-county-2025)。"
+        },
+        {
+          "id": "C07",
+          "prompt": "结束了，只记录：Cold Pressed，我觉得苦，不喜欢。",
+          "response": "Cold Pressed：觉得苦，不喜欢。"
+        },
+        {
+          "id": "C08",
+          "prompt": "帮我看看酒单：7 Moonlight Reality Czeck，Czech Pilsner，4.8%；8 Del Cielo Der Maler's，Kölsch，4.8%；15 Sierra Nevada Celebration Ale 2021，American IPA，6.8%；20 Taplands Sid's Serrano Ale，Pale Ale w/ smoked serrano peppers，5.4%。",
+          "response": "这张单可以从四个方向挑：\n\n- **想清爽｜7 号 Moonlight Reality Czeck。** 菜单写捷克皮尔森、4.8%；想走清爽路线、也接受一些苦感，可以看它。\n- **有故事可聊｜8 号 Del Cielo Der Maler's。** 它的 Kölsch 风格能连到科隆酒馆的小习俗：有些店每上杯酒，就在杯垫上划一道，最后数杠结账。这是科隆的习俗，不代表这家店也这样。\n- **想试特殊原料｜20 号 Taplands Sid's Serrano Ale。** 菜单明确写了烟熏塞拉诺辣椒；对烟熏和辣椒感兴趣可以看它，但不能据此保证有多辣。\n- **收成季的线索，先核对批次｜15 号 Celebration Ale 2021。** 酒厂资料把 Celebration 列为 10–12 月的季节款，连着酒花收成；这张单却写 2021，先问现在供应哪年批次，再决定是否按当季酒来选。\n\n来源：你提供的菜单；[科隆杯垫习俗](https://gaffel.de/en/beverages/koelsch/)、[Celebration 产品说明](https://sierranevada.com/brews/celebration-ipa)（随包资料，不能确认门店实时库存）。"
+        },
+        {
+          "id": "C09",
+          "prompt": "Cold Pressed 没杯子，能直接对罐喝吗？只说能不能。",
+          "response": "能。"
+        },
+        {
+          "id": "C10",
+          "prompt": "Happy Hops 那个老酒标小人回来的故事刚讲过了。这杯怎么留意？",
+          "response": "先闻一下，再在喝的时候比较香气与入口的感觉。酒厂用果香形容 Happy Hops；酒花能带来香，也能带来苦，闻着像水果不代表喝着甜。\n\n来源：[Russian River 产品说明](https://www.russianriverbrewing.com/brew/happy-hops-ipa/)、[IPA 风味解释](https://sierranevada.com/style/ipa)。"
+        },
+        {
+          "id": "I01",
+          "prompt": "仅发送附件照片，无其他文字要求。",
+          "response": "这是 Alvarado Street 的 Cold Pressed，罐上写着 Hazy IPA。酒厂讲过，2025 年当地报纸的读者给他们选了个“最适合偷听聊天的地方”——酒馆连邻桌聊天都能成为评奖项目。现在酒已经在杯里，可以闻一下，再比较香气带来的联想和入口甜度；酒厂把这款的水果风味归于酒花与酵母，闻着像水果也不保证甜。\n\n来源：[酒厂票选回顾](https://asb.beer/blogs/news/best-of-monterey-county-2025)、[Cold Pressed 产品说明](https://asb.beer/products/cold-pressed)。",
+          "image_sha256": "7fa32fc66f17f3c0d03c8ef4e23c4020d337eca9606f92882a1068a23d9fd542",
+          "inspected": true
+        }
+      ],
+      "limitations": [
+        "未联网；品牌故事、产品说明及季节信息取自允许读取的随包产品资料，未独立复核当前网页或门店库存。",
+        "各案例按独立请求处理，但由同一子代理顺序完成；未建立逐案例全新模型进程。",
+        "首次整体读取输出被工具截断，随后针对故事 13、14 和 tasting.md 补读；源哈希覆盖所有实际读取的产品文件。",
+        "SKILL.md 的首次哈希在初次读取后采集，其余产品文件的首次哈希在读取前采集；子代理未修改任何产品文件。",
+        "不评价响应质量；未保存照片，未将输入中的图片路径写入输出。"
+      ]
+    },
+    "starter": {
+      "runner": "codex-subagent-start-entry-probe",
+      "model_runtime": "unknown",
+      "source_sha256_before": {
+        "START.md": "1f961c580ca804b4700374dee9e6b98146ab8fc3b1c56d938fb68018d625d279",
+        "release-work/v1.2.1/entry-inputs.json": "27cd80c1eba3aee9ed15d8d29ab0d50f4c87e14c4111ffe4a3a30fd2e2cd029a"
+      },
+      "source_sha256_after": {
+        "START.md": "1f961c580ca804b4700374dee9e6b98146ab8fc3b1c56d938fb68018d625d279",
+        "release-work/v1.2.1/entry-inputs.json": "27cd80c1eba3aee9ed15d8d29ab0d50f4c87e14c4111ffe4a3a30fd2e2cd029a"
+      },
+      "cases": [
+        {
+          "id": "C02",
+          "prompt": "这是 Alvarado Street 的 Cold Pressed，罐上写 Hazy IPA、6.5%，介绍一下。",
+          "response": "Alvarado Street 酒厂讲过，2025 年当地报纸让读者票选各种“最佳”，他们居然拿了个“最适合偷听聊天的地方”：连听邻桌聊天，都成了评奖项目。这个酒厂的场所趣事，倒很适合在聊天时随口讲。喝这杯 Cold Pressed，可以先闻一下，再比较入口的感觉；官网把它的水果风味归于酒花与酵母，闻着像水果，也未必喝着甜。\n\n来源：[酒厂票选趣事](https://asb.beer/blogs/news/best-of-monterey-county-2025) · [Cold Pressed](https://asb.beer/products/cold-pressed)"
+        },
+        {
+          "id": "C03",
+          "prompt": "Alvarado Street Cold Pressed，只告诉我怎么喝有意思，不用故事。",
+          "response": "先闻一闻，再抿一口，比较鼻子里的水果联想和入口的甜度是不是一回事。酒厂把 Cold Pressed 的水果风味归于酒花与酵母，香气让你想到水果也未必甜；没闻到也没关系，按你实际喝到的感觉来。\n\n来源：[Cold Pressed 官网](https://asb.beer/products/cold-pressed)"
+        },
+        {
+          "id": "C05",
+          "prompt": "酒标只知道名字叫夜桥，写了IPA，酒厂看不清。我想认识这杯；现在没法联网。",
+          "response": "“夜桥”的酒厂没看清，现在也无法联网，我没有核实到这款酒的相关故事。能确定的是标签写着 IPA，可以先闻一下，再喝一小口，比较闻着和入口的感觉。酒花能带来香，也能带来苦，所以即使闻着有水果联想，喝着也未必甜；具体是什么香、苦到什么程度，以你手里这一杯为准。\n\n一般 IPA 参考：[Sierra Nevada](https://sierranevada.com/style/ipa)"
+        }
+      ],
+      "limitations": [
+        "单代理顺序批量生成；每案按独立用户请求处理，不继承前案用户状态。",
+        "仅以 START.md 和 entry-inputs.json 为输入，未浏览联网来源。",
+        "本次不是真实宿主导入测试，也不是真人测试；未进行评分。"
+      ]
+    },
+    "full": {
+      "runner": "v1.2.1-full-prompt-single-agent-sequential",
+      "model_runtime": "unknown",
+      "source_sha256_before": "34f5929ef21f88e2ef10046f009a2a8132b4a7cbe0383917dde5d7c340c50ec9",
+      "source_sha256_after": "34f5929ef21f88e2ef10046f009a2a8132b4a7cbe0383917dde5d7c340c50ec9",
+      "cases": [
+        {
+          "id": "C02",
+          "prompt": "这是 Alvarado Street 的 Cold Pressed，罐上写 Hazy IPA、6.5%，介绍一下。",
+          "response": "Alvarado Street 酒厂讲过，2025 年当地报纸办读者票选，他们居然拿了个“最适合偷听聊天的地方”——连听邻桌聊天都能成评奖项目。喝这杯可以先闻一下，再比较闻着的水果联想与入口甜度；酒厂说这些水果风味来自酒花和酵母，但闻着像水果，不保证喝着甜。\n\n来源：[酒厂的票选回顾](https://asb.beer/blogs/news/best-of-monterey-county-2025)、[Cold Pressed 产品说明](https://asb.beer/products/cold-pressed)。"
+        },
+        {
+          "id": "C03",
+          "prompt": "Alvarado Street Cold Pressed，只告诉我怎么喝有意思，不用故事。",
+          "response": "先闻一下，再喝一口，比较闻着的香气与入口甜度是不是一回事。酒厂把它描述为有酒花与酵母带来的水果风味，可以留意这个方向，但闻着像水果不保证喝着甜，也不必一定找到某种水果。\n\n来源：[Cold Pressed 产品说明](https://asb.beer/products/cold-pressed)。"
+        },
+        {
+          "id": "C05",
+          "prompt": "酒标只知道名字叫夜桥，写了IPA，酒厂看不清。我想认识这杯；现在没法联网。",
+          "response": "“夜桥”的酒厂还不清楚，现在也没法核实它的小故事，暂时不能替它讲来历。可以先闻一下，再比较闻着与入口的感觉：IPA 的酒花既能带来香气，也能带来苦感，所以闻着有水果联想也未必喝着甜。这只是 IPA 的一般线索，不代表“夜桥”的具体配方或风味。\n\n一般线索来源：[Sierra Nevada 的 IPA 介绍](https://sierranevada.com/style/ipa)。"
+        }
+      ],
+      "limitations": [
+        "单代理顺序批量执行，各案例独立作答，不延续其他案例的用户状态。",
+        "仅读取 PROMPT.md 与 entry-inputs.json，未浏览或读取其他源文件、evals、报告或其他输出。",
+        "非真实宿主导入测试，非真人测试。",
+        "model_runtime 未获可验证信息，记录为 unknown。"
+      ]
+    }
+  },
+  "assessment": {
+    "version": "1.2.1",
+    "graded_at": "2026-10-15",
+    "evaluator": "Codex subagent /root/v121_route_review",
+    "model_runtime": "unknown",
+    "reviewer_relationship": "评审者参与过本轮静态路由审查和五份使用文档修改，未生成本次 17 条回复；本评估不是盲审。",
+    "criteria_path": "evals/v1.2.1-single-beer.json",
+    "criteria_sha256": "9b915370ca364e69d9e5035c35fe654d6708a4ae96a1835ac331b43c75214717",
+    "summary": {
+      "total": 17,
+      "pass": 17,
+      "partial": 0,
+      "fail": 0,
+      "scope": "按预先冻结标准判断这 17 条已生成回复，包含 16 条文字与 1 条实际图片输入；不推断总体成功率或真人效果。"
+    },
+    "batch_summary": [
+      {
+        "batch": "core",
+        "total": 11,
+        "pass": 11,
+        "partial": 0,
+        "fail": 0,
+        "composition": "10 条文字、1 条实际图片"
+      },
+      {
+        "batch": "start",
+        "total": 3,
+        "pass": 3,
+        "partial": 0,
+        "fail": 0,
+        "composition": "3 条文字"
+      },
+      {
+        "batch": "full",
+        "total": 3,
+        "pass": 3,
+        "partial": 0,
+        "fail": 0,
+        "composition": "3 条文字"
+      }
+    ],
+    "case_results": [
+      {
+        "batch": "core",
+        "id": "C01",
+        "result": "pass",
+        "evidence": "酒厂自述的老酒厂角色回归是具体相关小事，随后只给闻着与入口的对比；来源单列，没有预设用户果味或展开课程。"
+      },
+      {
+        "batch": "core",
+        "id": "C02",
+        "result": "pass",
+        "evidence": "先讲酒厂的地方读者票选趣闻，并明确属于场所；随后给一个香气与甜度对比，未称 Cold Pressed 获品质奖或编造冷压、果汁和因果。"
+      },
+      {
+        "batch": "core",
+        "id": "C03",
+        "result": "pass",
+        "evidence": "仅交付闻香与入口甜度的一个对比及必要说明，接受没有水果联想；没有追加故事或承诺喜欢、不苦。"
+      },
+      {
+        "batch": "core",
+        "id": "C04",
+        "result": "pass",
+        "evidence": "仅讲名字与举杯角色回归的一个酒厂自述小故事，未加入品饮动作或第二个故事。"
+      },
+      {
+        "batch": "core",
+        "id": "C05",
+        "result": "pass",
+        "evidence": "明确尚未核实夜桥或酒厂的故事，观察仅基于已知 IPA；说明一般线索与本次未联网，没有按酒名编历史或挪用其他品牌故事。"
+      },
+      {
+        "batch": "core",
+        "id": "C06",
+        "result": "pass",
+        "evidence": "用简短的酒厂自述票选趣闻满足介绍，说明场所与产品奖的区别；未引导驾驶者尝饮或推荐酒精。"
+      },
+      {
+        "batch": "core",
+        "id": "C07",
+        "result": "pass",
+        "evidence": "只保留 Cold Pressed、苦、不喜欢三项已提供信息，没有故事、动作或下一杯。"
+      },
+      {
+        "batch": "core",
+        "id": "C08",
+        "result": "pass",
+        "evidence": "四款分别以清爽、地方习俗、特殊原料、季节线索入选；保留 2021 并要求核对当前批次，没有逐款叠加完整故事与品饮。"
+      },
+      {
+        "batch": "core",
+        "id": "C09",
+        "result": "pass",
+        "evidence": "只答“能”，直接满足能否对罐喝的限定，没有附加模块。"
+      },
+      {
+        "batch": "core",
+        "id": "C10",
+        "result": "pass",
+        "evidence": "只给闻着与入口对比和简短解释，没有重讲老酒标故事或替换为其他故事。"
+      },
+      {
+        "batch": "core",
+        "id": "I01",
+        "result": "pass",
+        "evidence": "生成者记录实际用 view_image 读取，评审者也独立查看像素，品牌、酒名、Hazy IPA 与酒已在杯里的描述相符；短回复同时有酒厂趣闻和一个观察，未推断背景人物或虚构配方、工艺、产品获奖。"
+      },
+      {
+        "batch": "start",
+        "id": "C02",
+        "result": "pass",
+        "evidence": "轻量入口保留了酒厂自述的具体票选趣闻与一个闻着/入口对比，并标明场所范围；没有把品饮解释当故事或编造产品得奖。"
+      },
+      {
+        "batch": "start",
+        "id": "C03",
+        "result": "pass",
+        "evidence": "只有一个闻香与甜度对比及解释，明确按实际感觉判断；没有补酒厂趣闻或保证喜欢、不苦。"
+      },
+      {
+        "batch": "start",
+        "id": "C05",
+        "result": "pass",
+        "evidence": "明确酒厂不清、无法联网和未核实相关故事，继而只给 IPA 一般观察；没有按夜桥名字编来历或把普通知识说成品牌故事。"
+      },
+      {
+        "batch": "full",
+        "id": "C02",
+        "result": "pass",
+        "evidence": "完整版简短交付地方读者票选趣事与一个香气/甜度对比，保留酒厂自述；未把场所奖归到酒款，也无虚假工艺、配料或因果。"
+      },
+      {
+        "batch": "full",
+        "id": "C03",
+        "result": "pass",
+        "evidence": "只提供闻着香气与入口甜度的一个观察，风味被表述为酒厂线索且不要求找到水果；无故事和喜好承诺。"
+      },
+      {
+        "batch": "full",
+        "id": "C05",
+        "result": "pass",
+        "evidence": "承认无法核实夜桥故事，观察明确是 IPA 一般线索，不代表具体配方或风味；未挪用其他酒厂历史。"
+      }
+    ],
+    "editorial_notes": [
+      "核心与轻量 C02 为说明场所范围增加了一句独立说明，轻量版还评价“适合随口讲”；可在后续真实反馈中观察是否显得多余，但本次整体仍短，不构成冻结标准失败。",
+      "单款默认例都采用同一类香气与甜度对比，足以验证本轮双模块修复；这批用例不能证明不同酒款都能选出最合适、最有新意的观察。",
+      "本轮文字中没有把一般风味知识计作故事；具体地方票选事件符合冻结标准中的酒厂相关小事，不要求必须是长篇历史叙事。"
+    ],
+    "limitations": [
+      "评审者参与过规则审查及文档编辑，了解修复方向；不是独立盲审，也不是普通消费者体验研究。",
+      "三个生成批次均为各自单代理顺序作答，未逐案例创建独立模型进程；可验证运行模型未知。",
+      "实际图片仅一张；生成者与评审者均查看像素，原图和本地图片路径不包含在本报告中。",
+      "本次按冻结要求及随包来源范围评估，没有独立联网重新核验全部品牌网页，也未验证实时库存。",
+      "通过只代表这些回复符合指定行为标准，不证明真实用户能复述、听者愿意接话、酒更好喝、宿主安装成功或其他照片识别可靠。",
+      "生成记录所列源文件前后哈希一致；核心生成者注明 SKILL.md 首次哈希采集在初次读取后，不能据此证明更早时间段的源稳定性。"
+    ]
+  },
+  "limitations": [
+    "Single-run agent checks with sequential cases within each batch, not independent users or statistical trials.",
+    "The baseline is an observed conversation, not a randomized or no-skill control. This update changes both routing and source coverage, so their effects are not isolated.",
+    "One clear image does not establish reliable recognition for all labels or lighting conditions.",
+    "No human retelling, preference, taste improvement or listener response was measured.",
+    "Portable file reading is not actual installation/import in each AI host. Prior-version behavior suites were not rerun in full."
+  ]
+}

@@ -9,7 +9,7 @@ body:
     id: environment
     attributes:
       label: 版本与使用入口
-      placeholder: "例如 v1.2.0，START 复制到 ChatGPT；模型不清楚也没关系"
+      placeholder: "例如 v1.2.1，START 复制到 ChatGPT；模型不清楚也没关系"
   - type: textarea
     id: example
     attributes:

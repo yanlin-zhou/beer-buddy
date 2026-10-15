@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0",
   "skill_name": "beer-buddy",
-  "skill_version": "1.2.0",
-  "verified_at": "2026-10-14",
+  "skill_version": "1.2.1",
+  "verified_at": "2026-10-15",
   "usage": {
     "selection": "先匹配已确认的酒名、包装或用户正在聊的主题，一次只选一条。没有品牌匹配时，只能明确说成另一个品牌的例子，不称眼前这杯就是它。",
     "delivery": "hook 是一句可停的开头；spoken 是可按需展开的完整说法，不必把两者重复念一遍。默认展示可直接说的内容，来源另放用户可看的底部。",
@@ -17,17 +17,31 @@
       "id": "happy-hops-returning-character",
       "title": "老酒标上的小家伙又回来了",
       "kind": "story",
-      "triggers": ["已确认 Russian River Happy Hops，用户问名字或酒标故事", "聊到老包装与吉祥物，明确作为另一品牌的例子"],
+      "triggers": [
+        "已确认 Russian River Happy Hops，用户问名字或酒标故事",
+        "聊到老包装与吉祥物，明确作为另一品牌的例子"
+      ],
       "hook": "酒厂说，Happy Hops 瓶上这个小家伙，是从当地老酒厂请回来的。",
       "spoken": "Russian River 酒厂讲过，Happy Hops 这个名字和瓶上举杯的小家伙，都连着当地一家六十年代就关门的老酒厂。后来他们把这个角色请了回来，像一个退休多年的吉祥物，又换了家公司上班。",
-      "memory_beats": ["老酒厂", "关门", "角色回来"],
+      "memory_beats": [
+        "老酒厂",
+        "关门",
+        "角色回来"
+      ],
       "optional_bridge": "有没有哪种老包装，是你一看就能认出来的？",
       "stop_rule": "到角色回来就停；已经听过故事又问怎么喝时，读 tasting.md，不再重复历史。",
-      "fact_core": ["Russian River 官网称 Happy Hops 原由 Santa Rosa 的 Grace Brothers Brewery 于 1944 年酿造。", "同页称旧酒厂于 1960 年代关闭，Russian River 向 Grace 家族致意，并复活 Happy 酒花形象。"],
+      "fact_core": [
+        "Russian River 官网称 Happy Hops 原由 Santa Rosa 的 Grace Brothers Brewery 于 1944 年酿造。",
+        "同页称旧酒厂于 1960 年代关闭，Russian River 向 Grace 家族致意，并复活 Happy 酒花形象。"
+      ],
       "source_url": "https://www.russianriverbrewing.com/brew/happy-hops-ipa/",
       "source_kind": "brand_self_report",
       "verified_at": "2026-10-14",
-      "caveats": ["品牌对自身与当地历史的回顾，不当作独立历史考证。", "退休与换公司是拟人比喻，不补角色年龄、雇佣关系或精确停用年数。", "不声称原配方复刻、两家是同一公司，也不据此推断眼前批次的参数与味道。"]
+      "caveats": [
+        "品牌对自身与当地历史的回顾，不当作独立历史考证。",
+        "退休与换公司是拟人比喻，不补角色年龄、雇佣关系或精确停用年数。",
+        "不声称原配方复刻、两家是同一公司，也不据此推断眼前批次的参数与味道。"
+      ]
     },
     {
       "id": "guinness-records-origin",
@@ -411,6 +425,36 @@
         "若用户要确认眼前酒有没有香蕉，须另看具体配料表或酒厂说明，不能仅凭香气或风格下结论。",
         "不代替用户说我闻到了，不把香蕉香讲成所有人必须闻出的标准答案。",
         "这是香气趣闻，适合用户已经好奇时使用；只说苦、一般或不喜欢时，先尊重其真实评价，不自动插入科普。"
+      ]
+    },
+    {
+      "id": "alvarado-unexpected-reader-award",
+      "title": "一个意外的读者票选奖",
+      "kind": "observation",
+      "triggers": [
+        "已确认 Alvarado Street，包括 Cold Pressed；用户拍单款酒、泛问介绍或要酒厂小故事",
+        "聊酒馆生活时，明确作为这家酒厂的例子"
+      ],
+      "hook": "Alvarado Street 酒厂讲过，他们得过一个“最适合偷听聊天的地方”的读者票选奖。",
+      "spoken": "Alvarado Street 酒厂讲过，2025 年当地报纸让读者票选各种“最佳”，他们居然拿了个“最适合偷听聊天的地方”。喝啤酒的地方，连听邻桌聊天都能成评奖项目。",
+      "memory_beats": [
+        "当地票选",
+        "奇特奖项",
+        "邻桌聊天"
+      ],
+      "optional_bridge": "你见过什么让人意外的评奖项目？",
+      "stop_rule": "到奇特奖项就停，不编邻桌聊了什么；泛介绍时可紧接一个品饮观察，明确只要故事时不加。",
+      "fact_core": [
+        "酒厂官网回顾 Monterey County Weekly 的2025年读者票选，列出 Best Place to Eavesdrop。",
+        "这是酒厂／场所相关趣事，不是 Cold Pressed 获得啤酒品质奖。"
+      ],
+      "source_url": "https://asb.beer/blogs/news/best-of-monterey-county-2025",
+      "source_kind": "brand_self_report",
+      "verified_at": "2026-10-15",
+      "caveats": [
+        "保留酒厂自述和地方读者票选范围，不扩写为全国奖或客观品质排名。",
+        "偷听聊天是奖项名称的口语翻译，不补写偷录、具体谈话或投票动机，也不建议用户窃听私人谈话。",
+        "这个场所奖不解释酒的味道；不说 Cold Pressed 得了这个奖。"
       ]
     }
   ]

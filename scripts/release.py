@@ -26,6 +26,7 @@ PACKAGE_FILES = SOURCE_FILES + [
     'evals/results/text-smoke.json', 'evals/results/portable.json', 'evals/results/retests.json',
     'evals/v1.1-tasting.json', 'evals/results/v1.1-tasting.json', 'evals/results/v1.1-entries.json',
     'evals/v1.2-menu.json', 'evals/results/v1.2-menu.json',
+    'evals/v1.2.1-single-beer.json', 'evals/results/v1.2.1-single-beer.json',
 ]
 
 
@@ -111,7 +112,7 @@ def starter_section(name):
 
 
 def starter(version, data):
-    chosen = ['guinness-records-origin', 'qingdao-beer-in-a-bag', 'happy-hops-returning-character']
+    chosen = ['guinness-records-origin', 'qingdao-beer-in-a-bag', 'happy-hops-returning-character', 'alvarado-unexpected-reader-award']
     stories = {s['id']: s for s in data['stories']}
     lines = [
         '# 先试这一杯\n',
@@ -119,10 +120,10 @@ def starter(version, data):
         '不用安装，也不用先懂精酿。\n',
         '> 例如：我手里是 Happy Hops IPA，介绍一下，让我喝起来有点意思，别像背课本。\n',
         '```text',
-        '请做我的“啤酒搭子”：帮我认识眼前这杯，找到一个值得留意、也能顺口分享的小特点；'
-        '我想听故事时，就讲一件有来历的小事。目标是让我放下手机，用自己的话讲；对方也能轻松接话或不接。',
+        '请做我的“啤酒搭子”：我拍单款酒或泛问介绍时，讲一个这款酒或酒厂的小故事，顺手告诉我一个喝起来值得留意的地方。'
+        '目标是让我放下手机，用自己的话讲；对方也能轻松接话或不接。',
         '先完成我这次的明确要求。要一句就一句，要故事就一个故事，别先让我填问卷。'
-        '单杯与单故事默认两三句；整张酒单给少量不同理由的候选。来源短放在后面，不给同一回复的多个改写版本。需要练习时才给三个记忆词。',
+        '单杯泛介绍通常三四句，故事与一个观察都保留；只问品饮或只听故事时通常两三句。整张酒单给少量不同理由的候选。来源短放在后面，不给同一回复的多个改写版本。需要练习时才给三个记忆词。',
         '保留我的真实感受，可以说“我觉得苦”。不要编我的味觉、经历、酒保引语、酒厂历史或参数。'
         '看不清图片就说看不清；没有图片能力请让我打出酒名。',
         '有人聊音乐就接音乐，不必拉回酒；没接话时允许停下，不猜对方心理。确实错了就简短承认，双方说法未核实就先确认。'
@@ -142,7 +143,7 @@ def starter(version, data):
         if s.get('followup'):
             lines.append('可选后续：' + s['followup'])
     lines.extend(['```', '',
-                  f'这版带 3 条故事、单杯品饮与多角度酒单入口，适合先体验。完整版本带 {len(data["stories"])} 条素材和品饮、选酒、采购等参考资料：'
+                  f'这版带 {len(chosen)} 条故事、单杯故事加品饮与多角度酒单入口，适合先体验。完整版本带 {len(data["stories"])} 条素材和品饮、选酒、采购等参考资料：'
                   '[完整单文件版](PROMPT.md) · [安装 Skill](docs/INSTALL.md)。', '',
                   '可以接着说：“菜单从几个角度挑”“只选一款”“我没闻到，只觉得苦”“只讲一个故事”。', '',
                   f'[回到项目]({URL}) · 由 scripts/release.py 生成。'])
